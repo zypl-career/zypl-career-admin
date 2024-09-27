@@ -1,6 +1,7 @@
 import { HomeIcon, UsersIcon, UserGroupIcon, CategoriesIcon, HashtagIcon, MediaFilesIcon } from '@icons';
+import { TSidebarMenu } from './types';
 
-export const menu = [
+export const menu: TSidebarMenu[] = [
   {
     title: 'Главная',
     link: '/',
@@ -36,7 +37,7 @@ export const menu = [
       },
       {
         title: 'Курсы',
-        link: '/accepted',
+        link: '/courses',
       },
       {
         title: 'Вузы и колледжи ',

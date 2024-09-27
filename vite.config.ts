@@ -10,6 +10,7 @@ export default defineConfig({
       { find: '@', replacement: resolve(__dirname, './src/') },
       { find: '@ui', replacement: resolve(__dirname, './src/shared/ui') },
       { find: '@api', replacement: resolve(__dirname, './src/shared/api') },
+      { find: '@type', replacement: resolve(__dirname, './src/shared/types') },
       { find: '@providers', replacement: resolve(__dirname, './src/shared/providers') },
       { find: '@hooks', replacement: resolve(__dirname, './src/shared/hooks') },
       { find: '@img', replacement: resolve(__dirname, './src/shared/assets/img') },

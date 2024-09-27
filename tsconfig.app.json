@@ -11,6 +11,7 @@
       "@utils": ["./src/shared/utils"],
       "@libs": ["./src/shared/libs"],
       "@api": ["./src/shared/api"],
+      "@types": ["./src/shared/types"],
       "@providers": ["./src/shared/providers"],
       "@hooks": ["./src/shared/hooks"],
       "@img": ["./src/shared/assets/img"],

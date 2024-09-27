@@ -20,7 +20,7 @@ export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
     <li>
       <NavLink
         to={item.link}
-        onClick={handleDropdown}
+        onClick={item.children ? handleDropdown : undefined}
         className={({ isActive }) =>
           cn(
             'mb-4 flex items-center gap-2 rounded-md p-2 text-sm hover:bg-secondary-active text-white ',
