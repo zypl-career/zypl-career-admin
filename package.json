@@ -18,7 +18,7 @@
     "@tanstack/react-query": "^5.51.15",
     "axios": "^1.7.3",
     "lucide-react": "^0.417.0",
-    "quill": "^2.0.0",
+    "quill": "^2.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.2",
@@ -47,5 +47,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "zod": "^3.23.8"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   }
 }
