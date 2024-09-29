@@ -8,4 +8,4 @@ export type TEditUserProps = {
   setToggle: (value: boolean) => void;
 }
 
-export type TUserSchema = z.infer<typeof UserSchema>;
+export type TUserSchema = z.infer<typeof UserSchema> & TUserData;

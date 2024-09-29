@@ -4,19 +4,19 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserSchema } from './schema';
 import { TEditUserProps, TUserSchema } from './types';
-import { useEditUser } from './setvices';
+import { useEditUser } from './services';
 
 export const EditUser: FC<TEditUserProps> = ({ editable, toggle, setToggle }) => {
-  const form = useForm<TUserSchema>({
+  const form = useForm<Partial<TUserSchema>>({
     resolver: zodResolver(UserSchema),
-    defaultValues: {
+    values: {
       ...editable
     },
   });
 
   const edit = useEditUser(editable?.id || 0);
 
-  const onSubmit = (data: TUserSchema) => {
+  const onSubmit = (data: Partial<TUserSchema>) => {
     edit.mutate(data);
     setToggle(false);
   }

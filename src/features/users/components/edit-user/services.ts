@@ -7,8 +7,8 @@ import { toast } from "@ui"
 
 export const useEditUser = (id: TUserData['id']) => {
   const queryClient = useQueryClient();
-  return useMutation<unknown, unknown, TUserSchema>({
-    mutationFn: (form: TUserSchema) => apiService.patch(`${UserEndpoints.UserEdit}/${id}`, form).then(({ data }) => data),
+  return useMutation<unknown, unknown, Partial<TUserSchema>>({
+    mutationFn: (form: Partial<TUserSchema>) => apiService.patch(`${UserEndpoints.UserEdit}/${id}`, form).then(({ data }) => data),
     onSuccess() {
       toast({ title: 'Успешно', description: 'Пользователь успешно изменен', variant: 'success' });
       queryClient.invalidateQueries({ queryKey: [User.UserKey] });

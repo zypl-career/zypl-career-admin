@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
 import MainLayout from '@/app/layouts/main-layout';
+import NotFoundPage from '@/pages/not-found';
 
 const HomePage = lazy(() => import('@pages/home'));
 const UsersPage = lazy(() => import('@pages/users'));
@@ -32,6 +33,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'course/update/:id',
         element: <CourseUpdatePage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
   },
