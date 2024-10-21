@@ -7,7 +7,7 @@ const MainLayout = () => {
   const isAuth = !!getAccessToken();
   return (
     <main className="flex size-full">
-      {!isAuth ? (
+      {isAuth ? (
         <>
           <Sidebar />
           <div className="w-full flex-1 overflow-hidden">

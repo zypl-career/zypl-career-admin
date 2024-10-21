@@ -1,12 +1,39 @@
-import { FC } from "react"
-import { PencilIcon, Trash2Icon } from "lucide-react"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui"
-import { TCourseTableProps } from "./types"
-import { useNavigate } from "react-router-dom"
-import { getDMY } from "@/shared/libs"
+import {FC} from "react";
+import {PencilIcon, Trash2Icon} from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@ui";
+import {TCourseTableProps} from "./types";
+import {useNavigate} from "react-router-dom";
+import {getDMY} from "@/shared/libs";
+import {TCourseData} from "@/entities";
 
 export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const handleRedirectToLesson = (e:  React.MouseEvent<HTMLTableRowElement, MouseEvent>, course: TCourseData) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigate(`/course/${course.id}/lesson`)
+  }
+
+  const handleEdit = (e:  React.MouseEvent<SVGSVGElement, MouseEvent>, courseId: TCourseData['id']) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigate(`/course/update/${courseId}`)
+  }
+
+  const handleDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, courseId: TCourseData['id']) => {
+    e.preventDefault()
+    e.stopPropagation()
+    onDelete(courseId)
+  }
+
   return (
     <Table>
       <TableHeader>
@@ -21,21 +48,31 @@ export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
       </TableHeader>
       <TableBody>
         {data.map((course) => (
-          <TableRow key={course.id}>
+          <TableRow
+            key={course.id}
+            onClick={(e) => handleRedirectToLesson(e, course)}
+            className="cursor-pointer"
+          >
             <TableCell>{course.title}</TableCell>
             <TableCell>{course.finishedPercentage}</TableCell>
-            <TableCell>{course.tags.join(', ')}</TableCell>
+            <TableCell>{course.tags.join(", ")}</TableCell>
             <TableCell>{getDMY(course.updatedAt)}</TableCell>
             <TableCell>{getDMY(course.createdAt)}</TableCell>
             <TableCell>
               <div className="flex items-center justify-end gap-4">
-                <PencilIcon onClick={() => navigate(`/course/update/${course.id}`)} className="text-gray-500 cursor-pointer" />
-                <Trash2Icon onClick={() => onDelete(course.id)} className="text-gray-500 cursor-pointer" />
+                <PencilIcon
+                  onClick={(e) => handleEdit(e, course.id)}
+                  className="text-gray-500 hover:text-primary cursor-pointer"
+                />
+                <Trash2Icon
+                  onClick={(e) => handleDelete(e, course.id)}
+                  className="text-gray-500 hover:text-red-500 cursor-pointer"
+                />
               </div>
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
-  )
-}
+  );
+};

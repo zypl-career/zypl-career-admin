@@ -1,9 +1,10 @@
-import { CourseTableUI } from "@entities"
-import { Button, Spinner } from "@ui"
-import { useCourses } from "./services"
-import { Link } from "react-router-dom"
 import { useState } from "react"
-import { TCourseData } from "@/entities/courses/types"
+import { Link } from "react-router-dom"
+import { PlusIcon } from "lucide-react";
+import { CourseTableUI } from "@entities"
+import { Button, LoadingTable } from "@ui"
+import { type TCourseData } from "@/entities/courses/types"
+import { useCourses } from "./services"
 import { DeleteCourse } from "./components"
 
 export const Courses = () => {
@@ -24,14 +25,18 @@ export const Courses = () => {
 
   return (
     <section>
-      <div className="flex justify-end mb-6">
+      <header className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-2xl font-bold">Курсы</h1>
+        </div>
         <Button asChild>
           <Link to="/course/create">
+            <PlusIcon />
             Добавить курс
           </Link>
         </Button>
-      </div>
-      {isLoading ? <Spinner /> : (
+      </header>
+      {isLoading ? <LoadingTable /> : (
         <CourseTableUI
           data={data?.data || []}
           onDelete={handleDelete}

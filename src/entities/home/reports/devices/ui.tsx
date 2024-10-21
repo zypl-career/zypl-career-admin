@@ -35,8 +35,8 @@ export const DevicesUI = () => {
           </Pie>
         </PieChart>
         <div className="grid grid-cols-2 items-center py-4 gap-x-14 gap-y-2 place-content-center">
-          {data.map((item) => (
-            <div className="flex items-center justify-between gap-3">
+          {data.map((item, i) => (
+            <div className="flex items-center justify-between gap-3" key={i}>
               <div className="flex items-center gap-1.5">
                 <div style={{ backgroundColor: item.fill }} className="size-2.5 rounded-full" />
                 <span>{item.name}</span>
