@@ -8,10 +8,32 @@ import {
   TableHeader,
   TableRow,
 } from "@ui";
-import { getDMY } from "@libs";
-import { type TLessonIdTableProps } from './types';
+import {getDMY} from "@libs";
+import {TLessonIdData, type TLessonIdTableProps} from "./types";
 
-export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({ data, onEdit, onDelete }) => {
+export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
+  data,
+  onEdit,
+  onDelete,
+  onPreview,
+}) => {
+  const handleDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onDelete(id);
+  };
+  const handleUpdate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, lesson: TLessonIdData) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onEdit(lesson);
+  };
+
+  const handleOpenPreview = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, lesson: TLessonIdData) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onPreview(lesson);
+  }
+
   return (
     <Table>
       <TableHeader>
@@ -26,7 +48,11 @@ export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({ data, onEdit, onDel
       </TableHeader>
       <TableBody>
         {data.map((lesson) => (
-          <TableRow key={lesson.id}>
+          <TableRow
+            key={lesson.id}
+            className="cursor-pointer"
+            onClick={(e) => handleOpenPreview(e, lesson)}
+          >
             <TableCell>{lesson.name}</TableCell>
             <TableCell>{lesson.type}</TableCell>
             <TableCell>{lesson.status}</TableCell>
@@ -35,11 +61,11 @@ export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({ data, onEdit, onDel
             <TableCell>
               <div className="flex items-center justify-end gap-4">
                 <PencilIcon
-                  onClick={() => onEdit(lesson)}
+                  onClick={(e) => handleUpdate(e, lesson)}
                   className="text-gray-500 hover:text-primary cursor-pointer"
                 />
                 <Trash2Icon
-                  onClick={() => onDelete(lesson.id)}
+                  onClick={(e) => handleDelete(e, lesson.id)}
                   className="text-gray-500 hover:text-red-500 cursor-pointer"
                 />
               </div>

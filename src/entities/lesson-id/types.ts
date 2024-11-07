@@ -1,6 +1,7 @@
 export type TLessonIdData = {
   id: string
   item: number
+  resource?: string
   name: string
   status: string
   type: string
@@ -13,4 +14,5 @@ export type TLessonIdTableProps = {
   data: TLessonIdData[]
   onDelete: (id: TLessonIdData['id']) => void
   onEdit: (item: TLessonIdData) => void
+  onPreview: (item: TLessonIdData) => void
 }

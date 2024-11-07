@@ -29,31 +29,31 @@ export const menu: TSidebarMenu[] = [
     children: [
       {
         title: 'Профессии',
-        link: '/accepted',
+        link: '/professions',
       },
       {
         title: 'Отрасли',
-        link: '/accepted',
+        link: '/industries',
       },
       {
         title: 'Курсы',
         link: '/courses',
       },
       {
-        title: 'Вузы и колледжи ',
-        link: '/accepted',
+        title: 'Вузы и колледжи',
+        link: '/universities',
       },
       {
         title: 'Ресурсы для соискателей',
-        link: '/accepted',
+        link: '/resources',
       },
       {
         title: 'Учебные центры',
-        link: '/accepted',
+        link: '/training-centers',
       },
       {
-        title: 'Видео с руководством пользователя ',
-        link: '/accepted',
+        title: 'Видео с руководством пользователя',
+        link: '/video-guide',
       },
     ]
   },
@@ -64,19 +64,19 @@ export const menu: TSidebarMenu[] = [
     children: [
       {
         title: 'Все',
-        link: ''
+        link: 'all'
       },
       {
         title: 'Видео',
-        link: ''
+        link: 'videos'
       },
       {
         title: 'Фото',
-        link: ''
+        link: 'photos'
       },
       {
         title: 'Файли',
-        link: ''
+        link: 'files'
       },
     ],
   },
