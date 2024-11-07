@@ -11,7 +11,7 @@ export const useLessonUpdateById = (courseId: string, lessonId: string) => {
         form.resource = form.resource[0];
       }
       const fd = new FormData();
-      Object.entries(form).forEach(([key, value]) => fd.append(key, value));
+      Object.entries(form).forEach(([key, value]) => fd.append(key, String(value)));
       fd.append("courseId", courseId);
       return apiService
         .patch(`/lesson/update/${lessonId}`, fd, {

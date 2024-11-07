@@ -1,8 +1,10 @@
-import {z} from "zod";
+import { z } from "zod";
+import { MAX_FILE_SIZE } from "@constants";
 
 export const CreateLessonIdSchema = z.object({
   name: z.string(),
   resource: z
-    .custom<File>((val) => val instanceof File, "Required"),
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`),
   description: z.string(),
 });
