@@ -11,7 +11,7 @@ export const useCreateCourse = () => {
         form.image = form.image[0];
       }
       const fd = new FormData();
-      Object.entries(form).forEach(([key, value]) => fd.append(key, value));
+      Object.entries(form).forEach(([key, value]) => fd.append(key, value instanceof File ? value : String(value)));
       return apiService
         .post("/course/create", fd, {
           headers: {
