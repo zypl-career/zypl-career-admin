@@ -3,7 +3,7 @@ export type TMapUIProps = {
 }
 
 export type TCounterBranches = {
-  id: string
+  id: number
   name: string
-  count: number
+  count: string
 }

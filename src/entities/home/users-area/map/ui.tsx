@@ -8,6 +8,7 @@ export const MapUI: FC<TMapUIProps> = ({ data }) => {
   const [detail, setDetail] = useState<Partial<TCounterBranches> | null>(null)
   
   const map = useMemo(() => data.map((region, i) => ({ ...region, path: mapArea[i]?.path })), [data])
+  console.log(map);
 
   const handleMouseEnter = useCallback((region: TCounterBranches) => {
     setDetail(region)
@@ -35,7 +36,7 @@ export const MapUI: FC<TMapUIProps> = ({ data }) => {
             onMouseLeave={handleMouseLeave}
             key={i}
             data-name={region.name}
-            {...region.path.props}
+            {...region?.path?.props}
           />
         ))}
       </svg>
