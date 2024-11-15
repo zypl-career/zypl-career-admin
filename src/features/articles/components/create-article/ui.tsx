@@ -12,43 +12,49 @@ import {
   Button,
   Spinner,
   toast,
+  Modal,
+  InputTags,
 } from "@ui";
 import {setFieldError} from "@libs";
-import {TCreateCourse} from "./types";
-import {CreateCourseSchema} from "./schema";
-import {useCreateCourse} from "./services";
+import {TCreateArticle, TCreateArticleProps} from "./types";
+import {CreateArticleSchema} from "./schema";
+import {useCreateArticle} from "./services";
 import {useNavigate} from "react-router-dom";
+import { FC } from "react";
 
-export const CreateCourse = () => {
+export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
   const navigate = useNavigate();
-  const form = useForm<TCreateCourse>({
-    resolver: zodResolver(CreateCourseSchema),
+  const form = useForm<TCreateArticle>({
+    resolver: zodResolver(CreateArticleSchema),
     defaultValues: {
       title: "",
       description: "",
-      tags: "",
+      hashtags: [],
       image: undefined,
+      minutesRead: "0", // Fix: Change the type to string
+      generalInfo: "", // Fix: Change the type to string
     },
   });
 
-  const createCourse = useCreateCourse();
+  const createArticle = useCreateArticle();
 
-  const onSubmit = (data: TCreateCourse) => {
-    createCourse.mutate(data, {
+  const onSubmit = (data: TCreateArticle) => {
+    const hashtags = Array.isArray(data.hashtags) ? data.hashtags.join(', ') : data.hashtags;
+    createArticle.mutate({ ...data, hashtags }, {
       onError() {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Курс успешно создан" });
-        navigate('/courses')
+        toast({ title: "Статья успешно создана" });
+        setOpen(false);
       }
     });
   };
 
   return (
-    <section>
-      <h1 className="text-4xl font-bold mb-6">Добавить Курс</h1>
-      <main className="bg-white rounded flex flex-col gap-6 p-4">
+    <Modal setToggle={setOpen} toggle={open}>
+      <h1 className="text-4xl font-bold mb-6">Добавить статью</h1>
+      <main className="bg-white rounded flex flex-col gap-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -69,17 +75,31 @@ export const CreateCourse = () => {
             />
             <FormField
               control={form.control}
-              name="finishedPercentage"
+              name="generalInfo"
               render={({field}) => (
                 <FormItem>
                   <FormControl>
                     <Input
+                      label="Общая информация"
+                      placeholder="Что-то общее"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="minutesRead"
+              render={({field}) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      type="number"
                       label="готовый процент"
                       placeholder="38%"
                       {...field}
-                      onChange={(e) => {
-                        field.onChange(Number(e.target.value))
-                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -109,11 +129,11 @@ export const CreateCourse = () => {
             />
             <FormField
               control={form.control}
-              name="tags"
+              name="hashtags"
               render={({field}) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <InputTags
                       label="Теги"
                       placeholder="Выберите теги"
                       {...field}
@@ -135,8 +155,8 @@ export const CreateCourse = () => {
               )}
             />
             <div className="col-span-2 mt-4 flex items-center justify-start gap-2">
-              <Button type="submit" disabled={createCourse.isPending}>
-                {createCourse.isPending && <Spinner />}
+              <Button type="submit" disabled={createArticle.isPending}>
+                {createArticle.isPending && <Spinner />}
                 Сохранить
               </Button>
               <Button onClick={() => navigate("/courses")} variant="secondary">
@@ -146,6 +166,6 @@ export const CreateCourse = () => {
           </form>
         </Form>
       </main>
-    </section>
+    </Modal>
   );
 };

@@ -11,45 +11,50 @@ import {
   Editor,
   Button,
   Spinner,
-  toast,
+  toast, Modal,
+  InputTags,
 } from "@ui";
 import {setFieldError} from "@libs";
-import {TCreateCourse} from "./types";
-import {CreateCourseSchema} from "./schema";
-import {useCreateCourse} from "./services";
-import {useNavigate} from "react-router-dom";
+import {TUpdateArticleId, TUpdateArticleProps} from "./types";
+import { UpdateArticleSchema } from "./schema";
+import {useArticleUpdateById} from "./services";
+import { FC } from "react";
 
-export const CreateCourse = () => {
-  const navigate = useNavigate();
-  const form = useForm<TCreateCourse>({
-    resolver: zodResolver(CreateCourseSchema),
-    defaultValues: {
+export const UpdateArticle: FC<TUpdateArticleProps> = ({ data, open, setOpen }) => {
+  const form = useForm<TUpdateArticleId>({
+    resolver: zodResolver( UpdateArticleSchema ),
+    values: {
       title: "",
       description: "",
-      tags: "",
+      minutesRead: 0,
+      hashtags: [],
       image: undefined,
+      generalInfo: "", // Fix: Change the type to string
+      ...data
     },
+    mode: 'all'
   });
 
-  const createCourse = useCreateCourse();
+  const updateArticle = useArticleUpdateById(data?.id || '');
+  const handleClose = () => setOpen(false)
 
-  const onSubmit = (data: TCreateCourse) => {
-    createCourse.mutate(data, {
+  const onSubmit = (data: TUpdateArticleId) => {
+    updateArticle.mutate(data, {
       onError() {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Курс успешно создан" });
-        navigate('/courses')
+        toast({ title: "Статья успешно обновлена" });
+        handleClose()
       }
     });
   };
 
   return (
-    <section>
-      <h1 className="text-4xl font-bold mb-6">Добавить Курс</h1>
-      <main className="bg-white rounded flex flex-col gap-6 p-4">
-        <Form {...form}>
+    <Modal setToggle={setOpen} toggle={open}>
+      <h1 className="text-4xl font-bold">Изменить статью</h1>
+      <main className="bg-white rounded flex flex-col gap-6">
+      <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
@@ -69,7 +74,23 @@ export const CreateCourse = () => {
             />
             <FormField
               control={form.control}
-              name="finishedPercentage"
+              name="generalInfo"
+              render={({field}) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      label="Общая информация"
+                      placeholder="Что-то общее"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="minutesRead"
               render={({field}) => (
                 <FormItem>
                   <FormControl>
@@ -77,9 +98,7 @@ export const CreateCourse = () => {
                       label="готовый процент"
                       placeholder="38%"
                       {...field}
-                      onChange={(e) => {
-                        field.onChange(Number(e.target.value))
-                      }}
+                      onChange={e => field.onChange(+e.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -109,11 +128,11 @@ export const CreateCourse = () => {
             />
             <FormField
               control={form.control}
-              name="tags"
+              name="hashtags"
               render={({field}) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <InputTags
                       label="Теги"
                       placeholder="Выберите теги"
                       {...field}
@@ -135,17 +154,17 @@ export const CreateCourse = () => {
               )}
             />
             <div className="col-span-2 mt-4 flex items-center justify-start gap-2">
-              <Button type="submit" disabled={createCourse.isPending}>
-                {createCourse.isPending && <Spinner />}
+              <Button type="submit" disabled={updateArticle.isPending}>
+                {updateArticle.isPending && <Spinner />}
                 Сохранить
               </Button>
-              <Button onClick={() => navigate("/courses")} variant="secondary">
+              <Button onClick={handleClose} variant="secondary">
                 Отменить
               </Button>
             </div>
           </form>
         </Form>
       </main>
-    </section>
+    </Modal>
   );
 };

@@ -82,7 +82,7 @@ export const getHMS = (date: string) => {
   const dHMS = dArr[4].split(':');
   return <code className="text-gray-500">{`${dHMS[0]}:${dHMS[1]}`}</code>;
 };
-export const getDMY = (date: string | Date, short: boolean = true): string => {
+export const getDMY = (date: string | Date | number, short: boolean = true): string => {
   if (!date) {
     return 'сейчас';
   }

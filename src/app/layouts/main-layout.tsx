@@ -5,7 +5,6 @@ import { Link, Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   const isAuth = !!getAccessToken();
-  console.log(isAuth)
   return (
     <main className="flex size-full">
       {!isAuth ? (
