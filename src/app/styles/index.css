@@ -67,3 +67,12 @@
   overflow-y: auto;
   width: 100%;
 }
+
+.ql-snow .ql-tooltip {
+  transform: translate(150px, -10px);
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  max-height: 500px;
+  overflow: auto;
+}
