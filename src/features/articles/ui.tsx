@@ -4,6 +4,7 @@ import { ArticleList, TArticleData } from "@entities";
 import { Button, Spinner } from "@ui";
 import { CreateArticle, DeleteArticle, UpdateArticle } from "./components";
 import { useArticles } from "./services";
+import { Link } from "react-router-dom";
 
 export const Article = () => {
   const {data, isLoading} = useArticles();
@@ -39,11 +40,11 @@ export const Article = () => {
         <div>
           <h1 className="text-2xl font-bold">Статьи</h1>
         </div>
-        <Button
-          onClick={() => setToggleModals((prev) => ({...prev, create: true}))}
-        >
-          <PlusIcon />
-          Добавить статью
+        <Button asChild>
+          <Link to="/articles/create">
+            <PlusIcon />
+            Добавить статью
+          </Link>
         </Button>
       </header>
       {isLoading ? (
