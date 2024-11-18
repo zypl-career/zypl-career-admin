@@ -1,5 +1,5 @@
 import { getDMY } from "@/shared/libs";
-import { Badge, BlurImage } from "@/shared/ui";
+import { Badge, BlockNote, BlurImage } from "@/shared/ui";
 import { useArticleId } from "@features";
 import { useParams } from "react-router-dom"
 
@@ -20,7 +20,8 @@ const ArticlePageId = () => {
           ))}
         </div>
       </header>
-      <div dangerouslySetInnerHTML={{ __html: data?.description || '' }} />
+      <BlockNote domAttributes={{editor: { class: 'bg-transparent' }}} editable={false} value={data?.description} />
+      {/* <div dangerouslySetInnerHTML={{ __html: data?.description || '' }} /> */}
     </main>
   )
 }

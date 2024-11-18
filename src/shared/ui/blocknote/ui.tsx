@@ -1,99 +1,111 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { BlockNoteView } from "@blocknote/shadcn";
-import { SuggestionMenuController, useCreateBlockNote } from "@blocknote/react";
-
-import {
-  filterSuggestionItems,
-  getDefaultSlashMenuItems,
-  PartialBlock,
-} from "@blocknote/core";
+import { BlockNoteEditor, filterSuggestionItems, PartialBlock } from "@blocknote/core";
+import { getDefaultReactSlashMenuItems, SuggestionMenuController } from "@blocknote/react";
+import { TBlockNoteProps } from "./types";
+import { insertYoutube, loadFromStorage, saveToStorage, schema } from "./utils";
 import { urlToBase64 } from "@libs";
-
-import { insertYoutube, schema } from "./utils";
-import type { TBlockNoteProps } from "./types";
-
 import "@blocknote/core/fonts/inter.css";
-import "@blocknote/mantine/style.css";
 import "@blocknote/shadcn/style.css";
+ 
+export const BlockNote: FC<TBlockNoteProps> = ({ editable, value = 'loading', domAttributes, initialContentHTML, onChange, onChangeHTML }) => {
+  const [initialContent, setInitialContent] = useState<
+    PartialBlock[] | undefined | "loading"
+  >(value === 'loading' ? "loading" : Array.isArray(value) ? value : JSON.parse(value));
 
-
-export const BlockNote: FC<TBlockNoteProps> = ({
-  initialContent,
-  initialContentHTML,
-  editable,
-  onChangeHTML,
-  onChange
-}) => {
-  const initialBlocks = initialContent ? JSON.parse(initialContent) : undefined;
-  const [blocks, setBlocks] = useState<PartialBlock[]>(initialBlocks);
-  const editor = useCreateBlockNote({
-    domAttributes: {
-      editor: {
-        class: 'min-h-dvh',
+  const editor = useMemo(() => {
+    if (initialContent === "loading") {
+      return undefined;
+    }
+    return BlockNoteEditor.create({
+      domAttributes: {
+        editor: {
+          class: 'min-h-dvh bg-transparent',
+        },
+        ...domAttributes,
       },
-    },
-    initialContent: blocks,
-    uploadFile: async (file: File) => await URL.createObjectURL(file),
-    schema,
-  });
+      initialContent,
+      schema,
+      uploadFile: async (file: File) => await URL.createObjectURL(file),
+    });
+  }, [domAttributes, initialContent]);
 
   const handleChange = useCallback(async () => {
-    const updatedBlocks = await Promise.all(
-      editor.document.map(async (block) => {
-        if (block.type === 'image' && block.props.url) {
-          const url = await urlToBase64(block.props.url);
-          return {
-            ...block,
-            props: {
-              ...block.props,
-              url,
-            },
-          };
-        }
-        return block;
-      })
-    );
-
-    setBlocks(updatedBlocks as PartialBlock[]);
+    if (editor) {
+      const updatedBlocks = await Promise.all(
+        editor.document.map(async (block) => {
+          if (block.type === 'image' && block.props.url) {
+            const url = await urlToBase64(block.props.url);
+            return {
+              ...block,
+              props: {
+                ...block.props,
+                url,
+              },
+            };
+          }
+          return block;
+        })
+      );
+      
+      saveToStorage(updatedBlocks);
+      return updatedBlocks;
+    }
   }, [editor]);
 
   useEffect(() => {
-    if (initialContentHTML) {
+    if (initialContentHTML && editor) {
       editor.tryParseHTMLToBlocks(initialContentHTML)
     }
   }, [editor, initialContentHTML])
 
   useEffect(() => {
     (async () => {
-      const html = await editor.blocksToHTMLLossy(blocks);
-      if (onChangeHTML) {
+      const html = await editor?.blocksToHTMLLossy(editor.document);
+      if (onChangeHTML && html) {
         onChangeHTML(html);
       }
       if (onChange) {
-        onChange(JSON.stringify(blocks, null, 2));
+        const doc = await handleChange();
+        onChange(JSON.stringify(doc, null, 2));
       }
 
     })()
-  }, [blocks, editor, onChange, onChangeHTML])
+  }, [editor, handleChange, onChange, onChangeHTML])
   
+ 
+  
+  useEffect(() => {
+    loadFromStorage().then((content) => {
+      setInitialContent(content);
+    });
+  }, []);
+ 
+ 
+  if (editor === undefined) {
+    return "Loading content...";
+  }
+ 
   return (
-    <>
-      <BlockNoteView
-        theme="light"
-        editor={editor}
-        editable={editable}
-        onChange={handleChange}
-      >
-        <SuggestionMenuController
-          triggerCharacter="/"
-          getItems={async (query) =>
-            filterSuggestionItems(
-              [...getDefaultSlashMenuItems(editor), insertYoutube(editor)],
-              query
-            )
-          }
-        />
-      </BlockNoteView>
-    </>
+    <BlockNoteView
+      theme="light"
+      editable={editable}
+      editor={editor}
+      onChange={() => {
+        saveToStorage(editor.document)
+        handleChange()
+      }}
+    >
+    <SuggestionMenuController
+        triggerCharacter="/"
+        getItems={async (query) =>
+          filterSuggestionItems(
+            [...getDefaultReactSlashMenuItems(editor), insertYoutube(editor)],
+            query
+          )
+        }
+      />
+    </BlockNoteView>
   );
-};
+}
+ 

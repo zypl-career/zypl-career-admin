@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { getDMY } from "@libs";
-import { BlurImage, Button } from "@ui";
+import { BlockNote, BlurImage, Button } from "@ui";
 import { TArticleData, TArticleListProps } from "./types";
 import { Edit, Trash2 } from "lucide-react";
+import { PartialBlock } from "@blocknote/core";
 
 export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
   const handleAction = (
@@ -22,7 +23,7 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
   return (
     <section className="grid sm:grid-cols-3 gap-5">
       {data.map((article) => {
-        const description = article.description.replace(/<[^>]*>?/gm, '');
+        const description = (JSON.parse(article.description) as PartialBlock[]).filter((block) => block.type === 'paragraph');
         return (
         <Link
           to={`/articles/${article.id}`}
@@ -37,7 +38,7 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
           />
           <div className="p-4">
             <h2 className="font-bold md:text-xl pt-5">{article.title}</h2>
-            <div className="line-clamp-2 text-gray-500" dangerouslySetInnerHTML={{ __html: description }} />
+            <BlockNote editable={false} value={JSON.stringify(description)} domAttributes={{editor: { class: 'min-h-auto' }}} />
             <h2 className="text-xs text-right text-gray-500">
               {getDMY(article.createdAt)}
             </h2>

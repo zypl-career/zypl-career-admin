@@ -138,7 +138,7 @@ export const WriteArticle = () => {
             name="description"
             render={({field}) => (
               <FormItem>
-                <BlockNote initialContentHTML={field.value} onChangeHTML={field.onChange} />
+                <BlockNote value={field.value} onChange={field.onChange} />
                 <FormMessage />
               </FormItem>
             )}
@@ -147,6 +147,7 @@ export const WriteArticle = () => {
             {createArticle.isPending && <Spinner />}
             Опубликовать статью
           </Button>
+          <pre>{JSON.stringify(form.watch('description'))}</pre>
         </form>
       </Form>
     </section>
