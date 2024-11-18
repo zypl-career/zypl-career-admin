@@ -11,7 +11,7 @@ import "@blocknote/shadcn/style.css";
 export const BlockNote: FC<TBlockNoteProps> = ({ editable, value = 'loading', domAttributes, initialContentHTML, onChange, onChangeHTML }) => {
   const [initialContent, setInitialContent] = useState<
     PartialBlock[] | undefined | "loading"
-  >(value === 'loading' ? "loading" : Array.isArray(value) ? value : JSON.parse(value));
+  >(!value || value === 'loading' ? "loading" : Array.isArray(value) ? value : JSON.parse(value));
 
   const editor = useMemo(() => {
     if (initialContent === "loading") {

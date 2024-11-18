@@ -147,7 +147,6 @@ export const WriteArticle = () => {
             {createArticle.isPending && <Spinner />}
             Опубликовать статью
           </Button>
-          <pre>{JSON.stringify(form.watch('description'))}</pre>
         </form>
       </Form>
     </section>
