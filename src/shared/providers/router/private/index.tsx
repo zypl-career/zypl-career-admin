@@ -4,6 +4,7 @@ import { RouteObject } from "react-router-dom";
 import MainLayout from "@/app/layouts/main-layout";
 import NotFoundPage from "@/pages/not-found";
 import ArticleCreatePages from "@/pages/article-create";
+import ArticleEditPages from "@/pages/article-edit";
 
 const HomePage = lazy(() => import("@pages/home"));
 const UsersPage = lazy(() => import("@pages/users"));
@@ -59,6 +60,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'articles/:id',
         element: <ArticlePageId />,
+      },
+      {
+        path: 'articles/:id/edit',
+        element: <ArticleEditPages />,
       },
       {
         path: "*",

@@ -10,8 +10,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Suspense fallback="Loading...">
       <ReactQueryProvider>
-        <Toaster />
-        <ReactRouterProvider />
+        <Suspense fallback={null}>
+          <Toaster />
+          <ReactRouterProvider />
+        </Suspense>
       </ReactQueryProvider>
     </Suspense>
   </React.StrictMode>,

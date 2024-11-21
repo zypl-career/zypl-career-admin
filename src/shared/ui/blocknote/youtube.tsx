@@ -65,14 +65,14 @@ export const Youtube = createReactBlockSpec(
         const url = new URL(currentURL);
         url.searchParams.delete("t");
         
-        props.editor.updateBlock(props.block, {
+        props?.editor.updateBlock(props?.block, {
           type: 'youtube',
           props: {
-            ...props.block.props,
+            ...props?.block?.props,
             url: url.href.replace("/watch?v=", "/embed/"),
           },
         });
-      }, [currentURL, props.editor, props.block]);
+      }, [currentURL, props?.editor, props?.block]);
 
       return (
         <div

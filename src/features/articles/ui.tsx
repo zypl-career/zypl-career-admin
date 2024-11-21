@@ -2,7 +2,7 @@ import { PlusIcon} from "lucide-react";
 import { useState } from "react";
 import { ArticleList, TArticleData } from "@entities";
 import { Button, Spinner } from "@ui";
-import { CreateArticle, DeleteArticle, UpdateArticle } from "./components";
+import { CreateArticle, DeleteArticle } from "./components";
 import { useArticles } from "./services";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,6 @@ export const Article = () => {
     create: false,
     preview: false,
   });
-  const [edit, setEdit] = useState<Partial<TArticleData>>();
   const [deleteArticle, setDeleteArticle] = useState<Partial<TArticleData>>()
 
   const handleToggleModals = (value: keyof typeof toggleModals) => {
@@ -24,10 +23,6 @@ export const Article = () => {
     }))
   };
 
-  const handleEdit = (value: Partial<TArticleData>) => {
-    handleToggleModals('edit')
-    setEdit(value)
-  };
   
   const handleDelete = (value: Partial<TArticleData>) => {
     handleToggleModals('delete')
@@ -53,7 +48,6 @@ export const Article = () => {
         <ArticleList
           data={data?.data || []}
           onDelete={handleDelete}
-          onEdit={handleEdit}
         />
       )}
       <CreateArticle
@@ -62,11 +56,11 @@ export const Article = () => {
           setToggleModals((prev) => ({...prev, create: value}))
         }
       />
-      <UpdateArticle
+      {/* <UpdateArticle
         open={toggleModals.edit}
         setOpen={(value) => setToggleModals((prev) => ({ ...prev, edit: value }))}
         data={edit}
-      />
+      /> */}
       <DeleteArticle
         open={toggleModals.delete}
         setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}

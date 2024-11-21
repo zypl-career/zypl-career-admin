@@ -1,5 +1,5 @@
 import { ChangeEvent, DragEvent, FC, useEffect, useRef, useState } from "react"
-import { Button } from "@ui"
+import { BlurImage, Button } from "@ui"
 import { cn } from "@libs"
 import type { TDropFileProps, TPreview } from "./types"
 
@@ -62,13 +62,12 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
         />
         {
           previewFile?.preview ? (
-            <div>
-              <img
-                src={previewFile?.preview?.toString()}
-                alt="preview"
-                className="object-contain rounded w-full h-[300px]"
-              />
-            </div>
+            <BlurImage
+              isSkeleton
+              src={previewFile?.preview?.toString()}
+              alt="preview"
+              className="object-contain rounded-md w-full"
+            />
           ) : (
             <>
               <h4 className="mb-1 text-center">Перетащите файл сюда или выберите его</h4>

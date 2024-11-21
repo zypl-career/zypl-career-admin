@@ -29,7 +29,8 @@
     "react-hook-form": "^7.52.2",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.25.1",
-    "recharts": "^2.12.7"
+    "recharts": "^2.12.7",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -1,12 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BlockNote, Button, DropFile, Form, FormControl, FormField, FormItem, FormMessage, Input, InputTags, Spinner, Textarea, toast } from "@ui"
+import { BlockNote, Button, DropFile, Form, FormControl, FormField, FormItem, FormMessage, Input, InputTags, removeEditorContent, Spinner, Textarea, toast } from "@ui"
 import { useForm } from "react-hook-form";
 import { TCreateArticle } from "./types";
 import { CreateArticleSchema } from "./schema";
 import { useCreateArticle } from "./services";
 import { setFieldError } from "@/shared/libs";
+import { useNavigate } from "react-router-dom";
 
 export const WriteArticle = () => {
+  const navigate = useNavigate();
   const form = useForm<TCreateArticle>({
     resolver: zodResolver(CreateArticleSchema),
     defaultValues: {
@@ -28,6 +30,9 @@ export const WriteArticle = () => {
         setFieldError(form);
       },
       onSuccess() {
+        form.reset();
+        removeEditorContent();
+        navigate('/articles');
         toast({ title: "Статья успешно создана" });
       }
     });
@@ -114,18 +119,7 @@ export const WriteArticle = () => {
                 render={({ field: { onChange } }) => (
                   <FormItem>
                     <FormControl>
-                      {/* <Input
-                        label="Изображение"
-                        type="file"
-                        
-                        {...field}
-                        onChange={(event) => {
-                          if (event.target.files) {
-                            onChange(event.target.files[0])
-                          }
-                        }}
-                      /> */}
-                    <DropFile onChange={onChange} />
+                      <DropFile onChange={onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

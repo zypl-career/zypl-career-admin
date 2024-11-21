@@ -12,6 +12,6 @@ export type TArticleData = {
 
 export type TArticleListProps = {
   data: TArticleData[];
-  onEdit: (item: TArticleData) => void
+  onEdit?: (item: TArticleData) => void
   onDelete: (item: TArticleData) => void
 }
