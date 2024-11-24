@@ -1,12 +1,12 @@
-import {useState} from "react";
-import {useParams} from "react-router-dom";
-import {PlusIcon} from "lucide-react";
-import {LessonByIdTableUI, type TLessonIdData} from "@entities";
-import {useCourseById} from "@features";
-import {Button, LoadingTable, Skeleton} from "@ui";
-import {UpdateLesson, DeleteLessonId, CreateLesson} from "./components";
-import {useLessonId} from "./services";
-import {PreviewLesson} from "./components/preview-lesson-id";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { PlusIcon } from "lucide-react";
+import { LessonByIdTableUI, type TLessonIdData } from "@entities";
+import { useCourseById } from "@features";
+import { Button, LoadingTable, Skeleton } from "@ui";
+import { UpdateLesson, DeleteLessonId, CreateLesson } from "./components";
+import { useLessonId } from "./services";
+import { PreviewLesson } from "./components/preview-lesson-id";
 
 export const LessonId = () => {
   const {id = "0"} = useParams();
