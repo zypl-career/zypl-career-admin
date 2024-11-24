@@ -3,18 +3,22 @@ import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
 import MainLayout from "@/app/layouts/main-layout";
 import NotFoundPage from "@/pages/not-found";
-import ArticleCreatePages from "@/pages/article-create";
-import ArticleEditPages from "@/pages/article-edit";
+
 
 const HomePage = lazy(() => import("@pages/home"));
 const UsersPage = lazy(() => import("@pages/users"));
+
 const CoursesPage = lazy(() => import("@pages/courses"));
 const CourseCreatePage = lazy(() => import("@pages/course-create"));
 const CourseUpdatePage = lazy(() => import("@pages/course-update"));
+
 const LessonCreatePage = lazy(() => import("@pages/lessons-create"));
 const LessonsByIdPage = lazy(() => import("@pages/lessons-id"));
+
 const ArticlesPage = lazy(() => import("@pages/articles"));
 const ArticlePageId = lazy(() => import("@pages/article-id"));
+const ArticleCreatePage = lazy(() => import("@/pages/article-create"));
+const ArticleEditPage = lazy(() => import("@/pages/article-edit"));
 
 export const privateRoutes: RouteObject[] = [
   {
@@ -55,7 +59,7 @@ export const privateRoutes: RouteObject[] = [
       },
       {
         path: 'articles/create',
-        element: <ArticleCreatePages />,
+        element: <ArticleCreatePage />,
       },
       {
         path: 'articles/:id',
@@ -63,7 +67,7 @@ export const privateRoutes: RouteObject[] = [
       },
       {
         path: 'articles/:id/edit',
-        element: <ArticleEditPages />,
+        element: <ArticleEditPage />,
       },
       {
         path: "*",

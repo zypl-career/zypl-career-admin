@@ -1,8 +1,7 @@
 import { UpdateArticle } from "@/features/articles/components";
-// import { BlockNote } from "@ui";
 
-const ArticleEditPages = () => {
+const ArticleEditPage = () => {
   return <UpdateArticle />
 }
 
-export default ArticleEditPages
+export default ArticleEditPage

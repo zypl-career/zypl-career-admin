@@ -1,7 +1,7 @@
 import { WriteArticle } from "@/features/articles/components";
 
-const ArticleCreatePages = () => {
+const ArticleCreatePage = () => {
   return <WriteArticle />
 }
 
-export default ArticleCreatePages
+export default ArticleCreatePage
