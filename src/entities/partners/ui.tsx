@@ -21,7 +21,7 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
 
       if (action === "onDelete") {
         setCurrentPartnerId(partner.id);
-        setDeleteOpen(true); // Открываем модальное окно удаления
+        setDeleteOpen(true);
       } else if (typeof props[action] === "function") {
         props[action](partner);
       }

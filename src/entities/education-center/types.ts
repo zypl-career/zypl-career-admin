@@ -1,10 +1,13 @@
-export type TEducationCenterData = {
+export type TEducationCenter = {
   id: string;
-  image: string;
   title: string;
-  generalInfoFile: string;
   city: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+  createdAt: number;
+  image: string;
+};
+
+export type TEducationCenterProps = {
+  data: TEducationCenter[];
+  onEdit: (data: TEducationCenter) => void;
+  onDelete: (data: TEducationCenter) => void;
 };
