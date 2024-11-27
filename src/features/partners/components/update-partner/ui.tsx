@@ -15,22 +15,22 @@ import {
 } from "@ui";
 import { setFieldError } from "@libs";
 import { TCreatePartnerProps } from "./types";
-import { CreatePartnerSchema, TCreatePartner } from "./schema";
-import { useCreatePartner } from "./services";
+import { UpdatePartnerSchema, TUpdatePartner } from "./schema";
+import { useUpdatePartner } from "./services";
 
-export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
-  const form = useForm<TCreatePartner>({
-    resolver: zodResolver(CreatePartnerSchema),
-    defaultValues: {
-      image: undefined
+export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) => {
+  const form = useForm<TUpdatePartner>({
+    resolver: zodResolver(UpdatePartnerSchema),
+    values: {
+      image: data.image
     },
   });
 
-  const createPartner = useCreatePartner();  
+  const createPartner = useUpdatePartner(data?.id ?? '');  
 
   const handleClose = () => toggle(false);
 
-  const onSubmit = (data: TCreatePartner) => {
+  const onSubmit = (data: TUpdatePartner) => {
     createPartner.mutate(data, {
       onError(error) {
         console.error("Ошибка при создании партнера:", error);
@@ -52,10 +52,10 @@ export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
             <FormField
               control={form.control}
               name="image"
-              render={({ field: { onChange } }) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <DropFile onChange={onChange} />
+                    <DropFile preview={field.value} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

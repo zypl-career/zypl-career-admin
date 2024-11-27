@@ -37,8 +37,10 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
   }
 
   useEffect(() => {
-    setPreviewFile((prev) => ({ ...prev, preview }))
-  }, [preview])
+    if (preview && !previewFile.name) {
+      setPreviewFile((prev) => ({ ...prev, preview }))
+    }
+  }, [preview, previewFile.name])
 
   return (
     <>

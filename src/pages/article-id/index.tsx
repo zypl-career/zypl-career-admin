@@ -6,9 +6,7 @@ import {useParams} from "react-router-dom";
 const ArticlePageId = () => {
   const {id = ""} = useParams();
   const { data, isLoading } = useArticleId(id);
-
-  console.log(data);
-
+  
   return (
     <main className="max-w-2xl container bg-gray-100 py-5">
       <header className="mb-4">

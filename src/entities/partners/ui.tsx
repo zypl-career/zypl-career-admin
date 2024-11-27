@@ -33,8 +33,8 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
             className="rounded-t-xl object-cover w-full h-[272px] group-hover:scale-110 overflow-hidden"
             isSkeleton
           />
-          <div className="p-4">
-            <h2 className="text-xs text-right text-gray-500">
+          <div className="p-2 absolute z-10 bottom-2 right-5 bg-white rounded-full">
+            <h2 className="text-xs text-right text-gray-600">
               {getDMY(partner.createdAt)}
             </h2>
           </div>
