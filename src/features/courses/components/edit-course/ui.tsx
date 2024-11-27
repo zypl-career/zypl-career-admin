@@ -1,7 +1,10 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
+  Button,
+  Editor,
   Form,
   FormControl,
   FormField,
@@ -9,15 +12,12 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Editor,
-  Button,
   Spinner,
   toast,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TUpdateCourse } from './types';
 import { UpdateCourseSchema } from './schema';
 import { useCourseById, useEditCourse } from './services';
+import { TUpdateCourse } from './types';
 
 export const UpdateCourse = () => {
   const { id = '0' } = useParams();

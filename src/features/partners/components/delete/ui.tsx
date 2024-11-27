@@ -1,18 +1,17 @@
+import { FC } from 'react';
 import {
   AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogFooter,
-  AlertDialogCancel,
-  AlertDialogAction,
+  AlertDialogHeader,
+  AlertDialogTitle,
   Spinner,
 } from '@ui';
-
-import { FC } from 'react';
-import { TDeletePartnerProps } from './types';
 import { useDeletePartner } from './services';
+import { TDeletePartnerProps } from './types';
 
 export const DeletePartner: FC<TDeletePartnerProps> = ({
   setOpen,

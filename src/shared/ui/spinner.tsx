@@ -1,5 +1,5 @@
-import { SVGProps } from 'react';
 import { cn } from '@libs';
+import { SVGProps } from 'react';
 
 export const Spinner = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (

@@ -1,7 +1,7 @@
 import { apiService } from '@api';
+import { TArticleData } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
-import { TArticleData } from '@entities';
 
 export const useDeleteArticle = (id: TArticleData['id']) => {
   const queryClient = useQueryClient();

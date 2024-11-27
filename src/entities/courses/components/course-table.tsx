@@ -1,5 +1,8 @@
-import { FC } from 'react';
+import { TCourseData } from '@/entities';
+import { getDMY } from '@/shared/libs';
 import { PencilIcon, Trash2Icon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 import {
   Table,
   TableBody,
@@ -9,9 +12,6 @@ import {
   TableRow,
 } from '@ui';
 import { TCourseTableProps } from './types';
-import { useNavigate } from 'react-router-dom';
-import { getDMY } from '@/shared/libs';
-import { TCourseData } from '@/entities';
 
 export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
   const navigate = useNavigate();

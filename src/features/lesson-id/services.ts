@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@api';
 import { TLessonIdData } from '@entities';
+import { useQuery } from '@tanstack/react-query';
 
 export const useLessonId = (courseId: string) => {
   return useQuery<TLessonIdData[]>({

@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@api';
 import { TPartners } from '@entities';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TUpdatePartner } from './schema';
 
 export const useUpdatePartner = (id: TPartners['id']) => {
@@ -12,7 +12,7 @@ export const useUpdatePartner = (id: TPartners['id']) => {
       if (form.image) {
         formData.append('image', form.image);
       }
-  
+
       return apiService.patch(`/partner/update/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

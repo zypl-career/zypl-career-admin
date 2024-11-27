@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@api';
+import { useQuery } from '@tanstack/react-query';
 import { TResponse } from '@types';
 import { TCourseData } from '../../entities/courses/types';
 

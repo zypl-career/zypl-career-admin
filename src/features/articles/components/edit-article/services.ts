@@ -1,6 +1,6 @@
 import { apiService } from '@api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { TUpdateArticleIdResponse, TUpdateArticleId } from './types';
+import type { TUpdateArticleId, TUpdateArticleIdResponse } from './types';
 
 export const useArticleUpdateById = (articleId: string) => {
   const queryClient = useQueryClient();

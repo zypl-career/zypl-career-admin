@@ -1,6 +1,6 @@
 import { apiService } from '@api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { TCreateLessonIdResponse, TCreateLessonId } from './types';
+import type { TCreateLessonId, TCreateLessonIdResponse } from './types';
 
 export const useLessonIdCourse = (courseId: string) => {
   const queryClient = useQueryClient();

@@ -1,10 +1,10 @@
-import { PlusIcon } from 'lucide-react';
-import { useState } from 'react';
 import { ArticleList, TArticleData } from '@entities';
+import { PlusIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Button, Spinner } from '@ui';
 import { CreateArticle, DeleteArticle } from './components';
 import { useArticles } from './services';
-import { Link } from 'react-router-dom';
 
 export const Article = () => {
   const { data, isLoading } = useArticles();

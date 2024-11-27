@@ -1,10 +1,10 @@
 import {
-  HomeIcon,
-  UsersIcon,
-  UserGroupIcon,
   CategoriesIcon,
   HashtagIcon,
+  HomeIcon,
   MediaFilesIcon,
+  UserGroupIcon,
+  UsersIcon,
 } from '@icons';
 import { TSidebarMenu } from './types';
 

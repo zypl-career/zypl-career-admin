@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
 import { EducationCenterList, TEducationCenter } from '@entities';
+import { useState } from 'react';
 import { Spinner } from '@ui';
 import { useGetEducationCenters } from './services';
 

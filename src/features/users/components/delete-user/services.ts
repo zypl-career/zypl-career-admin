@@ -1,8 +1,8 @@
+import { TUserData } from '@/entities';
 import { apiService } from '@api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
 import { User } from '../../constants';
-import { TUserData } from '@/entities';
 
 export default function useDeleteUser(id: TUserData['id']) {
   const queryClient = useQueryClient();

@@ -1,5 +1,5 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { FC, ReactNode, useEffect, useState } from 'react';
 
 type MousePositionProps = {
   x?: number;

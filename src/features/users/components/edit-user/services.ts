@@ -1,9 +1,9 @@
 import { apiService } from '@/shared/api';
+import { TUserData } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from '@ui';
 import { User, UserEndpoints } from '../../constants';
 import { TUserSchema } from './types';
-import { TUserData } from '@entities';
-import { toast } from '@ui';
 
 export const useEditUser = (id: TUserData['id']) => {
   const queryClient = useQueryClient();

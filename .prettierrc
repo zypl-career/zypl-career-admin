@@ -3,7 +3,7 @@
   "semi": true,
   "trailingComma": "all",
   "tailwindFunctions": ["clsx"],
-  "importOrderSeparation": false,
+  "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderBuiltinModulesToTop": true,
   "importOrderMergeDuplicateImports": true,
@@ -14,8 +14,7 @@
   ],
   "importOrder": [
     "^(react/(.*)$)|^(react$)",
-    "<THIRD_PARTY_MODULES>",
-    "^types$",
+    "^@types$",
     "^@app/(.*)$",
     "^@widgets$",
     "^@features$",
@@ -23,7 +22,6 @@
     "^@ui$",
     "^@hooks$",
     "^@shared$",
-    "^@styles$",
     "^[./]"
   ]
 }

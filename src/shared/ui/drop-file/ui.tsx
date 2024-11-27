@@ -1,6 +1,6 @@
+import { cn } from '@libs';
 import { ChangeEvent, DragEvent, FC, useEffect, useRef, useState } from 'react';
 import { BlurImage, Button } from '@ui';
-import { cn } from '@libs';
 import type { TDropFileProps, TPreview } from './types';
 
 const whiteListTypeFile = ['image', 'image/jpeg', 'image/png', 'gif'];

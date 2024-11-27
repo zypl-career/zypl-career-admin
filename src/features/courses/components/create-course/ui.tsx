@@ -1,6 +1,10 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import {
+  Button,
+  Editor,
   Form,
   FormControl,
   FormField,
@@ -8,16 +12,12 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Editor,
-  Button,
   Spinner,
   toast,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TCreateCourse } from './types';
 import { CreateCourseSchema } from './schema';
 import { useCreateCourse } from './services';
-import { useNavigate } from 'react-router-dom';
+import { TCreateCourse } from './types';
 
 export const CreateCourse = () => {
   const navigate = useNavigate();

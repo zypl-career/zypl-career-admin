@@ -1,6 +1,6 @@
+import { TUserData } from '@entities';
 import { z } from 'zod';
 import { UserSchema } from './schema';
-import { TUserData } from '@entities';
 
 export type TEditUserProps = {
   editable?: Partial<TUserData>;

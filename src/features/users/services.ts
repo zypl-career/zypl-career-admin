@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@api';
 import { TUser } from '@entities';
+import { useQuery } from '@tanstack/react-query';
 import { User, UserEndpoints } from './constants';
 
 export const useUser = () => {

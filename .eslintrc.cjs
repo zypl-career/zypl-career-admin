@@ -11,8 +11,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', '@tanstack/query'],
   rules: {
-    "react-refresh/only-export-components": [
-      "warn",
+    'react-refresh/only-export-components': [
+      'warn',
       { allowConstantExport: true },
     ],
     '@typescript-eslint/no-explicit-any': ['off'],
@@ -30,7 +30,7 @@ module.exports = {
     'max-len': [
       'error',
       120,
-      { ignoreTemplateLiterals: true, ignoreStrings: true }
+      { ignoreTemplateLiterals: true, ignoreStrings: true },
     ],
     'eol-last': ['warn', 'always'],
     'sort-imports': [
@@ -40,8 +40,8 @@ module.exports = {
         ignoreDeclarationSort: true,
         ignoreMemberSort: true,
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: true
-      }
+        allowSeparatedGroups: true,
+      },
     ],
   },
 };

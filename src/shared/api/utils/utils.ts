@@ -1,5 +1,5 @@
-import { removeAccessToken } from '@libs';
 import { Pages } from '@/shared/constants';
+import { removeAccessToken } from '@libs';
 import { router } from '@providers';
 import axios from 'axios';
 import { toast } from '@ui';

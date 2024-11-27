@@ -1,8 +1,8 @@
 import { PartnersList, TPartners } from '@entities';
-import { Button, Spinner } from '@ui';
-import { useGetPartners } from './services';
 import { useState } from 'react';
+import { Button, Spinner } from '@ui';
 import { CreatePartner, DeletePartner, UpdatePartner } from './components';
+import { useGetPartners } from './services';
 
 export const Partners = () => {
   const { data, isLoading } = useGetPartners();
@@ -30,7 +30,7 @@ export const Partners = () => {
     handleToggleModals('edit');
     setEditPartner(value);
   };
-  
+
   return (
     <section>
       <header className="mb-6 flex items-center justify-between">

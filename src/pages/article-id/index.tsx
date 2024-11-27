@@ -1,12 +1,12 @@
 import { getDMY } from '@/shared/libs';
 import { Badge, BlockNote, BlurImage } from '@/shared/ui';
-import { useArticleId } from '@features';
 import { useParams } from 'react-router-dom';
+import { useArticleId } from '@features';
 
 const ArticlePageId = () => {
   const { id = '' } = useParams();
   const { data, isLoading } = useArticleId(id);
-  
+
   return (
     <main className="container max-w-2xl bg-gray-100 py-5">
       <header className="mb-4">

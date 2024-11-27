@@ -1,6 +1,11 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 import {
+  Button,
+  Editor,
   Form,
   FormControl,
   FormField,
@@ -8,19 +13,14 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Editor,
-  Button,
+  InputTags,
+  Modal,
   Spinner,
   toast,
-  Modal,
-  InputTags,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TCreateArticle, TCreateArticleProps } from './types';
 import { CreateArticleSchema } from './schema';
 import { useCreateArticle } from './services';
-import { useNavigate } from 'react-router-dom';
-import { FC } from 'react';
+import { TCreateArticle, TCreateArticleProps } from './types';
 
 export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
   const navigate = useNavigate();

@@ -5,25 +5,22 @@ import {
   FileBlockWrapper,
   ResizeHandlesWrapper,
 } from '@blocknote/react';
-
 import { cn } from '@libs';
-import { ChangeEvent, useCallback, useState } from 'react';
-
-import {
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-  Input,
-  Button,
-} from '@ui';
-
 import { FaYoutube } from 'react-icons/fa';
+import { ChangeEvent, useCallback, useState } from 'react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Button,
+  Input,
+} from '@ui';
 
 export const Youtube = createReactBlockSpec(
   {

@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { getDMY } from '@libs';
+import { Edit, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FC } from 'react';
 import { BlurImage, Button } from '@ui';
 import { TArticleData, TArticleListProps } from './types';
-import { Edit, Trash2 } from 'lucide-react';
 
 export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
   const handleAction = (

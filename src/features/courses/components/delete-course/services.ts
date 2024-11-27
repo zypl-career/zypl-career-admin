@@ -1,7 +1,7 @@
 import { apiService } from '@api';
+import { TCourseData } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
-import { TCourseData } from '@entities';
 
 export const useDeleteCourse = (id: TCourseData['id']) => {
   const queryClient = useQueryClient();

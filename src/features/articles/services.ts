@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@api';
-import { TResponse } from '@types';
 import { TArticleData } from '@entities';
+import { useQuery } from '@tanstack/react-query';
+import { TResponse } from '@types';
 
 export const useArticles = () => {
   return useQuery<TResponse<TArticleData[]>>({

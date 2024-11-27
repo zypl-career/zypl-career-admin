@@ -1,5 +1,5 @@
-import plugin from 'tailwindcss/plugin';
 import colors from 'tailwindcss/colors';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
