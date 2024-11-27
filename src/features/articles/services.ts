@@ -10,7 +10,7 @@ export const useArticles = () => {
   })
 };
 
-export const useArticleId = (id: TArticleData['id']) => {
+export const useArticleId = (id: T  ArticleData['id']) => {
   return useQuery<TArticleData>({
     queryKey: ['articles', id],
     queryFn: () => apiService.get(`article/get/${id}`).then(({ data }) => data),
