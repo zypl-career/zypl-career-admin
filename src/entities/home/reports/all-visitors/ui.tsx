@@ -1,12 +1,11 @@
-
-import { PieLabel } from '@ui';
-import { Pie, PieChart, Label } from 'recharts';
+import { PieLabel } from "@ui";
+import { Pie, PieChart, Label } from "recharts";
 
 const data = [
-  { name: '0–14 лет',  value: 15, fill: '#EEC980', }, 
-  { name: '15–64 года',  value: 79, fill: '#F36565', }, 
-  { name: '60 - 74 лет  ',  value: 5, fill: '#F39865', }, 
-  { name: '75 - 89 лет',  value: 1, fill: '#89C858', },
+  { name: "0–14 лет", value: 15, fill: "#EEC980" },
+  { name: "15–64 года", value: 79, fill: "#F36565" },
+  { name: "60 - 74 лет  ", value: 5, fill: "#F39865" },
+  { name: "75 - 89 лет", value: 1, fill: "#89C858" },
 ];
 
 export const AllVisitorsUI = () => {
@@ -26,12 +25,14 @@ export const AllVisitorsUI = () => {
           >
             <Label
               position="center"
-              content={(
+              content={
                 <PieLabel>
                   <p className="text-[#212B36] text-2xl font-bold">2548</p>
-                  <p className="text-[#637381] text-sm font-medium">Пользователей</p>
+                  <p className="text-[#637381] text-sm font-medium">
+                    Пользователей
+                  </p>
                 </PieLabel>
-              )}
+              }
             />
           </Pie>
         </PieChart>
@@ -39,7 +40,10 @@ export const AllVisitorsUI = () => {
           {data.map((item, i) => (
             <div className="flex items-center justify-between gap-3" key={i}>
               <div className="flex items-center gap-1.5">
-                <div style={{ backgroundColor: item.fill }} className="size-2.5 rounded-full" />
+                <div
+                  style={{ backgroundColor: item.fill }}
+                  className="size-2.5 rounded-full"
+                />
                 <span>{item.name}</span>
               </div>
               <p>{item.value}%</p>
@@ -49,4 +53,4 @@ export const AllVisitorsUI = () => {
       </div>
     </div>
   );
-}
+};

@@ -1,5 +1,5 @@
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -25,11 +25,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useArticleId } from "../../services";
 
 export const UpdateArticle: FC = () => {
-  const { id = '' } = useParams();
+  const { id = "" } = useParams();
   const navigate = useNavigate();
-  const { data: updateData } = useArticleId(id)
+  const { data: updateData } = useArticleId(id);
   const form = useForm<TUpdateArticleId>({
-    resolver: zodResolver( UpdateArticleSchema ),
+    resolver: zodResolver(UpdateArticleSchema),
     values: {
       title: "",
       description: "",
@@ -37,12 +37,12 @@ export const UpdateArticle: FC = () => {
       image: updateData?.image,
       generalInfo: "", // Fix: Change the type to string
       ...updateData,
-      minutesRead: updateData?.minutesRead?.toString() || '',
+      minutesRead: updateData?.minutesRead?.toString() || "",
     },
-    mode: 'all'
+    mode: "all",
   });
 
-  const preview = form.watch('image');
+  const preview = form.watch("image");
 
   const updateArticle = useArticleUpdateById(id);
 
@@ -54,16 +54,19 @@ export const UpdateArticle: FC = () => {
       onSuccess() {
         form.reset();
         removeEditorContent();
-        navigate('/articles');
+        navigate("/articles");
         toast({ title: "Статья успешно обновлена" });
-      }
+      },
     });
   };
 
   return (
     <section>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-5xl container">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="max-w-5xl container"
+        >
           <h1 className="text-4xl font-bold mb-6">Редактировать статью</h1>
           <header className="py-24 px-20 bg-white flex items-center gap-32 mb-20 rounded-md">
             <div className="flex flex-1 flex-col gap-4">
@@ -88,7 +91,7 @@ export const UpdateArticle: FC = () => {
               <FormField
                 control={form.control}
                 name="title"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <Input
@@ -105,13 +108,10 @@ export const UpdateArticle: FC = () => {
               <FormField
                 control={form.control}
                 name="generalInfo"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea
-                        placeholder="Что-то общее"
-                        {...field}
-                      />
+                      <Textarea placeholder="Что-то общее" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -120,7 +120,7 @@ export const UpdateArticle: FC = () => {
               <FormField
                 control={form.control}
                 name="hashtags"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <InputTags
@@ -149,17 +149,25 @@ export const UpdateArticle: FC = () => {
               />
             </div>
           </header>
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => field.value ? (
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) =>
+              field.value ? (
                 <FormItem>
                   <BlockNote value={field.value} onChange={field.onChange} />
                   <FormMessage />
                 </FormItem>
-              ) : <FormItem />}
-            />
-          <Button type="submit" className="fixed right-5 top-40" disabled={updateArticle.isPending}>
+              ) : (
+                <FormItem />
+              )
+            }
+          />
+          <Button
+            type="submit"
+            className="fixed right-5 top-40"
+            disabled={updateArticle.isPending}
+          >
             {updateArticle.isPending && <Spinner />}
             Опубликовать статью
           </Button>

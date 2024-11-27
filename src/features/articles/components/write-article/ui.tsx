@@ -1,5 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BlockNote, Button, DropFile, Form, FormControl, FormField, FormItem, FormMessage, Input, InputTags, removeEditorContent, Spinner, Textarea, toast } from "@ui"
+import {
+  BlockNote,
+  Button,
+  DropFile,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  InputTags,
+  removeEditorContent,
+  Spinner,
+  Textarea,
+  toast,
+} from "@ui";
 import { useForm } from "react-hook-form";
 import { TCreateArticle } from "./types";
 import { CreateArticleSchema } from "./schema";
@@ -24,24 +39,32 @@ export const WriteArticle = () => {
   const createArticle = useCreateArticle();
 
   const onSubmit = (data: TCreateArticle) => {
-    const hashtags = Array.isArray(data.hashtags) ? data.hashtags.join(', ') : data.hashtags;
-    createArticle.mutate({ ...data, hashtags }, {
-      onError() {
-        setFieldError(form);
+    const hashtags = Array.isArray(data.hashtags)
+      ? data.hashtags.join(", ")
+      : data.hashtags;
+    createArticle.mutate(
+      { ...data, hashtags },
+      {
+        onError() {
+          setFieldError(form);
+        },
+        onSuccess() {
+          form.reset();
+          removeEditorContent();
+          navigate("/articles");
+          toast({ title: "Статья успешно создана" });
+        },
       },
-      onSuccess() {
-        form.reset();
-        removeEditorContent();
-        navigate('/articles');
-        toast({ title: "Статья успешно создана" });
-      }
-    });
+    );
   };
 
   return (
     <section>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-5xl container">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="max-w-5xl container"
+        >
           <h1 className="text-4xl font-bold mb-6">Добавить статью</h1>
           <header className="py-24 px-20 bg-white flex items-center gap-32 mb-20 rounded-md">
             <div className="flex flex-1 flex-col gap-4">
@@ -66,7 +89,7 @@ export const WriteArticle = () => {
               <FormField
                 control={form.control}
                 name="title"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <Input
@@ -83,13 +106,10 @@ export const WriteArticle = () => {
               <FormField
                 control={form.control}
                 name="generalInfo"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea
-                        placeholder="Что-то общее"
-                        {...field}
-                      />
+                      <Textarea placeholder="Что-то общее" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,7 +118,7 @@ export const WriteArticle = () => {
               <FormField
                 control={form.control}
                 name="hashtags"
-                render={({field}) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <InputTags
@@ -130,19 +150,23 @@ export const WriteArticle = () => {
           <FormField
             control={form.control}
             name="description"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 <BlockNote value={field.value} onChange={field.onChange} />
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="fixed right-5 top-40" disabled={createArticle.isPending}>
+          <Button
+            type="submit"
+            className="fixed right-5 top-40"
+            disabled={createArticle.isPending}
+          >
             {createArticle.isPending && <Spinner />}
             Опубликовать статью
           </Button>
         </form>
       </Form>
     </section>
-  )
-}
+  );
+};

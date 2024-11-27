@@ -22,11 +22,11 @@ export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   const form = useForm<TCreatePartner>({
     resolver: zodResolver(CreatePartnerSchema),
     defaultValues: {
-      image: undefined
+      image: undefined,
     },
   });
 
-  const createPartner = useCreatePartner();  
+  const createPartner = useCreatePartner();
 
   const handleClose = () => toggle(false);
 

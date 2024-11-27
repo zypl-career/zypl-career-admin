@@ -1,17 +1,14 @@
-import {FC, useCallback, useState} from "react";
-import {BlockNoteView} from "@blocknote/shadcn";
-import {
-  filterSuggestionItems,
-  PartialBlock,
-} from "@blocknote/core";
+import { FC, useCallback, useState } from "react";
+import { BlockNoteView } from "@blocknote/shadcn";
+import { filterSuggestionItems, PartialBlock } from "@blocknote/core";
 import {
   getDefaultReactSlashMenuItems,
   SuggestionMenuController,
   useCreateBlockNote,
 } from "@blocknote/react";
-import {TBlockNoteProps} from "./types";
-import {insertYoutube, schema} from "./utils";
-import {urlToBase64} from "@libs";
+import { TBlockNoteProps } from "./types";
+import { insertYoutube, schema } from "./utils";
+import { urlToBase64 } from "@libs";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 
@@ -43,7 +40,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
             };
           }
           return block;
-        })
+        }),
       )) as PartialBlock[];
 
       setBlocks(updatedBlocks);
@@ -70,7 +67,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
         getItems={async (query) =>
           filterSuggestionItems(
             [...getDefaultReactSlashMenuItems(editor), insertYoutube(editor)],
-            query
+            query,
           )
         }
       />

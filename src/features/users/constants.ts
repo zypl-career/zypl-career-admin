@@ -1,8 +1,8 @@
 export enum User {
-  UserKey = 'user'
+  UserKey = "user",
 }
 
 export enum UserEndpoints {
-  UserGet = '/user/get',
-  UserEdit = '/user/edit',  
+  UserGet = "/user/get",
+  UserEdit = "/user/edit",
 }

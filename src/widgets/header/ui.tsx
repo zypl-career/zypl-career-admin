@@ -1,4 +1,4 @@
-import { MoreVertical, Bell } from "lucide-react"
+import { MoreVertical, Bell } from "lucide-react";
 
 export const Header = () => {
   return (
@@ -6,5 +6,5 @@ export const Header = () => {
       <Bell className="cursor-pointer" />
       <MoreVertical className="cursor-pointer" />
     </header>
-  )
-}
+  );
+};

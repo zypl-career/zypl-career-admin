@@ -1,11 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { responseInterceptor, requestInterceptor, errorInterceptor } from './utils';
+import {
+  responseInterceptor,
+  requestInterceptor,
+  errorInterceptor,
+} from "./utils";
 
 export const apiService = axios.create({
   baseURL: import.meta.env.VITE_APP_BACKEND_API,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 

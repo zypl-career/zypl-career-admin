@@ -19,9 +19,9 @@ export const BlurImage: FC<ImageProps> = ({
       <img
         className={cn(
           className,
-          'duration-500 ease-in-out',
-          { 'hidden': isLoading && isSkeleton },
-          isLoading ? "scale-105 blur-sm" : "scale-100 blur-0"
+          "duration-500 ease-in-out",
+          { hidden: isLoading && isSkeleton },
+          isLoading ? "scale-105 blur-sm" : "scale-100 blur-0",
         )}
         onLoad={() => setLoading(false)}
         {...props}
@@ -33,7 +33,7 @@ export const BlurImage: FC<ImageProps> = ({
         <div
           className={cn(
             "flex items-center justify-center h-48 mb-4 bg-gray-300 rounded animate-pulse",
-            className
+            className,
           )}
           style={{ width: props.width, height: props.height }}
         >

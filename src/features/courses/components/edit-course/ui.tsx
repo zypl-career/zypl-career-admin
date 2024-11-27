@@ -20,22 +20,21 @@ import { UpdateCourseSchema } from "./schema";
 import { useCourseById, useEditCourse } from "./services";
 
 export const UpdateCourse = () => {
-  const { id = '0' } = useParams();
+  const { id = "0" } = useParams();
   const { data: course, isLoading } = useCourseById(id);
   const navigate = useNavigate();
 
   const form = useForm<TUpdateCourse>({
     resolver: zodResolver(UpdateCourseSchema),
     values: {
-      title: course?.title || '',
+      title: course?.title || "",
       image: null,
-      description: course?.description || '',
-      tags: '',
-      finishedPercentage: course?.finishedPercentage?.toLocaleString() || '0',
+      description: course?.description || "",
+      tags: "",
+      finishedPercentage: course?.finishedPercentage?.toLocaleString() || "0",
     },
-    mode: 'all'
+    mode: "all",
   });
-
 
   const updateCourse = useEditCourse(id);
 
@@ -45,9 +44,13 @@ export const UpdateCourse = () => {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: 'Успешно', description: 'Курс успешно обнавлен', variant: 'success' });
-        navigate('/courses')
-      }
+        toast({
+          title: "Успешно",
+          description: "Курс успешно обнавлен",
+          variant: "success",
+        });
+        navigate("/courses");
+      },
     });
   };
 
@@ -64,7 +67,7 @@ export const UpdateCourse = () => {
             <FormField
               control={form.control}
               name="title"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -80,7 +83,7 @@ export const UpdateCourse = () => {
             <FormField
               control={form.control}
               name="finishedPercentage"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -106,7 +109,7 @@ export const UpdateCourse = () => {
                       {...field}
                       onChange={(event) => {
                         if (event.target.files) {
-                          onChange(event.target.files[0])
+                          onChange(event.target.files[0]);
                         }
                       }}
                     />
@@ -118,7 +121,7 @@ export const UpdateCourse = () => {
             <FormField
               control={form.control}
               name="tags"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -134,7 +137,7 @@ export const UpdateCourse = () => {
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <Editor {...field} />

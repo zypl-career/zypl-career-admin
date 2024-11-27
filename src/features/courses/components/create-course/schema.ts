@@ -7,7 +7,7 @@ export const CreateCourseSchema = z.object({
   tags: z.string(),
   finishedPercentage: z
     .number({
-      description: 'Обязательное поле'
+      description: "Обязательное поле",
     })
-    .max(100, 'Максимальное допустимое значение 100!'),
+    .max(100, "Максимальное допустимое значение 100!"),
 });

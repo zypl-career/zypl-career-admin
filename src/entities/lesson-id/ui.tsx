@@ -1,5 +1,5 @@
-import {FC} from "react";
-import {PencilIcon, Trash2Icon} from "lucide-react";
+import { FC } from "react";
+import { PencilIcon, Trash2Icon } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -8,8 +8,8 @@ import {
   TableHeader,
   TableRow,
 } from "@ui";
-import {getDMY} from "@libs";
-import {TLessonIdData, type TLessonIdTableProps} from "./types";
+import { getDMY } from "@libs";
+import { TLessonIdData, type TLessonIdTableProps } from "./types";
 
 export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
   data,
@@ -17,22 +17,31 @@ export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
   onDelete,
   onPreview,
 }) => {
-  const handleDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, id: string) => {
+  const handleDelete = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    id: string,
+  ) => {
     e.preventDefault();
     e.stopPropagation();
     onDelete(id);
   };
-  const handleUpdate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, lesson: TLessonIdData) => {
+  const handleUpdate = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    lesson: TLessonIdData,
+  ) => {
     e.preventDefault();
     e.stopPropagation();
     onEdit(lesson);
   };
 
-  const handleOpenPreview = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, lesson: TLessonIdData) => {
+  const handleOpenPreview = (
+    e: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+    lesson: TLessonIdData,
+  ) => {
     e.preventDefault();
     e.stopPropagation();
     onPreview(lesson);
-  }
+  };
 
   return (
     <Table>

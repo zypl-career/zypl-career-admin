@@ -1,1 +1,1 @@
-export * from './course-table'
+export * from "./course-table";

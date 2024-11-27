@@ -5,15 +5,14 @@ import { TArticleData } from "@entities";
 
 export const useArticles = () => {
   return useQuery<TResponse<TArticleData[]>>({
-    queryKey: ['articles'],
-    queryFn: () => apiService.get('article/get').then(({ data }) => data),
-  })
+    queryKey: ["articles"],
+    queryFn: () => apiService.get("article/get").then(({ data }) => data),
+  });
 };
 
-export const useArticleId = (id: TArticleData['id']) => {
+export const useArticleId = (id: TArticleData["id"]) => {
   return useQuery<TArticleData>({
-    queryKey: ['articles', id],
+    queryKey: ["articles", id],
     queryFn: () => apiService.get(`article/get/${id}`).then(({ data }) => data),
-  })
+  });
 };
-

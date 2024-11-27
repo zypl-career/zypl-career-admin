@@ -9,7 +9,7 @@ function Skeleton({
       className={cn("animate-pulse rounded-md bg-slate-400", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Skeleton }
+export { Skeleton };

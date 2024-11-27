@@ -7,4 +7,4 @@ export type TBlockNoteProps = {
   onChange?: (value: string) => void;
   onChangeHTML?: (value: string) => void;
   editable?: boolean;
-}
+};

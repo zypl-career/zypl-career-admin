@@ -14,7 +14,7 @@ import { FC } from "react";
 import { TDeleteProps } from "./types";
 import { useDeleteArticle } from "./services";
 
-export const DeleteArticle: FC<TDeleteProps> = ({setOpen, open, id}) => {
+export const DeleteArticle: FC<TDeleteProps> = ({ setOpen, open, id }) => {
   const deleteArticle = useDeleteArticle(id);
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>

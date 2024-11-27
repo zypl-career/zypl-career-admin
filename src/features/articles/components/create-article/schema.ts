@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 export const CreateArticleSchema = z.object({
   title: z.string(),
@@ -8,9 +8,8 @@ export const CreateArticleSchema = z.object({
     message: "Expected number, received a string",
   }),
   generalInfo: z.string(),
-  hashtags: z
-    .custom<string[] | string>(
-      (val) => Array.isArray(val) || typeof val === "string",
-      "Expected array, received a string"
-    )
+  hashtags: z.custom<string[] | string>(
+    (val) => Array.isArray(val) || typeof val === "string",
+    "Expected array, received a string",
+  ),
 });

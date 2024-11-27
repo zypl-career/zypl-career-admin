@@ -1,10 +1,8 @@
-import { CreateCourse } from "@features"
+import { CreateCourse } from "@features";
 // import ReactQuill from "react-quill"
 
 const CourseCreatePage = () => {
-  return (
-    <CreateCourse />
-  )
-}
+  return <CreateCourse />;
+};
 
-export default CourseCreatePage
+export default CourseCreatePage;
