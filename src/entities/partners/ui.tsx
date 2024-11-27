@@ -1,6 +1,5 @@
 import { FC, useCallback } from 'react';
 import { TPartners, TPartnersProps } from './types';
-import { Link } from 'react-router-dom';
 import { Edit, Trash2 } from 'lucide-react';
 import { BlurImage, Button } from '@ui';
 import { getDMY } from '@libs';
@@ -25,8 +24,7 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
   return (
     <section className="grid gap-5 sm:grid-cols-3">
       {data.map((partner) => (
-        <Link
-          to={`/partners/${partner.id}`}
+        <div
           key={partner.id}
           className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-transform duration-300 ease-in-out hover:shadow-2xl"
         >
@@ -49,7 +47,7 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
               <Trash2 />
             </Button>
           </div>
-        </Link>
+        </div>
       ))}
     </section>
   );
