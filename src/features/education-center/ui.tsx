@@ -5,7 +5,7 @@ import { Spinner } from '@ui';
 import { useGetEducationCenters } from './services';
 
 export const EducationCenters = () => {
-  const [filters, setFilters] = useState({
+  const [filters] = useState({
     city: '',
     title: '',
     limit: 10,
@@ -14,8 +14,8 @@ export const EducationCenters = () => {
 
   const { data, isLoading } = useGetEducationCenters(filters);
 
-  const [editCenter, setEditCenter] = useState<Partial<TEducationCenter>>();
-  const [modals, setModals] = useState({
+  const [, setEditCenter] = useState<Partial<TEducationCenter>>();
+  const [, setModals] = useState({
     edit: false,
     delete: false,
   });
