@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { EducationCenterList, TEducationCenter } from "@entities";
-import { Spinner } from "@ui";
+import { Button, Spinner } from "@ui";
 import { useGetEducationCenters } from "./services";
+import { CreateEducationCenter } from "@/features";
 
 export const EducationCenters = () => {
   const [filters, setFilters] = useState({
@@ -15,17 +16,25 @@ export const EducationCenters = () => {
 
   const [editCenter, setEditCenter] = useState<Partial<TEducationCenter>>();
   const [modals, setModals] = useState({
+    create: false,
     edit: false,
     delete: false,
   });
 
+  const handleToggleModals = (value: keyof typeof modals) => {
+    setModals((prev) => ({
+      ...prev,
+      [value]: !prev[value],
+    }));
+  };
+
   const handleEdit = (value: Partial<TEducationCenter>) => {
-    setModals((prev) => ({ ...prev, edit: true }));
+    handleToggleModals("edit");
     setEditCenter(value);
   };
 
   const handleDelete = (value: Partial<TEducationCenter>) => {
-    setModals((prev) => ({ ...prev, delete: true }));
+    handleToggleModals("delete");
     setEditCenter(value);
   };
 
@@ -33,6 +42,9 @@ export const EducationCenters = () => {
     <section>
       <header>
         <h2>Образовательные центры</h2>
+        <Button onClick={() => handleToggleModals("create")}>
+          Добавить образовательный центр
+        </Button>
       </header>
       {isLoading ? (
         <Spinner />
@@ -45,6 +57,10 @@ export const EducationCenters = () => {
           onEdit={handleEdit}
         />
       )}
+      <CreateEducationCenter
+        open={modals.create}
+        toggle={() => handleToggleModals("create")}
+      />
     </section>
   );
 };
