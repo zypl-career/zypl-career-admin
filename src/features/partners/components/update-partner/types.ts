@@ -1,4 +1,4 @@
-import { TPartners } from "@entities";
+import { TPartners } from '@entities';
 
 export type TCreatePartnerProps = {
   data: Partial<TPartners>

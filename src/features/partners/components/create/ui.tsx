@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -12,32 +12,31 @@ import {
   toast,
   Modal,
   DropFile,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TCreatePartnerProps } from "./types";
-import { CreatePartnerSchema, TCreatePartner } from "./schema";
-import { useCreatePartner } from "./services";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreatePartnerProps } from './types';
+import { CreatePartnerSchema, TCreatePartner } from './schema';
+import { useCreatePartner } from './services';
 
 export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   const form = useForm<TCreatePartner>({
     resolver: zodResolver(CreatePartnerSchema),
     defaultValues: {
-      image: undefined
+      image: undefined,
     },
   });
 
-  const createPartner = useCreatePartner();  
+  const createPartner = useCreatePartner();
 
   const handleClose = () => toggle(false);
 
   const onSubmit = (data: TCreatePartner) => {
     createPartner.mutate(data, {
-      onError(error) {
-        console.error("Ошибка при создании партнера:", error);
+      onError() {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Партнёр успешно добавлен" });
+        toast({ title: 'Партнёр успешно добавлен' });
         handleClose();
       },
     });
@@ -46,7 +45,7 @@ export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   return (
     <Modal setToggle={toggle} toggle={open}>
       <h1 className="text-4xl font-bold">Добавить партнёра</h1>
-      <main className="bg-white rounded flex flex-col gap-6">
+      <main className="flex flex-col gap-6 rounded bg-white">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField

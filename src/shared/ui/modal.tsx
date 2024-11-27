@@ -10,7 +10,13 @@ export type TModalProps = DialogProps & {
   className?: string;
 };
 
-export const Modal: FC<TModalProps> = ({ toggle, setToggle, children, className, ...props }) => {
+export const Modal: FC<TModalProps> = ({
+  toggle,
+  setToggle,
+  children,
+  className,
+  ...props
+}) => {
   return (
     <Dialog open={toggle} onOpenChange={setToggle} {...props}>
       <DialogTitle>

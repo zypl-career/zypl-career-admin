@@ -1,2 +1,2 @@
-export * from './users-area'
-export * from './reports'
+export * from './users-area';
+export * from './reports';

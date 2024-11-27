@@ -8,6 +8,6 @@ export const errorInterceptor = (error: AxiosError<AxiosErrorResponse>) => {
   if (status in errorStatus) {
     errorStatus[status](error.message || '');
   }
-  
+
   return Promise.reject(error);
 };

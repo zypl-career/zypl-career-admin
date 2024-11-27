@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { BlockNoteSchema, insertOrUpdateBlock, defaultBlockSpecs, BlockNoteEditor } from "@blocknote/core";
-import { FaYoutube } from "react-icons/fa";
-import { Youtube } from "./youtube";
+import {
+  BlockNoteSchema,
+  insertOrUpdateBlock,
+  defaultBlockSpecs,
+  BlockNoteEditor,
+} from '@blocknote/core';
+import { FaYoutube } from 'react-icons/fa';
+import { Youtube } from './youtube';
 
 export const schema = BlockNoteSchema.create({
   blockSpecs: {
@@ -13,32 +18,31 @@ export const schema = BlockNoteSchema.create({
 // export type TSchema = BlockNoteEditor<Record<string, BlockConfig>, InlineContentSchema, StyleSchema>;
 
 export const insertYoutube = (editor: typeof schema.BlockNoteEditor) => ({
-  title: "Youtube",
+  title: 'Youtube',
   onItemClick: () => {
     insertOrUpdateBlock(editor, {
-      type: "youtube",
+      type: 'youtube',
     });
   },
   aliases: ['youtube'],
-  group: "Others",
+  group: 'Others',
   icon: <FaYoutube />,
 });
 
 export async function saveToStorage(jsonBlocks: typeof schema.BlockNoteEditor) {
-  localStorage.setItem("editorContent", JSON.stringify(jsonBlocks));
+  localStorage.setItem('editorContent', JSON.stringify(jsonBlocks));
 }
- 
+
 export async function loadFromStorage() {
-  const storageString = localStorage.getItem("editorContent");
+  const storageString = localStorage.getItem('editorContent');
   return storageString && storageString !== 'undefined'
     ? (JSON.parse(storageString) as typeof schema.BlockNoteEditor)
     : undefined;
 }
 
 export const removeEditorContent = () => {
-  localStorage.removeItem("editorContent");
+  localStorage.removeItem('editorContent');
 };
-
 
 export const parseInitialContent = (value?: string | undefined) => {
   try {
@@ -46,10 +50,10 @@ export const parseInitialContent = (value?: string | undefined) => {
   } catch {
     return undefined;
   }
-}
+};
 
-export const toHTML = async (blocks: any, schema = null) => BlockNoteEditor.create({
-  initialContent: blocks,
-  ...(schema ? { schema } : {})
-  
-}).blocksToHTMLLossy(blocks);
+export const toHTML = async (blocks: any, schema = null) =>
+  BlockNoteEditor.create({
+    initialContent: blocks,
+    ...(schema ? { schema } : {}),
+  }).blocksToHTMLLossy(blocks);

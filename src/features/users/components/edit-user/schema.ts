@@ -14,5 +14,4 @@ export const UserSchema = z.object({
     .min(2, { message: 'Обязательное поле' })
     .email({ message: 'min' }),
   password: z.string().min(2, { message: 'Обязательное поле' }),
-  
 });

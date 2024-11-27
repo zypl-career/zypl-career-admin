@@ -2,8 +2,7 @@ import { PartnersList, TPartners } from '@entities';
 import { Button, Spinner } from '@ui';
 import { useGetPartners } from './services';
 import { useState } from 'react';
-import { CreatePartner } from './components';
-import { UpdatePartner } from './components/update-partner';
+import { CreatePartner, DeletePartner, UpdatePartner } from './components';
 
 export const Partners = () => {
   const { data, isLoading } = useGetPartners();
@@ -13,28 +12,28 @@ export const Partners = () => {
     create: false,
     edit: false,
     delete: false,
-  })
+  });
 
   const handleToggleModals = (value: keyof typeof modals) => {
-    setModals(prev => ({
+    setModals((prev) => ({
       ...prev,
       [value]: !prev[value],
-    }))
+    }));
   };
 
   const handleDelete = (value: Partial<TPartners>) => {
-    handleToggleModals('delete')
-    setDeletePartner(value)
+    handleToggleModals('delete');
+    setDeletePartner(value);
   };
-  
+
   const handleEdit = (value: Partial<TPartners>) => {
-    handleToggleModals('edit')
-    setEditPartner(value)
+    handleToggleModals('edit');
+    setEditPartner(value);
   };
   
   return (
     <section>
-      <header className="flex justify-between items-center mb-6">
+      <header className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Партнеры</h1>
         <Button onClick={() => handleToggleModals('create')}>
           Добавить партнера
@@ -42,7 +41,7 @@ export const Partners = () => {
       </header>
       {isLoading ? (
         <Spinner />
-      ) : data?.data?.length === 0 ? (  
+      ) : data?.data?.length === 0 ? (
         <p>Нет партнеров для отображения</p>
       ) : (
         <PartnersList
@@ -59,6 +58,11 @@ export const Partners = () => {
         data={editPartner}
         open={modals.edit}
         toggle={() => handleToggleModals('edit')}
+      />
+      <DeletePartner
+        id={deletePartner.id}
+        open={modals.delete}
+        setOpen={() => handleToggleModals('delete')}
       />
     </section>
   );

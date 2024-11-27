@@ -9,18 +9,18 @@ export type TCreateLessonIdResponse = {
 };
 
 export type Payload = {
-  id: string
-  name: string
-  description: string
-  resource: string
-  courseId: string
-  status: string
-  createdAt: string
-  updatedAt: string
+  id: string;
+  name: string;
+  description: string;
+  resource: string;
+  courseId: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
   deletedAt: string;
-}
+};
 
 export type TCreateLessonProps = {
   open: boolean;
   setOpen: (state: boolean) => void;
-}
+};

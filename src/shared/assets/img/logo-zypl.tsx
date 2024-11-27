@@ -15,7 +15,13 @@ const LogoZypl: FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
         fill="#FF8A00"
         className={className}
       />
-      <circle cx="3.8915" cy="16.3368" r="3.8915" fill="#F7F7F7" className={className} />
+      <circle
+        cx="3.8915"
+        cy="16.3368"
+        r="3.8915"
+        fill="#F7F7F7"
+        className={className}
+      />
       <path
         d="M13.9742 7.49219C15.5657 25.5346 -5.83746 24.6502 4.06859 40.7468C1.59175 29.0723 21.9336 24.1195 13.9742 7.49219Z"
         fill="#FF0000"

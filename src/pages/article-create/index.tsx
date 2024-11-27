@@ -1,7 +1,7 @@
-import { WriteArticle } from "@/features/articles/components";
+import { WriteArticle } from '@/features/articles/components';
 
 const ArticleCreatePage = () => {
-  return <WriteArticle />
-}
+  return <WriteArticle />;
+};
 
-export default ArticleCreatePage
+export default ArticleCreatePage;

@@ -9,7 +9,7 @@ const AuthLayout = () => {
   //   }
   // }, [isAuth, navigate]);
   return (
-    <main className="h-full bg-hero-pattern bg-cover bg-center">
+    <main className="h-full bg-cover bg-center">
       <Outlet />
     </main>
   );

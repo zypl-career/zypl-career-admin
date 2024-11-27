@@ -1,10 +1,21 @@
-import { FC } from "react"
-import { PencilIcon, Trash2Icon } from "lucide-react"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui"
-import { getGender } from "@libs"
-import { TUserTableProps } from "./types"
+import { FC } from 'react';
+import { PencilIcon, Trash2Icon } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@ui';
+import { getGender } from '@libs';
+import { TUserTableProps } from './types';
 
-export const UserTableUI: FC<TUserTableProps> = ({ data, onDelete, onEdit }) => {
+export const UserTableUI: FC<TUserTableProps> = ({
+  data,
+  onDelete,
+  onEdit,
+}) => {
   return (
     <Table>
       <TableHeader>
@@ -19,19 +30,27 @@ export const UserTableUI: FC<TUserTableProps> = ({ data, onDelete, onEdit }) => 
       <TableBody>
         {data.map((user) => (
           <TableRow key={user.id}>
-            <TableCell className="font-medium">{user.surname} {user.name} {user.patronymic}</TableCell>
+            <TableCell className="font-medium">
+              {user.surname} {user.name} {user.patronymic}
+            </TableCell>
             <TableCell>{user.role}</TableCell>
             <TableCell>{getGender(user.gender)}</TableCell>
             <TableCell>{user.school}</TableCell>
             <TableCell>
               <div className="flex items-center gap-4">
-                <PencilIcon onClick={() => onEdit(user)} className="text-gray-500 cursor-pointer" />
-                <Trash2Icon onClick={() => onDelete(user.id)} className="text-gray-500 cursor-pointer" />
+                <PencilIcon
+                  onClick={() => onEdit(user)}
+                  className="cursor-pointer text-gray-500"
+                />
+                <Trash2Icon
+                  onClick={() => onDelete(user.id)}
+                  className="cursor-pointer text-gray-500"
+                />
               </div>
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
-  )
-}
+  );
+};

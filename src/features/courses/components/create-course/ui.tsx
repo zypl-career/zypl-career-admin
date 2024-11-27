@@ -1,5 +1,5 @@
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -12,21 +12,21 @@ import {
   Button,
   Spinner,
   toast,
-} from "@ui";
-import {setFieldError} from "@libs";
-import {TCreateCourse} from "./types";
-import {CreateCourseSchema} from "./schema";
-import {useCreateCourse} from "./services";
-import {useNavigate} from "react-router-dom";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreateCourse } from './types';
+import { CreateCourseSchema } from './schema';
+import { useCreateCourse } from './services';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateCourse = () => {
   const navigate = useNavigate();
   const form = useForm<TCreateCourse>({
     resolver: zodResolver(CreateCourseSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      tags: "",
+      title: '',
+      description: '',
+      tags: '',
       image: undefined,
     },
   });
@@ -39,22 +39,22 @@ export const CreateCourse = () => {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Курс успешно создан" });
-        navigate('/courses')
-      }
+        toast({ title: 'Курс успешно создан' });
+        navigate('/courses');
+      },
     });
   };
 
   return (
     <section>
-      <h1 className="text-4xl font-bold mb-6">Добавить Курс</h1>
-      <main className="bg-white rounded flex flex-col gap-6 p-4">
+      <h1 className="mb-6 text-4xl font-bold">Добавить Курс</h1>
+      <main className="flex flex-col gap-6 rounded bg-white p-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="title"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -70,7 +70,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="finishedPercentage"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -78,7 +78,7 @@ export const CreateCourse = () => {
                       placeholder="38%"
                       {...field}
                       onChange={(e) => {
-                        field.onChange(Number(e.target.value))
+                        field.onChange(Number(e.target.value));
                       }}
                     />
                   </FormControl>
@@ -98,7 +98,7 @@ export const CreateCourse = () => {
                       {...field}
                       onChange={(event) => {
                         if (event.target.files) {
-                          onChange(event.target.files[0])
+                          onChange(event.target.files[0]);
                         }
                       }}
                     />
@@ -110,7 +110,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="tags"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -126,7 +126,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <Editor {...field} />
@@ -139,7 +139,7 @@ export const CreateCourse = () => {
                 {createCourse.isPending && <Spinner />}
                 Сохранить
               </Button>
-              <Button onClick={() => navigate("/courses")} variant="secondary">
+              <Button onClick={() => navigate('/courses')} variant="secondary">
                 Отменить
               </Button>
             </div>

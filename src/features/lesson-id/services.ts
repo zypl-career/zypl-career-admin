@@ -1,12 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { apiService } from "@api";
-import { TLessonIdData } from "@entities";
+import { useQuery } from '@tanstack/react-query';
+import { apiService } from '@api';
+import { TLessonIdData } from '@entities';
 
 export const useLessonId = (courseId: string) => {
   return useQuery<TLessonIdData[]>({
-    queryKey: ['lessonId'],
-    queryFn: () => apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
-  })
+    queryKey: ['lessonId', courseId],
+    queryFn: () =>
+      apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
+  });
 };
 
 export const useLessonById = (id: string) => {
@@ -14,5 +15,5 @@ export const useLessonById = (id: string) => {
     queryKey: ['lessonId', id],
     queryFn: () => apiService.get(`lesson/get/${id}`).then(({ data }) => data),
     enabled: !!id,
-  })
+  });
 };

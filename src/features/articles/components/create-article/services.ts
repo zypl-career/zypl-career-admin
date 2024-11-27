@@ -1,6 +1,6 @@
-import { apiService } from "@api";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { TCreateArticleResponse, TCreateArticle } from "./types";
+import { apiService } from '@api';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { TCreateArticleResponse, TCreateArticle } from './types';
 
 export const useCreateArticle = () => {
   const queryClient = useQueryClient();
@@ -11,18 +11,20 @@ export const useCreateArticle = () => {
         form.image = form.image[0];
       }
       const fd = new FormData();
-      Object.entries(form).forEach(([key, value]) => fd.append(key, Array.isArray(value) ? value.join(',') : value));
+      Object.entries(form).forEach(([key, value]) =>
+        fd.append(key, Array.isArray(value) ? value.join(',') : value),
+      );
       return apiService
-        .post("/article/create", fd, {
+        .post('/article/create', fd, {
           headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+            'Content-Type': 'multipart/form-data',
+          },
         })
         .then((response) => {
-          Object.keys(form).forEach((key) => fd.delete(key))
-          return response
+          Object.keys(form).forEach((key) => fd.delete(key));
+          return response;
         })
-        .then((response) => response.data)
+        .then((response) => response.data);
     },
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['articles'] });

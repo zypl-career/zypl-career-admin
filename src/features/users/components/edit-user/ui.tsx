@@ -1,16 +1,29 @@
-import { Dialog, DialogContent, Form, FormControl, FormField, FormItem, FormMessage, Input } from '@ui'
-import { FC } from 'react'
+import {
+  Dialog,
+  DialogContent,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+} from '@ui';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserSchema } from './schema';
 import { TEditUserProps, TUserSchema } from './types';
 import { useEditUser } from './services';
 
-export const EditUser: FC<TEditUserProps> = ({ editable, toggle, setToggle }) => {
+export const EditUser: FC<TEditUserProps> = ({
+  editable,
+  toggle,
+  setToggle,
+}) => {
   const form = useForm<Partial<TUserSchema>>({
     resolver: zodResolver(UserSchema),
     values: {
-      ...editable
+      ...editable,
     },
   });
 
@@ -19,7 +32,7 @@ export const EditUser: FC<TEditUserProps> = ({ editable, toggle, setToggle }) =>
   const onSubmit = (data: Partial<TUserSchema>) => {
     edit.mutate(data);
     setToggle(false);
-  }
+  };
 
   return (
     <Dialog open={toggle} onOpenChange={setToggle}>
@@ -32,11 +45,7 @@ export const EditUser: FC<TEditUserProps> = ({ editable, toggle, setToggle }) =>
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Имя*"
-                      placeholder="Введите имя"
-                      {...field}
-                    />
+                    <Input label="Имя*" placeholder="Введите имя" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -112,5 +121,5 @@ export const EditUser: FC<TEditUserProps> = ({ editable, toggle, setToggle }) =>
         </Form>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};

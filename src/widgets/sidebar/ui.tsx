@@ -5,8 +5,8 @@ import LogoZypl from '@/shared/assets/img/logo-zypl';
 
 export const Sidebar = () => {
   return (
-    <aside className="bg-secondary-100 px-2 py-4 sticky top-0 left-0 h-dvh overflow-y-auto">
-      <Link to="/" className="flex justify-center mb-5">
+    <aside className="sticky left-0 top-0 h-dvh overflow-y-auto bg-secondary-100 px-2 py-4">
+      <Link to="/" className="mb-5 flex justify-center">
         <LogoZypl />
       </Link>
       <nav>

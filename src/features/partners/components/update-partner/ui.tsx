@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -12,17 +12,17 @@ import {
   toast,
   Modal,
   DropFile,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TCreatePartnerProps } from "./types";
-import { UpdatePartnerSchema, TUpdatePartner } from "./schema";
-import { useUpdatePartner } from "./services";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreatePartnerProps } from './types';
+import { UpdatePartnerSchema, TUpdatePartner } from './schema';
+import { useUpdatePartner } from './services';
 
 export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) => {
   const form = useForm<TUpdatePartner>({
     resolver: zodResolver(UpdatePartnerSchema),
     values: {
-      image: data.image
+      image: data.image,
     },
   });
 
@@ -32,12 +32,11 @@ export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) =
 
   const onSubmit = (data: TUpdatePartner) => {
     createPartner.mutate(data, {
-      onError(error) {
-        console.error("Ошибка при создании партнера:", error);
+      onError() {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Партнёр успешно добавлен" });
+        toast({ title: 'Партнёр успешно добавлен' });
         handleClose();
       },
     });
@@ -46,7 +45,7 @@ export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) =
   return (
     <Modal setToggle={toggle} toggle={open}>
       <h1 className="text-4xl font-bold">Добавить партнёра</h1>
-      <main className="bg-white rounded flex flex-col gap-6">
+      <main className="flex flex-col gap-6 rounded bg-white">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField

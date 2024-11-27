@@ -1,44 +1,47 @@
-import { FC, useCallback } from "react";
+import { FC, useCallback } from 'react';
 import { TPartners, TPartnersProps } from './types';
-import { Link } from "react-router-dom";
-import { Edit, Trash2 } from "lucide-react";
-import { BlurImage, Button } from "@ui";
-import { getDMY } from "@libs";
+import { Link } from 'react-router-dom';
+import { Edit, Trash2 } from 'lucide-react';
+import { BlurImage, Button } from '@ui';
+import { getDMY } from '@libs';
 
 export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
-  const handleAction = useCallback((
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    partner: TPartners,
-    action: keyof Omit<TPartnersProps, 'data'>
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (typeof props[action] === 'function') {
-      props[action](partner);
-    }
-  }, [props]);
+  const handleAction = useCallback(
+    (
+      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      partner: TPartners,
+      action: keyof Omit<TPartnersProps, 'data'>,
+    ) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (typeof props[action] === 'function') {
+        props[action](partner);
+      }
+    },
+    [props],
+  );
 
   return (
-    <section className="grid sm:grid-cols-3 gap-5">
+    <section className="grid gap-5 sm:grid-cols-3">
       {data.map((partner) => (
         <Link
           to={`/partners/${partner.id}`}
           key={partner.id}
-          className="bg-white border group relative border-gray-200 rounded-xl transition-transform transform duration-300 ease-in-out overflow-hidden hover:shadow-2xl"
+          className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-transform duration-300 ease-in-out hover:shadow-2xl"
         >
           <BlurImage
             src={partner.image}
             alt="partner"
-            className="rounded-t-xl object-cover w-full h-[272px] group-hover:scale-110 overflow-hidden"
+            className="h-[272px] w-full overflow-hidden rounded-t-xl object-cover group-hover:scale-110"
             isSkeleton
           />
-          <div className="p-2 absolute z-10 bottom-2 right-5 bg-white rounded-full">
-            <h2 className="text-xs text-right text-gray-600">
+          <div className="absolute bottom-2 right-5 z-10 rounded-full bg-white p-2">
+            <h2 className="text-right text-xs text-gray-600">
               {getDMY(partner.createdAt)}
             </h2>
           </div>
-          <div className="absolute flex items-center gap-3 top-5 right-5 opacity-0 transition group-hover:opacity-100">
+          <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
             <Button onClick={(e) => handleAction(e, partner, 'onEdit')} variant="secondary">
               <Edit />
             </Button>

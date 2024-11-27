@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+
 import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 
@@ -11,13 +12,25 @@ export default defineConfig({
       { find: '@ui', replacement: resolve(__dirname, './src/shared/ui') },
       { find: '@api', replacement: resolve(__dirname, './src/shared/api') },
       { find: '@type', replacement: resolve(__dirname, './src/shared/types') },
-      { find: '@providers', replacement: resolve(__dirname, './src/shared/providers') },
+      {
+        find: '@providers',
+        replacement: resolve(__dirname, './src/shared/providers'),
+      },
       { find: '@hooks', replacement: resolve(__dirname, './src/shared/hooks') },
-      { find: '@img', replacement: resolve(__dirname, './src/shared/assets/img') },
-      { find: '@icons', replacement: resolve(__dirname, './src/shared/assets/icons') },
+      {
+        find: '@img',
+        replacement: resolve(__dirname, './src/shared/assets/img'),
+      },
+      {
+        find: '@icons',
+        replacement: resolve(__dirname, './src/shared/assets/icons'),
+      },
       { find: '@libs', replacement: resolve(__dirname, './src/shared/libs') },
       { find: '@pages', replacement: resolve(__dirname, './src/pages/') },
-      { find: '@constants', replacement: resolve(__dirname, './src/shared/constants') },
+      {
+        find: '@constants',
+        replacement: resolve(__dirname, './src/shared/constants'),
+      },
       { find: '@app', replacement: resolve(__dirname, './src/app/') },
       { find: '@shared', replacement: resolve(__dirname, './src/shared/') },
       { find: '@widgets', replacement: resolve(__dirname, './src/widgets/') },

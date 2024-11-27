@@ -1,7 +1,7 @@
-import { Courses } from "@features"
+import { Courses } from '@features';
 
 const CoursesPage = () => {
-  return <Courses />
-}
+  return <Courses />;
+};
 
-export default CoursesPage
+export default CoursesPage;

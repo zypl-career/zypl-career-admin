@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiService } from "@api";
-import { TCreatePartner } from "./schema";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { apiService } from '@api';
+import { TCreatePartner } from './schema';
 
 export const useCreatePartner = () => {
   const queryClient = useQueryClient();
@@ -9,13 +9,13 @@ export const useCreatePartner = () => {
     mutationFn: (form: TCreatePartner) => {
       const formData = new FormData();
       if (form.image) {
-        formData.append("image", form.image);
+        formData.append('image', form.image);
       }
-  
-      return apiService.post("/partner/create", formData, {
+
+      return apiService.post('/partner/create', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
     },
     onSuccess() {

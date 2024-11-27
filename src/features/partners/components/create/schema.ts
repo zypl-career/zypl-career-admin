@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const CreatePartnerSchema = z.object({
   image: z.instanceof(File).optional(),

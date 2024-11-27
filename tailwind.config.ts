@@ -2,10 +2,7 @@ import plugin from 'tailwindcss/plugin';
 import colors from 'tailwindcss/colors';
 
 export default {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
@@ -67,12 +64,12 @@ export default {
           to: { height: '0' },
         },
         'collapsible-down': {
-          from: { height: "0" },
-          to: { height: "var(--radix-collapsible-content-height)" },
+          from: { height: '0' },
+          to: { height: 'var(--radix-collapsible-content-height)' },
         },
         'collapsible-up': {
-          from: { height: "var(--radix-collapsible-content-height)" },
-          to: { height: "0" },
+          from: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: '0' },
         },
       },
       animation: {

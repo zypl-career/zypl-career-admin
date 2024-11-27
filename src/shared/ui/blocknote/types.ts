@@ -1,4 +1,4 @@
-import { BlockNoteDOMAttributes } from "@blocknote/core";
+import { BlockNoteDOMAttributes } from '@blocknote/core';
 
 export type TBlockNoteProps = {
   domAttributes?: BlockNoteDOMAttributes;
@@ -7,4 +7,4 @@ export type TBlockNoteProps = {
   onChange?: (value: string) => void;
   onChangeHTML?: (value: string) => void;
   editable?: boolean;
-}
+};

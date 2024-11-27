@@ -30,7 +30,9 @@ export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
       >
         {item.icon}
         <span>{item.title}</span>
-        {item.children ? <ChevronRight className={cn({ 'rotate-90': isOpen })} /> : null}
+        {item.children ? (
+          <ChevronRight className={cn({ 'rotate-90': isOpen })} />
+        ) : null}
       </NavLink>
       {isOpen && item.children ? (
         <div className="ml-2">

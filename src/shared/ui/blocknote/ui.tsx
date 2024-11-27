@@ -1,19 +1,16 @@
-import {FC, useCallback, useState} from "react";
-import {BlockNoteView} from "@blocknote/shadcn";
-import {
-  filterSuggestionItems,
-  PartialBlock,
-} from "@blocknote/core";
+import { FC, useCallback, useState } from 'react';
+import { BlockNoteView } from '@blocknote/shadcn';
+import { filterSuggestionItems, PartialBlock } from '@blocknote/core';
 import {
   getDefaultReactSlashMenuItems,
   SuggestionMenuController,
   useCreateBlockNote,
-} from "@blocknote/react";
-import {TBlockNoteProps} from "./types";
-import {insertYoutube, schema} from "./utils";
-import {urlToBase64} from "@libs";
-import "@blocknote/core/fonts/inter.css";
-import "@blocknote/shadcn/style.css";
+} from '@blocknote/react';
+import { TBlockNoteProps } from './types';
+import { insertYoutube, schema } from './utils';
+import { urlToBase64 } from '@libs';
+import '@blocknote/core/fonts/inter.css';
+import '@blocknote/shadcn/style.css';
 
 export const BlockNote: FC<TBlockNoteProps> = ({
   editable = true,
@@ -32,7 +29,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
     if (editor && editable) {
       const updatedBlocks = (await Promise.all(
         editor?.document?.map(async (block) => {
-          if (block?.type === "image" && block?.props?.url) {
+          if (block?.type === 'image' && block?.props?.url) {
             const url = await urlToBase64(block?.props?.url);
             return {
               ...block,
@@ -43,7 +40,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
             };
           }
           return block;
-        })
+        }),
       )) as PartialBlock[];
 
       setBlocks(updatedBlocks);
@@ -55,7 +52,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
   }, [editable, editor, onChange]);
 
   if (editor === undefined) {
-    return "Loading content...";
+    return 'Loading content...';
   }
 
   return (
@@ -70,7 +67,7 @@ export const BlockNote: FC<TBlockNoteProps> = ({
         getItems={async (query) =>
           filterSuggestionItems(
             [...getDefaultReactSlashMenuItems(editor), insertYoutube(editor)],
-            query
+            query,
           )
         }
       />

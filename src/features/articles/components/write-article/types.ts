@@ -8,20 +8,19 @@ export type TCreateArticleResponse = {
   payload: Payload;
 };
 
-
 export type Payload = {
-  id: string
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  finishedPercentage: number
-  createdAt: string
-  updatedAt: string
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  finishedPercentage: number;
+  createdAt: string;
+  updatedAt: string;
   deletedAt: string;
-}
+};
 
 export type TCreateArticleProps = {
   open: boolean;
   setOpen: (state: boolean) => void;
-}
+};

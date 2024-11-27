@@ -4,11 +4,10 @@ import {
   createReactBlockSpec,
   FileBlockWrapper,
   ResizeHandlesWrapper,
-} from "@blocknote/react";
+} from '@blocknote/react';
 
-
-import { cn } from "@libs";
-import { ChangeEvent, useCallback, useState } from "react";
+import { cn } from '@libs';
+import { ChangeEvent, useCallback, useState } from 'react';
 
 import {
   AlertDialogHeader,
@@ -22,54 +21,53 @@ import {
   AlertDialogAction,
   Input,
   Button,
-} from "@ui";
+} from '@ui';
 
-import {FaYoutube} from "react-icons/fa";
+import { FaYoutube } from 'react-icons/fa';
 
 export const Youtube = createReactBlockSpec(
   {
-    type: "youtube",
+    type: 'youtube',
     propSchema: {
       url: {
-        default: "" as const,
+        default: '' as const,
       },
       previewWidth: {
         default: 560,
       },
     },
-    content: "none",
+    content: 'none',
   },
   {
     render: (props) => {
-
       const [width, setWidth] = useState<number>(
         Math.min(
           props.block.props.previewWidth!,
-          props.editor.domElement.firstElementChild!.clientWidth
-        )
+          props.editor.domElement.firstElementChild!.clientWidth,
+        ),
       );
 
       const [isOpen, setIsOpen] = useState<boolean>(true);
-      const [currentURL, setCurrentURL] = useState<string>("");
+      const [currentURL, setCurrentURL] = useState<string>('');
 
       const handleURLChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
           event.currentTarget.focus();
           setCurrentURL(event.currentTarget.value);
         },
-        []
+        [],
       );
 
       const handleURL = useCallback(() => {
         setIsOpen(true);
         const url = new URL(currentURL);
-        url.searchParams.delete("t");
-        
+        url.searchParams.delete('t');
+
         props?.editor.updateBlock(props?.block, {
           type: 'youtube',
           props: {
             ...props?.block?.props,
-            url: url.href.replace("/watch?v=", "/embed/"),
+            url: url.href.replace('/watch?v=', '/embed/'),
           },
         });
       }, [currentURL, props?.editor, props?.block]);
@@ -77,10 +75,10 @@ export const Youtube = createReactBlockSpec(
       return (
         <div
           className={cn(
-            "bn-file-block-content-wrapper",
+            'bn-file-block-content-wrapper',
             props.block.props.url
-              ? "flex w-full justify-center"
-              : "w-full rounded-md bg-zinc-100 px-4 py-3"
+              ? 'flex w-full justify-center'
+              : 'w-full rounded-md bg-zinc-100 px-4 py-3',
           )}
           data-file-block
         >
@@ -105,8 +103,8 @@ export const Youtube = createReactBlockSpec(
             <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
               <AlertDialogTrigger className="w-full">
                 <Button
-                  variant={"ghost"}
-                  size={"lg"}
+                  variant={'ghost'}
+                  size={'lg'}
                   className="w-full justify-start gap-x-2"
                 >
                   <FaYoutube />
@@ -139,5 +137,5 @@ export const Youtube = createReactBlockSpec(
         </div>
       );
     },
-  }
+  },
 );

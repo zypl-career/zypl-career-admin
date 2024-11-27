@@ -1,5 +1,5 @@
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -14,53 +14,58 @@ import {
   toast,
   Modal,
   InputTags,
-} from "@ui";
-import {setFieldError} from "@libs";
-import {TCreateArticle, TCreateArticleProps} from "./types";
-import {CreateArticleSchema} from "./schema";
-import {useCreateArticle} from "./services";
-import {useNavigate} from "react-router-dom";
-import { FC } from "react";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreateArticle, TCreateArticleProps } from './types';
+import { CreateArticleSchema } from './schema';
+import { useCreateArticle } from './services';
+import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 
 export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
   const navigate = useNavigate();
   const form = useForm<TCreateArticle>({
     resolver: zodResolver(CreateArticleSchema),
     defaultValues: {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       hashtags: [],
       image: undefined,
-      minutesRead: "0", // Fix: Change the type to string
-      generalInfo: "", // Fix: Change the type to string
+      minutesRead: '0', // Fix: Change the type to string
+      generalInfo: '', // Fix: Change the type to string
     },
   });
 
   const createArticle = useCreateArticle();
 
   const onSubmit = (data: TCreateArticle) => {
-    const hashtags = Array.isArray(data.hashtags) ? data.hashtags.join(', ') : data.hashtags;
-    createArticle.mutate({ ...data, hashtags }, {
-      onError() {
-        setFieldError(form);
+    const hashtags = Array.isArray(data.hashtags)
+      ? data.hashtags.join(', ')
+      : data.hashtags;
+    createArticle.mutate(
+      { ...data, hashtags },
+      {
+        onError() {
+          setFieldError(form);
+        },
+        onSuccess() {
+          toast({ title: 'Статья успешно создана' });
+          setOpen(false);
+        },
       },
-      onSuccess() {
-        toast({ title: "Статья успешно создана" });
-        setOpen(false);
-      }
-    });
+    );
   };
 
   return (
     <Modal setToggle={setOpen} toggle={open}>
-      <h1 className="text-4xl font-bold mb-6">Добавить статью</h1>
-      <main className="bg-white rounded flex flex-col gap-6">
+      <h1 className="mb-6 text-4xl font-bold">Добавить статью</h1>
+      <main className="flex flex-col gap-6 rounded bg-white">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="title"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -76,7 +81,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="generalInfo"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -92,7 +97,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="minutesRead"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -118,7 +123,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
                       {...field}
                       onChange={(event) => {
                         if (event.target.files) {
-                          onChange(event.target.files[0])
+                          onChange(event.target.files[0]);
                         }
                       }}
                     />
@@ -130,7 +135,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="hashtags"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <InputTags
@@ -146,7 +151,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <Editor {...field} />
@@ -159,7 +164,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
                 {createArticle.isPending && <Spinner />}
                 Сохранить
               </Button>
-              <Button onClick={() => navigate("/courses")} variant="secondary">
+              <Button onClick={() => navigate('/courses')} variant="secondary">
                 Отменить
               </Button>
             </div>
