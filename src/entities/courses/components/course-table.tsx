@@ -1,5 +1,5 @@
-import {FC} from "react";
-import {PencilIcon, Trash2Icon} from "lucide-react";
+import { FC } from "react";
+import { PencilIcon, Trash2Icon } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -8,31 +8,40 @@ import {
   TableHeader,
   TableRow,
 } from "@ui";
-import {TCourseTableProps} from "./types";
-import {useNavigate} from "react-router-dom";
-import {getDMY} from "@/shared/libs";
-import {TCourseData} from "@/entities";
+import { TCourseTableProps } from "./types";
+import { useNavigate } from "react-router-dom";
+import { getDMY } from "@/shared/libs";
+import { TCourseData } from "@/entities";
 
 export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
   const navigate = useNavigate();
 
-  const handleRedirectToLesson = (e:  React.MouseEvent<HTMLTableRowElement, MouseEvent>, course: TCourseData) => {
-    e.preventDefault()
-    e.stopPropagation()
-    navigate(`/course/${course.id}/lesson`)
-  }
+  const handleRedirectToLesson = (
+    e: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+    course: TCourseData,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/course/${course.id}/lesson`);
+  };
 
-  const handleEdit = (e:  React.MouseEvent<SVGSVGElement, MouseEvent>, courseId: TCourseData['id']) => {
-    e.preventDefault()
-    e.stopPropagation()
-    navigate(`/course/update/${courseId}`)
-  }
+  const handleEdit = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    courseId: TCourseData["id"],
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/course/update/${courseId}`);
+  };
 
-  const handleDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, courseId: TCourseData['id']) => {
-    e.preventDefault()
-    e.stopPropagation()
-    onDelete(courseId)
-  }
+  const handleDelete = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    courseId: TCourseData["id"],
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onDelete(courseId);
+  };
 
   return (
     <Table>

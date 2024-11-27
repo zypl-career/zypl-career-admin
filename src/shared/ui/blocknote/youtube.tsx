@@ -6,7 +6,6 @@ import {
   ResizeHandlesWrapper,
 } from "@blocknote/react";
 
-
 import { cn } from "@libs";
 import { ChangeEvent, useCallback, useState } from "react";
 
@@ -24,7 +23,7 @@ import {
   Button,
 } from "@ui";
 
-import {FaYoutube} from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 export const Youtube = createReactBlockSpec(
   {
@@ -41,12 +40,11 @@ export const Youtube = createReactBlockSpec(
   },
   {
     render: (props) => {
-
       const [width, setWidth] = useState<number>(
         Math.min(
           props.block.props.previewWidth!,
-          props.editor.domElement.firstElementChild!.clientWidth
-        )
+          props.editor.domElement.firstElementChild!.clientWidth,
+        ),
       );
 
       const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -57,16 +55,16 @@ export const Youtube = createReactBlockSpec(
           event.currentTarget.focus();
           setCurrentURL(event.currentTarget.value);
         },
-        []
+        [],
       );
 
       const handleURL = useCallback(() => {
         setIsOpen(true);
         const url = new URL(currentURL);
         url.searchParams.delete("t");
-        
+
         props?.editor.updateBlock(props?.block, {
-          type: 'youtube',
+          type: "youtube",
           props: {
             ...props?.block?.props,
             url: url.href.replace("/watch?v=", "/embed/"),
@@ -80,7 +78,7 @@ export const Youtube = createReactBlockSpec(
             "bn-file-block-content-wrapper",
             props.block.props.url
               ? "flex w-full justify-center"
-              : "w-full rounded-md bg-zinc-100 px-4 py-3"
+              : "w-full rounded-md bg-zinc-100 px-4 py-3",
           )}
           data-file-block
         >
@@ -139,5 +137,5 @@ export const Youtube = createReactBlockSpec(
         </div>
       );
     },
-  }
+  },
 );

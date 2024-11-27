@@ -1,5 +1,5 @@
 export const camelToSnake = (obj: any): any => {
-  if (typeof obj !== 'object' || obj === null) {
+  if (typeof obj !== "object" || obj === null) {
     return obj;
   }
 
@@ -24,11 +24,11 @@ export const snakeToCamel = (data: any): any => {
   const convertToCamelCase = (input: any): any => {
     if (Array.isArray(input)) {
       return input.map((item) => convertToCamelCase(item));
-    } else if (typeof input === 'object' && input !== null) {
+    } else if (typeof input === "object" && input !== null) {
       const converted: any = {};
       Object.keys(input).forEach((key) => {
         const camelKey = key.replace(/([-_][a-z])/g, (group) =>
-          group.toUpperCase().replace('-', '').replace('_', ''),
+          group.toUpperCase().replace("-", "").replace("_", ""),
         );
         converted[camelKey] = convertToCamelCase(input[key]);
       });

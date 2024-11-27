@@ -9,15 +9,14 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
   const handleAction = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     article: TArticleData,
-    action: keyof Omit<TArticleListProps, 'data'>
+    action: keyof Omit<TArticleListProps, "data">,
   ) => {
     e.preventDefault();
     e.stopPropagation();
-    if (typeof props[action] === 'function') {
-      props[action](article)
+    if (typeof props[action] === "function") {
+      props[action](article);
     }
   };
-
 
   return (
     <section className="grid sm:grid-cols-3 gap-5">
@@ -44,7 +43,10 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
                   <Edit />
                 </Link>
               </Button>
-              <Button onClick={(e) => handleAction(e, article, 'onDelete')} variant="secondary">
+              <Button
+                onClick={(e) => handleAction(e, article, "onDelete")}
+                variant="secondary"
+              >
                 <Trash2 />
               </Button>
             </div>
@@ -54,4 +56,3 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
     </section>
   );
 };
-

@@ -1,11 +1,21 @@
-import { AlertDialogHeader, AlertDialogFooter, Spinner, AlertDialogContent, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogDescription, AlertDialogTitle } from '@ui'
+import {
+  AlertDialogHeader,
+  AlertDialogFooter,
+  Spinner,
+  AlertDialogContent,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogDescription,
+  AlertDialogTitle,
+} from "@ui";
 
-import { FC } from 'react'
-import { TDeleteProps } from './types'
-import { useDeleteLesson } from './services'
+import { FC } from "react";
+import { TDeleteProps } from "./types";
+import { useDeleteLesson } from "./services";
 
 export const DeleteLessonId: FC<TDeleteProps> = ({ setOpen, open, id }) => {
-  const deleteLesson = useDeleteLesson(id)
+  const deleteLesson = useDeleteLesson(id);
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
@@ -24,5 +34,5 @@ export const DeleteLessonId: FC<TDeleteProps> = ({ setOpen, open, id }) => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

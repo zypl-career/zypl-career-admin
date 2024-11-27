@@ -1,23 +1,26 @@
-import { FC, useCallback, useMemo, useState } from "react"
-import { TCounterBranches, TMapUIProps } from "./types"
-import { mapArea } from "./constants"
-import MouseTracker from "@/shared/ui/mouse-tracker"
+import { FC, useCallback, useMemo, useState } from "react";
+import { TCounterBranches, TMapUIProps } from "./types";
+import { mapArea } from "./constants";
+import MouseTracker from "@/shared/ui/mouse-tracker";
 
 export const MapUI: FC<TMapUIProps> = ({ data }) => {
-  const [showDetail, setShowDetail] = useState(false)
-  const [detail, setDetail] = useState<Partial<TCounterBranches> | null>(null)
-  
-  const map = useMemo(() => data.map((region, i) => ({ ...region, path: mapArea[i]?.path })), [data])
+  const [showDetail, setShowDetail] = useState(false);
+  const [detail, setDetail] = useState<Partial<TCounterBranches> | null>(null);
+
+  const map = useMemo(
+    () => data.map((region, i) => ({ ...region, path: mapArea[i]?.path })),
+    [data],
+  );
 
   const handleMouseEnter = useCallback((region: TCounterBranches) => {
-    setDetail(region)
-    setShowDetail(true)
-  }, [])
+    setDetail(region);
+    setShowDetail(true);
+  }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setDetail(null)
-    setShowDetail(false)
-  }, [])
+    setDetail(null);
+    setShowDetail(false);
+  }, []);
 
   return (
     <div className="m-6">
@@ -43,5 +46,5 @@ export const MapUI: FC<TMapUIProps> = ({ data }) => {
         {detail?.name} ({detail?.count})
       </MouseTracker>
     </div>
-  )
-}
+  );
+};

@@ -1,2 +1,2 @@
-export * from './bar'
-export * from './map'
+export * from "./bar";
+export * from "./map";

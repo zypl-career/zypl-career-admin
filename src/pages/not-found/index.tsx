@@ -1,5 +1,5 @@
-import { Button } from "@ui"
-import { Link } from "react-router-dom"
+import { Button } from "@ui";
+import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
@@ -10,7 +10,7 @@ const NotFoundPage = () => {
         <Link to="/">На главную</Link>
       </Button>
     </main>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

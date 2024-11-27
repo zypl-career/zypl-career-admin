@@ -1,4 +1,4 @@
-import {FC, SVGProps} from "react";
+import { FC, SVGProps } from "react";
 
 export const MediaFilesIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
   return (

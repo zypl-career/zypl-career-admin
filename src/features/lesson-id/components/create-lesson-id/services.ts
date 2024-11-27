@@ -5,7 +5,7 @@ import type { TCreateLessonIdResponse, TCreateLessonId } from "./types";
 export const useLessonIdCourse = (courseId: string) => {
   const queryClient = useQueryClient();
   return useMutation<TCreateLessonIdResponse, Error, TCreateLessonId>({
-    mutationKey: ['lessonId'],
+    mutationKey: ["lessonId"],
     mutationFn: (form: TCreateLessonId) => {
       if (form.resource instanceof FileList) {
         form.resource = form.resource[0];
@@ -16,17 +16,17 @@ export const useLessonIdCourse = (courseId: string) => {
       return apiService
         .post("/lesson/create", fd, {
           headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+            "Content-Type": "multipart/form-data",
+          },
         })
         .then((response) => {
-          Object.keys(form).forEach((key) => fd.delete(key))
-          return response
+          Object.keys(form).forEach((key) => fd.delete(key));
+          return response;
         })
-        .then((response) => response.data)
+        .then((response) => response.data);
     },
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ['lessonId'] });
+      queryClient.invalidateQueries({ queryKey: ["lessonId"] });
     },
   });
 };

@@ -1,9 +1,9 @@
 export type TMapUIProps = {
-  data: TCounterBranches[]
-}
+  data: TCounterBranches[];
+};
 
 export type TCounterBranches = {
-  id: number
-  name: string
-  count: string
-}
+  id: number;
+  name: string;
+  count: string;
+};

@@ -1,7 +1,7 @@
 import { Article } from "@features";
 
 const ArticlesPages = () => {
-  return <Article />
-}
+  return <Article />;
+};
 
-export default ArticlesPages
+export default ArticlesPages;

@@ -1,10 +1,10 @@
-import {getDMY} from "@/shared/libs";
-import {Badge, BlockNote, BlurImage} from "@/shared/ui";
-import {useArticleId} from "@features";
-import {useParams} from "react-router-dom";
+import { getDMY } from "@/shared/libs";
+import { Badge, BlockNote, BlurImage } from "@/shared/ui";
+import { useArticleId } from "@features";
+import { useParams } from "react-router-dom";
 
 const ArticlePageId = () => {
-  const {id = ""} = useParams();
+  const { id = "" } = useParams();
   const { data, isLoading } = useArticleId(id);
 
   console.log(data);
@@ -28,7 +28,7 @@ const ArticlePageId = () => {
       </header>
       {data?.description && !isLoading ? (
         <BlockNote
-          domAttributes={{editor: {class: "bg-transparent"}}}
+          domAttributes={{ editor: { class: "bg-transparent" } }}
           editable={false}
           value={data?.description}
         />

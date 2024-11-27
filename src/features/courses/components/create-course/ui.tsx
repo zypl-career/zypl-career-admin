@@ -1,5 +1,5 @@
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -13,11 +13,11 @@ import {
   Spinner,
   toast,
 } from "@ui";
-import {setFieldError} from "@libs";
-import {TCreateCourse} from "./types";
-import {CreateCourseSchema} from "./schema";
-import {useCreateCourse} from "./services";
-import {useNavigate} from "react-router-dom";
+import { setFieldError } from "@libs";
+import { TCreateCourse } from "./types";
+import { CreateCourseSchema } from "./schema";
+import { useCreateCourse } from "./services";
+import { useNavigate } from "react-router-dom";
 
 export const CreateCourse = () => {
   const navigate = useNavigate();
@@ -40,8 +40,8 @@ export const CreateCourse = () => {
       },
       onSuccess() {
         toast({ title: "Курс успешно создан" });
-        navigate('/courses')
-      }
+        navigate("/courses");
+      },
     });
   };
 
@@ -54,7 +54,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="title"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -70,7 +70,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="finishedPercentage"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -78,7 +78,7 @@ export const CreateCourse = () => {
                       placeholder="38%"
                       {...field}
                       onChange={(e) => {
-                        field.onChange(Number(e.target.value))
+                        field.onChange(Number(e.target.value));
                       }}
                     />
                   </FormControl>
@@ -98,7 +98,7 @@ export const CreateCourse = () => {
                       {...field}
                       onChange={(event) => {
                         if (event.target.files) {
-                          onChange(event.target.files[0])
+                          onChange(event.target.files[0]);
                         }
                       }}
                     />
@@ -110,7 +110,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="tags"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -126,7 +126,7 @@ export const CreateCourse = () => {
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <Editor {...field} />

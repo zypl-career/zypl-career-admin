@@ -25,7 +25,7 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: #9746B3;
+    --primary: #9746b3;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -49,7 +49,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
@@ -102,7 +104,6 @@
   width: 100%;
   white-space: pre-wrap;
 }
-
 
 .alert {
   display: flex;
@@ -160,19 +161,19 @@
 }
 
 .alert-icon[data-alert-icon-type="warning"] {
-  color: #e69819
+  color: #e69819;
 }
 
 .alert-icon[data-alert-icon-type="error"] {
-  color: #d80d0d
+  color: #d80d0d;
 }
 
 .alert-icon[data-alert-icon-type="info"] {
-  color: #507aff
+  color: #507aff;
 }
 
 .alert-icon[data-alert-icon-type="success"] {
-  color: #0bc10b
+  color: #0bc10b;
 }
 
 .inline-content {

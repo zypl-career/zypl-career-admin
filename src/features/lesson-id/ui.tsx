@@ -9,9 +9,9 @@ import { useLessonId } from "./services";
 import { PreviewLesson } from "./components/preview-lesson-id";
 
 export const LessonId = () => {
-  const {id = "0"} = useParams();
-  const {data = [], isLoading} = useLessonId(id);
-  const {data: courseData, isLoading: courseLoading} = useCourseById(id);
+  const { id = "0" } = useParams();
+  const { data = [], isLoading } = useLessonId(id);
+  const { data: courseData, isLoading: courseLoading } = useCourseById(id);
 
   const [toggleModals, setToggleModals] = useState({
     edit: false,
@@ -59,7 +59,7 @@ export const LessonId = () => {
           </div>
         )}
         <Button
-          onClick={() => setToggleModals((prev) => ({...prev, create: true}))}
+          onClick={() => setToggleModals((prev) => ({ ...prev, create: true }))}
         >
           <PlusIcon />
           Добавить урок
@@ -78,14 +78,14 @@ export const LessonId = () => {
       <CreateLesson
         open={toggleModals.create}
         setOpen={(value) =>
-          setToggleModals((prev) => ({...prev, create: value}))
+          setToggleModals((prev) => ({ ...prev, create: value }))
         }
       />
       {toggleModals.edit ? (
         <UpdateLesson
           open={toggleModals.edit}
           setOpen={(value) =>
-            setToggleModals((prev) => ({...prev, edit: value}))
+            setToggleModals((prev) => ({ ...prev, edit: value }))
           }
           data={editable}
         />
@@ -94,7 +94,7 @@ export const LessonId = () => {
         id={deleteId}
         open={toggleModals.delete}
         setOpen={(value) =>
-          setToggleModals((prev) => ({...prev, delete: value}))
+          setToggleModals((prev) => ({ ...prev, delete: value }))
         }
       />
       <PreviewLesson

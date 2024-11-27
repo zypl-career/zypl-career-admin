@@ -22,7 +22,7 @@ import { useParams } from "react-router-dom";
 import { FC } from "react";
 
 export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
-  const { id = '' } = useParams()
+  const { id = "" } = useParams();
   const form = useForm<TCreateLessonId>({
     resolver: zodResolver(CreateLessonIdSchema),
     defaultValues: {
@@ -34,7 +34,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
 
   const createLesson = useLessonIdCourse(id);
 
-  const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false);
 
   const onSubmit = (data: TCreateLessonId) => {
     createLesson.mutate(data, {
@@ -43,8 +43,8 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
       },
       onSuccess() {
         toast({ title: "Урок успешно создан" });
-        handleClose()
-      }
+        handleClose();
+      },
     });
   };
 
@@ -57,7 +57,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="name"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
@@ -82,7 +82,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
                       {...field}
                       onChange={(event) => {
                         if (event.target.files) {
-                          onChange(event.target.files[0])
+                          onChange(event.target.files[0]);
                         }
                       }}
                     />
@@ -94,7 +94,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
             <FormField
               control={form.control}
               name="description"
-              render={({field}) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <Editor {...field} />

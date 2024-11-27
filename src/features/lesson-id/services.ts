@@ -4,15 +4,16 @@ import { TLessonIdData } from "@entities";
 
 export const useLessonId = (courseId: string) => {
   return useQuery<TLessonIdData[]>({
-    queryKey: ['lessonId'],
-    queryFn: () => apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
-  })
+    queryKey: ["lessonId"],
+    queryFn: () =>
+      apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
+  });
 };
 
 export const useLessonById = (id: string) => {
   return useQuery<TLessonIdData>({
-    queryKey: ['lessonId', id],
+    queryKey: ["lessonId", id],
     queryFn: () => apiService.get(`lesson/get/${id}`).then(({ data }) => data),
     enabled: !!id,
-  })
+  });
 };

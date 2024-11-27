@@ -5,7 +5,7 @@ import { TCourseData } from "../../entities/courses/types";
 
 export const useCourses = () => {
   return useQuery<TResponse<TCourseData[]>>({
-    queryKey: ['courses'],
-    queryFn: () => apiService.get('course/get').then(({ data }) => data),
-  })
+    queryKey: ["courses"],
+    queryFn: () => apiService.get("course/get").then(({ data }) => data),
+  });
 };

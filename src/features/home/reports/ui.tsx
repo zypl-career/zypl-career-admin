@@ -1,4 +1,4 @@
-import { AllVisitorsUI, DevicesUI } from "@/entities/home/reports"
+import { AllVisitorsUI, DevicesUI } from "@/entities/home/reports";
 
 export const Reports = () => {
   return (
@@ -6,5 +6,5 @@ export const Reports = () => {
       <AllVisitorsUI />
       <DevicesUI />
     </div>
-  )
-}
+  );
+};

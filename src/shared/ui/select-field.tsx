@@ -1,42 +1,41 @@
-'use client'
+"use client";
 
 import {
   Select,
-  SelectContent, SelectItem,
+  SelectContent,
+  SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@ui";
 
 type ISelectFieldProps<T> = {
-  value: string
+  value: string;
   options: T[];
   printType: keyof T;
   valueType: keyof T;
   placeholder?: string;
   onChange: (value: string) => void;
-}
+};
 
 export const SelectField = <T,>({
   options,
   value,
   valueType,
   printType,
-  placeholder = 'Выберите элемент',
+  placeholder = "Выберите элемент",
   onChange,
 }: ISelectFieldProps<T>) => (
-  <Select
-    onValueChange={onChange}
-    defaultValue={String(value)}
-  >
+  <Select onValueChange={onChange} defaultValue={String(value)}>
     <SelectTrigger>
       <SelectValue placeholder={placeholder} />
     </SelectTrigger>
     <SelectContent>
-      {options && options.map((status, idx) => (
-        <SelectItem key={idx} value={String(status[valueType])}>
-          {String(status[printType])}
-        </SelectItem>
-      ))}
+      {options &&
+        options.map((status, idx) => (
+          <SelectItem key={idx} value={String(status[valueType])}>
+            {String(status[printType])}
+          </SelectItem>
+        ))}
     </SelectContent>
   </Select>
 );

@@ -1,5 +1,5 @@
-import type { InternalAxiosRequestConfig } from 'axios';
-import { getAccessToken } from '@libs';
+import type { InternalAxiosRequestConfig } from "axios";
+import { getAccessToken } from "@libs";
 
 export const requestInterceptor = (config: InternalAxiosRequestConfig<any>) => {
   authInterceptor(config);

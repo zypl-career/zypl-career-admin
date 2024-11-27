@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { UpdateCourseSchema } from './schema';
+import { z } from "zod";
+import { UpdateCourseSchema } from "./schema";
 
 export type TUpdateCourse = z.infer<typeof UpdateCourseSchema>;
 
@@ -8,15 +8,14 @@ export type TUpdateCourseResponse = {
   payload: Payload;
 };
 
-
 export type Payload = {
-  id: string
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  finishedPercentage: number
-  createdAt: string
-  updatedAt: string
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  finishedPercentage: number;
+  createdAt: string;
+  updatedAt: string;
   deletedAt: string;
-}
+};

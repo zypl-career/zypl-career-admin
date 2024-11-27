@@ -1,3 +1,3 @@
-import LogoZypl from './logo-zypl';
+import LogoZypl from "./logo-zypl";
 
 export { LogoZypl };
