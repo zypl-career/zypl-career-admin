@@ -1,11 +1,12 @@
 import { apiService } from '@api';
+import { Partners } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TCreatePartner } from './schema';
 
 export const useCreatePartner = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ['partners'],
+    mutationKey: [Partners.Key],
     mutationFn: (form: TCreatePartner) => {
       const formData = new FormData();
       if (form.image) {
@@ -19,7 +20,7 @@ export const useCreatePartner = () => {
       });
     },
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ['partners'] });
+      queryClient.invalidateQueries({ queryKey: [Partners.Key] });
     },
   });
 };

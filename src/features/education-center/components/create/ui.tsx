@@ -1,9 +1,11 @@
+import { cities } from '@constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
 import { FC } from 'react';
 import {
   Button,
+  Combobox,
   DropFile,
   Form,
   FormControl,
@@ -77,10 +79,14 @@ export const CreateEducationCenter: FC<TCreateEducationCenterProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Город"
+                    <Combobox
+                      value={field.value}
+                      onChange={field.onChange}
+                      onSelect={({ value }) => field.onChange(value)}
+                      filteredData={cities}
+                      labelField="label"
+                      valueField="value"
                       placeholder="Введите город"
-                      {...field}
                     />
                   </FormControl>
                   <FormMessage />

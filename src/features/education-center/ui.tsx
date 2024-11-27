@@ -2,8 +2,8 @@ import { EducationCenterList, TEducationCenter } from '@entities';
 import { useState } from 'react';
 import { Button, Spinner } from '@ui';
 import { CreateEducationCenter, DeleteEducationCenter } from './components';
-import { useGetEducationCenters } from './services';
 import { UpdateEducationCenter } from './components/update';
+import { useGetEducationCenters } from './services';
 
 export const EducationCenters = () => {
   const [filters] = useState({
@@ -15,7 +15,9 @@ export const EducationCenters = () => {
 
   const { data, isLoading } = useGetEducationCenters(filters);
 
-  const [editEducationCenter, setEditEducationCenter] = useState<Partial<TEducationCenter>>({});
+  const [editEducationCenter, setEditEducationCenter] = useState<
+    Partial<TEducationCenter>
+  >({});
   const [deleteEducationCenter, setDeleteEducationCenter] = useState<
     Partial<TEducationCenter>
   >({});

@@ -1,6 +1,6 @@
 import { apiService } from '@api';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { EducationCenter } from '@entities';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
 import { TEducationCenterData } from './types.ts';
 

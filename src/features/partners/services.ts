@@ -5,8 +5,7 @@ import { TResponse } from '@types';
 
 export const useGetPartners = () => {
   return useQuery<TResponse<TPartners[]>>({
-    queryKey: [Partners.PartnersKey],
-    queryFn: () =>
-      apiService.get(Partners.PartnersPath).then(({ data }) => data),
+    queryKey: [Partners.Key],
+    queryFn: () => apiService.get(Partners.Path).then(({ data }) => data),
   });
 };

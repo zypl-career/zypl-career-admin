@@ -1,9 +1,11 @@
+import { cities } from '@constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
 import { FC } from 'react';
 import {
   Button,
+  Combobox,
   DropFile,
   Form,
   FormControl,
@@ -14,12 +16,10 @@ import {
   Modal,
   Spinner,
   toast,
-  Combobox,
 } from '@ui';
-import { UpdateEducationCenterSchema, TUpdateEducationCenter } from './schema';
+import { TUpdateEducationCenter, UpdateEducationCenterSchema } from './schema';
 import { useUpdateEducationCenter } from './services';
 import { TUpdateEducationCenterProps } from './types';
-import { cities } from '@/shared/constants';
 
 export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
   data,
@@ -37,7 +37,7 @@ export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
     },
   });
 
-  const createEducationCenter = useUpdateEducationCenter();
+  const createEducationCenter = useUpdateEducationCenter(data.id ?? '');
 
   const handleClose = () => toggle(false);
 
@@ -82,10 +82,9 @@ export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
                 <FormItem>
                   <FormControl>
                     <Combobox
-                      {...field}
                       value={field.value}
                       onChange={field.onChange}
-                      onSelect={(value) => field.onChange(value)}
+                      onSelect={({ value }) => field.onChange(value)}
                       filteredData={cities}
                       labelField="label"
                       valueField="value"
@@ -115,10 +114,10 @@ export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
             <FormField
               control={form.control}
               name="image"
-              render={({ field: { onChange } }) => (
+              render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <DropFile onChange={onChange} />
+                    <DropFile preview={field.value} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -1,6 +1,6 @@
 import { apiService } from '@api';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { EducationCenter } from '@entities';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TCreateEducationCenter } from './schema';
 
 export const useCreateEducationCenter = () => {
