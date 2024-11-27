@@ -1,8 +1,8 @@
-import { FC, useCallback } from 'react';
-import { TPartners, TPartnersProps } from './types';
-import { Edit, Trash2 } from 'lucide-react';
-import { BlurImage, Button } from '@ui';
 import { getDMY } from '@libs';
+import { Edit, Trash2 } from 'lucide-react';
+import { FC, useCallback } from 'react';
+import { BlurImage, Button } from '@ui';
+import { TPartners, TPartnersProps } from './types';
 
 export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
   const handleAction = useCallback(
@@ -13,7 +13,7 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
     ) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       if (typeof props[action] === 'function') {
         props[action](partner);
       }
@@ -40,10 +40,16 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
             </h2>
           </div>
           <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
-            <Button onClick={(e) => handleAction(e, partner, 'onEdit')} variant="secondary">
+            <Button
+              onClick={(e) => handleAction(e, partner, 'onEdit')}
+              variant="secondary"
+            >
               <Edit />
             </Button>
-            <Button onClick={(e) => handleAction(e, partner, 'onDelete')} variant="secondary">
+            <Button
+              onClick={(e) => handleAction(e, partner, 'onDelete')}
+              variant="secondary"
+            >
               <Trash2 />
             </Button>
           </div>

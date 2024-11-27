@@ -1,5 +1,5 @@
-import { z } from 'zod';
 import { MAX_FILE_SIZE } from '@constants';
+import { z } from 'zod';
 
 export const CreateLessonIdSchema = z.object({
   name: z.string(),

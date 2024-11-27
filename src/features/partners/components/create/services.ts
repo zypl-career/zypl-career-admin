@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@api';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TCreatePartner } from './schema';
 
 export const useCreatePartner = () => {

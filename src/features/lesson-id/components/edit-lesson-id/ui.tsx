@@ -1,6 +1,12 @@
-import { useForm } from 'react-hook-form';
+import { useLessonById } from '@/features/lesson-id/services.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+import { FC, useMemo } from 'react';
 import {
+  Button,
+  Editor,
   Form,
   FormControl,
   FormField,
@@ -8,19 +14,13 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Editor,
-  Button,
+  Modal,
   Spinner,
   toast,
-  Modal,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TUpdateLessonId, TUpdateLessonProps } from './types';
 import { UpdateLessonIdSchema } from './schema';
 import { useLessonUpdateById } from './services';
-import { useParams } from 'react-router-dom';
-import { FC, useMemo } from 'react';
-import { useLessonById } from '@/features/lesson-id/services.ts';
+import { TUpdateLessonId, TUpdateLessonProps } from './types';
 
 export const UpdateLesson: FC<TUpdateLessonProps> = ({
   data,

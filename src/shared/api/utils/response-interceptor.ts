@@ -1,6 +1,6 @@
+import { convertNumbersToString, snakeToCamel } from '@libs';
 import type { AxiosResponse } from 'axios';
 import { toast } from '@ui';
-import { snakeToCamel, convertNumbersToString } from '@libs';
 
 export const responseInterceptor = (response: AxiosResponse) => {
   if (response.data && !(response.data instanceof Blob)) {

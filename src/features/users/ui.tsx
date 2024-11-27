@@ -1,9 +1,8 @@
 import { TUserData, UserTableUI } from '@entities';
-import { useUser } from './services';
-import { Spinner } from '@ui';
 import { useState } from 'react';
-import { EditUser } from './components';
-import { DeleteUser } from './components';
+import { Spinner } from '@ui';
+import { DeleteUser, EditUser } from './components';
+import { useUser } from './services';
 
 export const User = () => {
   const { data: users, isLoading } = useUser();

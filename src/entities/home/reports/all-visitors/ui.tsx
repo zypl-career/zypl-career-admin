@@ -1,5 +1,5 @@
+import { Label, Pie, PieChart } from 'recharts';
 import { PieLabel } from '@ui';
-import { Pie, PieChart, Label } from 'recharts';
 
 const data = [
   { name: '0–14 лет', value: 15, fill: '#EEC980' },

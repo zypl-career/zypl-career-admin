@@ -1,9 +1,8 @@
 import axios from 'axios';
-
 import {
-  responseInterceptor,
-  requestInterceptor,
   errorInterceptor,
+  requestInterceptor,
+  responseInterceptor,
 } from './utils';
 
 export const apiService = axios.create({

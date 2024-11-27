@@ -1,10 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
-import { lazy } from 'react';
-import { RouteObject } from 'react-router-dom';
 import MainLayout from '@/app/layouts/main-layout';
 import NotFoundPage from '@/pages/not-found';
-
 import PartnersPage from '@pages/partners';
+import { RouteObject } from 'react-router-dom';
+import { lazy } from 'react';
 
 const HomePage = lazy(() => import('@pages/home'));
 const UsersPage = lazy(() => import('@pages/users'));

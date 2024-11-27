@@ -1,28 +1,28 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FC } from 'react';
 import {
+  BlockNote,
+  Button,
+  DropFile,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
   Input,
-  Button,
-  Spinner,
-  toast,
   InputTags,
-  Textarea,
-  BlockNote,
-  DropFile,
   removeEditorContent,
+  Spinner,
+  Textarea,
+  toast,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TUpdateArticleId } from './types';
+import { useArticleId } from '../../services';
 import { UpdateArticleSchema } from './schema';
 import { useArticleUpdateById } from './services';
-import { FC } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useArticleId } from '../../services';
+import { TUpdateArticleId } from './types';
 
 export const UpdateArticle: FC = () => {
   const { id = '' } = useParams();

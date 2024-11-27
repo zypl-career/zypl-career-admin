@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { getGender } from '@libs';
 import { PencilIcon, Trash2Icon } from 'lucide-react';
+import { FC } from 'react';
 import {
   Table,
   TableBody,
@@ -8,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from '@ui';
-import { getGender } from '@libs';
 import { TUserTableProps } from './types';
 
 export const UserTableUI: FC<TUserTableProps> = ({

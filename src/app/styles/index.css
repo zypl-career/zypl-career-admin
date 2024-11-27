@@ -50,8 +50,8 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -115,35 +115,35 @@
   padding: 4px;
 }
 
-.alert[data-alert-type="warning"] {
+.alert[data-alert-type='warning'] {
   background-color: #fff6e6;
 }
 
-.alert[data-alert-type="error"] {
+.alert[data-alert-type='error'] {
   background-color: #ffe6e6;
 }
 
-.alert[data-alert-type="info"] {
+.alert[data-alert-type='info'] {
   background-color: #e6ebff;
 }
 
-.alert[data-alert-type="success"] {
+.alert[data-alert-type='success'] {
   background-color: #e6ffe6;
 }
 
-[data-color-scheme="dark"] .alert[data-alert-type="warning"] {
+[data-color-scheme='dark'] .alert[data-alert-type='warning'] {
   background-color: #805d20;
 }
 
-[data-color-scheme="dark"] .alert[data-alert-type="error"] {
+[data-color-scheme='dark'] .alert[data-alert-type='error'] {
   background-color: #802020;
 }
 
-[data-color-scheme="dark"] .alert[data-alert-type="info"] {
+[data-color-scheme='dark'] .alert[data-alert-type='info'] {
   background-color: #203380;
 }
 
-[data-color-scheme="dark"] .alert[data-alert-type="success"] {
+[data-color-scheme='dark'] .alert[data-alert-type='success'] {
   background-color: #208020;
 }
 
@@ -160,19 +160,19 @@
   cursor: pointer;
 }
 
-.alert-icon[data-alert-icon-type="warning"] {
+.alert-icon[data-alert-icon-type='warning'] {
   color: #e69819;
 }
 
-.alert-icon[data-alert-icon-type="error"] {
+.alert-icon[data-alert-icon-type='error'] {
   color: #d80d0d;
 }
 
-.alert-icon[data-alert-icon-type="info"] {
+.alert-icon[data-alert-icon-type='info'] {
   color: #507aff;
 }
 
-.alert-icon[data-alert-icon-type="success"] {
+.alert-icon[data-alert-icon-type='success'] {
   color: #0bc10b;
 }
 

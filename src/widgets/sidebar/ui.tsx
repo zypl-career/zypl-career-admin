@@ -1,7 +1,7 @@
+import LogoZypl from '@/shared/assets/img/logo-zypl';
 import { Link } from 'react-router-dom';
 import { SidebarMenuUI } from './components/sidebar-menu';
 import { menu } from './constants';
-import LogoZypl from '@/shared/assets/img/logo-zypl';
 
 export const Sidebar = () => {
   return (

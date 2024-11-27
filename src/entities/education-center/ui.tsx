@@ -1,9 +1,9 @@
-import { FC, useCallback } from 'react';
-import { TEducationCenter, TEducationCenterProps } from './types';
-import { Link } from 'react-router-dom';
-import { Edit, Trash2 } from 'lucide-react';
-import { BlurImage, Button } from '@ui';
 import { getDMY } from '@libs';
+import { Edit, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FC, useCallback } from 'react';
+import { BlurImage, Button } from '@ui';
+import { TEducationCenter, TEducationCenterProps } from './types';
 
 export const EducationCenterList: FC<TEducationCenterProps> = ({
   data = [],

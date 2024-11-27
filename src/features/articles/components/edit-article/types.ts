@@ -1,6 +1,6 @@
+import { TArticleData } from '@entities';
 import { z } from 'zod';
 import { UpdateArticleSchema } from './schema';
-import { TArticleData } from '@entities';
 
 export type TUpdateArticleId = z.infer<typeof UpdateArticleSchema>;
 

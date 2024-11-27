@@ -1,7 +1,7 @@
 import { apiService } from '@api';
+import { type TLessonIdData } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
-import { type TLessonIdData } from '@entities';
 
 export const useDeleteLesson = (id: TLessonIdData['id']) => {
   const queryClient = useQueryClient();

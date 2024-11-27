@@ -1,4 +1,4 @@
-import { UseFormReturn, FieldValues, Path } from 'react-hook-form';
+import { FieldValues, Path, UseFormReturn } from 'react-hook-form';
 
 export const setFieldError = <T extends FieldValues>(
   state: UseFormReturn<T>,

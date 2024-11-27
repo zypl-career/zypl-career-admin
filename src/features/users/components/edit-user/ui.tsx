@@ -1,3 +1,6 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { FC } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -8,12 +11,9 @@ import {
   FormMessage,
   Input,
 } from '@ui';
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { UserSchema } from './schema';
-import { TEditUserProps, TUserSchema } from './types';
 import { useEditUser } from './services';
+import { TEditUserProps, TUserSchema } from './types';
 
 export const EditUser: FC<TEditUserProps> = ({
   editable,

@@ -1,5 +1,5 @@
-import { FC, ReactNode, useState } from 'react';
 import { cn } from '@libs';
+import { FC, ReactNode, useState } from 'react';
 
 export type ImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   isSkeleton?: boolean;

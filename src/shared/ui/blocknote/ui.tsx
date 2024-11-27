@@ -1,14 +1,14 @@
-import { FC, useCallback, useState } from 'react';
-import { BlockNoteView } from '@blocknote/shadcn';
 import { filterSuggestionItems, PartialBlock } from '@blocknote/core';
 import {
   getDefaultReactSlashMenuItems,
   SuggestionMenuController,
   useCreateBlockNote,
 } from '@blocknote/react';
+import { BlockNoteView } from '@blocknote/shadcn';
+import { urlToBase64 } from '@libs';
+import { FC, useCallback, useState } from 'react';
 import { TBlockNoteProps } from './types';
 import { insertYoutube, schema } from './utils';
-import { urlToBase64 } from '@libs';
 import '@blocknote/core/fonts/inter.css';
 import '@blocknote/shadcn/style.css';
 

@@ -1,6 +1,6 @@
+import { apiService } from '@/shared/api';
 import { useQuery } from '@tanstack/react-query';
 import { User } from './constants';
-import { apiService } from '@/shared/api';
 
 export const useUser = () => {
   return useQuery({

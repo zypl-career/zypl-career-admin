@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { PlusIcon } from 'lucide-react';
-import { CourseTableUI } from '@entities';
-import { Button, LoadingTable } from '@ui';
 import { type TCourseData } from '@/entities/courses/types';
-import { useCourses } from './services';
+import { CourseTableUI } from '@entities';
+import { PlusIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Button, LoadingTable } from '@ui';
 import { DeleteCourse } from './components';
+import { useCourses } from './services';
 
 export const Courses = () => {
   const { data, isLoading } = useCourses();

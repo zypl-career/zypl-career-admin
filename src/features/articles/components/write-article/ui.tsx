@@ -1,4 +1,7 @@
+import { setFieldError } from '@/shared/libs';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import {
   BlockNote,
   Button,
@@ -15,12 +18,9 @@ import {
   Textarea,
   toast,
 } from '@ui';
-import { useForm } from 'react-hook-form';
-import { TCreateArticle } from './types';
 import { CreateArticleSchema } from './schema';
 import { useCreateArticle } from './services';
-import { setFieldError } from '@/shared/libs';
-import { useNavigate } from 'react-router-dom';
+import { TCreateArticle } from './types';
 
 export const WriteArticle = () => {
   const navigate = useNavigate();

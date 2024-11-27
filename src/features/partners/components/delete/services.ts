@@ -1,7 +1,7 @@
 import { apiService } from '@api';
+import { TPartners } from '@entities';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@ui';
-import { TPartners } from '@entities';
 
 export const useDeletePartner = (id: TPartners['id']) => {
   const queryClient = useQueryClient();

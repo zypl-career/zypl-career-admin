@@ -1,4 +1,4 @@
-import { MoreVertical, Bell } from 'lucide-react';
+import { Bell, MoreVertical } from 'lucide-react';
 
 export const Header = () => {
   return (

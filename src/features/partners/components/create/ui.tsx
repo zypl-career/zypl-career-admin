@@ -1,22 +1,22 @@
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { FC } from 'react';
 import {
+  Button,
+  DropFile,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-  Button,
+  Modal,
   Spinner,
   toast,
-  Modal,
-  DropFile,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TCreatePartnerProps } from './types';
 import { CreatePartnerSchema, TCreatePartner } from './schema';
 import { useCreatePartner } from './services';
+import { TCreatePartnerProps } from './types';
 
 export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   const form = useForm<TCreatePartner>({

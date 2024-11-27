@@ -1,5 +1,5 @@
-import { PieLabel } from '@ui';
 import { Label, Pie, PieChart } from 'recharts';
+import { PieLabel } from '@ui';
 
 const data = [
   { name: 'Мобильный телефон', value: 45, fill: '#80CAEE' },

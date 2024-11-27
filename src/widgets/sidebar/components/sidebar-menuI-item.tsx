@@ -1,9 +1,9 @@
-import { FC, useCallback, useState } from 'react';
 import { cn } from '@libs';
+import { ChevronRight } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { FC, useCallback, useState } from 'react';
 import { TSidebarItemMenuProps } from '../types';
 import { SidebarMenuUI } from './sidebar-menu';
-import { ChevronRight } from 'lucide-react';
 
 export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);

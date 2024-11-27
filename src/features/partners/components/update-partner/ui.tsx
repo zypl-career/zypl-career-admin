@@ -1,24 +1,28 @@
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
+import { useForm } from 'react-hook-form';
+import { FC } from 'react';
 import {
+  Button,
+  DropFile,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-  Button,
+  Modal,
   Spinner,
   toast,
-  Modal,
-  DropFile,
 } from '@ui';
-import { setFieldError } from '@libs';
-import { TCreatePartnerProps } from './types';
-import { UpdatePartnerSchema, TUpdatePartner } from './schema';
+import { TUpdatePartner, UpdatePartnerSchema } from './schema';
 import { useUpdatePartner } from './services';
+import { TCreatePartnerProps } from './types';
 
-export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) => {
+export const UpdatePartner: FC<TCreatePartnerProps> = ({
+  data,
+  open,
+  toggle,
+}) => {
   const form = useForm<TUpdatePartner>({
     resolver: zodResolver(UpdatePartnerSchema),
     values: {
@@ -26,7 +30,7 @@ export const UpdatePartner: FC<TCreatePartnerProps> = ({ data, open, toggle }) =
     },
   });
 
-  const createPartner = useUpdatePartner(data?.id ?? '');  
+  const createPartner = useUpdatePartner(data?.id ?? '');
 
   const handleClose = () => toggle(false);
 

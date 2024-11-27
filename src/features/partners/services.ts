@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@api';
+import { Partners, type TPartners } from '@entities';
+import { useQuery } from '@tanstack/react-query';
 import { TResponse } from '@types';
-import { type TPartners, Partners } from '@entities';
 
 export const useGetPartners = () => {
   return useQuery<TResponse<TPartners[]>>({

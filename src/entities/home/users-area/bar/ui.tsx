@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { BarUIProps } from './types';
 import { ProgressBar } from '@ui';
+import { BarUIProps } from './types';
 
 export const BarUI: FC<BarUIProps> = ({ data }) => {
   return (

@@ -1,5 +1,5 @@
-import { Button } from '@ui';
 import { Link } from 'react-router-dom';
+import { Button } from '@ui';
 
 const NotFoundPage = () => {
   return (

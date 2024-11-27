@@ -1,7 +1,7 @@
-import { FC, useCallback, useMemo, useState } from 'react';
-import { TCounterBranches, TMapUIProps } from './types';
-import { mapArea } from './constants';
 import MouseTracker from '@/shared/ui/mouse-tracker';
+import { FC, useCallback, useMemo, useState } from 'react';
+import { mapArea } from './constants';
+import { TCounterBranches, TMapUIProps } from './types';
 
 export const MapUI: FC<TMapUIProps> = ({ data }) => {
   const [showDetail, setShowDetail] = useState(false);

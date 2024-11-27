@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  BlockNoteSchema,
-  insertOrUpdateBlock,
-  defaultBlockSpecs,
   BlockNoteEditor,
+  BlockNoteSchema,
+  defaultBlockSpecs,
+  insertOrUpdateBlock,
 } from '@blocknote/core';
 import { FaYoutube } from 'react-icons/fa';
 import { Youtube } from './youtube';

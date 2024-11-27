@@ -1,7 +1,7 @@
 import { apiService } from '@/shared/api';
+import { TCourseData } from '@entities';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { TUpdateCourse } from './types';
-import { TCourseData } from '@entities';
 
 export const useEditCourse = (id: TCourseData['id']) => {
   const queryClient = useQueryClient();

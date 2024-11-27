@@ -1,8 +1,8 @@
-import { Modal, Spinner } from '@ui';
-import { FC, useEffect, useState } from 'react';
-import { TPreviewLessonProps } from './types';
-import { useLessonById } from '../../services';
 import { cn } from '@/shared/libs';
+import { FC, useEffect, useState } from 'react';
+import { Modal, Spinner } from '@ui';
+import { useLessonById } from '../../services';
+import { TPreviewLessonProps } from './types';
 
 export const PreviewLesson: FC<TPreviewLessonProps> = ({
   data,

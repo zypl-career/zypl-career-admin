@@ -1,5 +1,5 @@
+import { Header, Sidebar } from '@/widgets';
 import { Pages } from '@constants';
-import { Sidebar, Header } from '@/widgets';
 import { getAccessToken } from '@libs';
 import { Link, Outlet } from 'react-router-dom';
 
