@@ -21,3 +21,6 @@ export * from './blocknote';
 export * from './drop-file';
 export * from './textarea';
 export * from './input-tags';
+export * from './popover';
+export * from './command';
+export * from './combobox';
