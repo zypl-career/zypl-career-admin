@@ -56,11 +56,6 @@ export const Article = () => {
           setToggleModals((prev) => ({...prev, create: value}))
         }
       />
-      {/* <UpdateArticle
-        open={toggleModals.edit}
-        setOpen={(value) => setToggleModals((prev) => ({ ...prev, edit: value }))}
-        data={edit}
-      /> */}
       <DeleteArticle
         open={toggleModals.delete}
         setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}

@@ -1,5 +1,5 @@
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -11,14 +11,15 @@ import {
   Editor,
   Button,
   Spinner,
-  toast, Modal,
+  toast,
+  Modal,
 } from "@ui";
-import {setFieldError} from "@libs";
-import {TCreateLessonId, TCreateLessonProps} from "./types";
-import {CreateLessonIdSchema} from "./schema";
-import {useLessonIdCourse} from "./services";
+import { setFieldError } from "@libs";
+import { TCreateLessonId, TCreateLessonProps } from "./types";
+import { CreateLessonIdSchema } from "./schema";
+import { useLessonIdCourse } from "./services";
 import { useParams } from "react-router-dom";
-import {FC} from "react";
+import { FC } from "react";
 
 export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
   const { id = '' } = useParams()

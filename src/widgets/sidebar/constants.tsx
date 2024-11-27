@@ -28,6 +28,10 @@ export const menu: TSidebarMenu[] = [
     icon: <CategoriesIcon />,
     children: [
       {
+        title: 'Партнеры',
+        link: '/partners',
+      },
+      {
         title: 'Профессии',
         link: '/professions',
       },
