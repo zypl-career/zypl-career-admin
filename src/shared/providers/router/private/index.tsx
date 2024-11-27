@@ -5,6 +5,7 @@ import MainLayout from "@/app/layouts/main-layout";
 import NotFoundPage from "@/pages/not-found";
 import ArticleCreatePages from "@/pages/article-create";
 import ArticleEditPages from "@/pages/article-edit";
+import PartnersPage from "@pages/partners";
 
 const HomePage = lazy(() => import("@pages/home"));
 const UsersPage = lazy(() => import("@pages/users"));
@@ -50,20 +51,24 @@ export const privateRoutes: RouteObject[] = [
         element: <LessonCreatePage />,
       },
       {
-        path: 'articles',
+        path: "articles",
         element: <ArticlesPage />,
       },
       {
-        path: 'articles/create',
+        path: "articles/create",
         element: <ArticleCreatePages />,
       },
       {
-        path: 'articles/:id',
+        path: "articles/:id",
         element: <ArticlePageId />,
       },
       {
-        path: 'articles/:id/edit',
+        path: "articles/:id/edit",
         element: <ArticleEditPages />,
+      },
+      {
+        path: "partners",
+        element: <PartnersPage />,
       },
       {
         path: "*",
