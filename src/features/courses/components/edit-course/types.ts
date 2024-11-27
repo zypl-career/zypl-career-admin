@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { UpdateCourseSchema } from "./schema";
+import { z } from 'zod';
+import { UpdateCourseSchema } from './schema';
 
 export type TUpdateCourse = z.infer<typeof UpdateCourseSchema>;
 

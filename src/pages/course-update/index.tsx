@@ -1,4 +1,4 @@
-import { UpdateCourse } from "@features";
+import { UpdateCourse } from '@features';
 
 const CourseUpdatePage = () => {
   return <UpdateCourse />;

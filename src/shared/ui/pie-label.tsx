@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from 'react';
 
 export const PieLabel: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -10,7 +10,7 @@ export const PieLabel: FC<PropsWithChildren> = ({ children }) => {
       width="100%"
       height="100%"
     >
-      <div className="flex flex-col items-center justify-center h-full">
+      <div className="flex h-full flex-col items-center justify-center">
         {children}
       </div>
     </foreignObject>

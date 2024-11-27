@@ -1,8 +1,8 @@
-import { AllVisitorsUI, DevicesUI } from "@/entities/home/reports";
+import { AllVisitorsUI, DevicesUI } from '@/entities/home/reports';
 
 export const Reports = () => {
   return (
-    <div className="flex flex-col gap-6 flex-1">
+    <div className="flex flex-1 flex-col gap-6">
       <AllVisitorsUI />
       <DevicesUI />
     </div>

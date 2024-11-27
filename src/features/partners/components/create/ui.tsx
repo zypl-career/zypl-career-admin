@@ -1,22 +1,22 @@
-import { FC } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-  Input,
   Button,
   Spinner,
   toast,
   Modal,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TCreatePartnerProps } from "./types";
-import { CreatePartnerSchema, TCreatePartner } from "./schema";
-import { useCreatePartner } from "./services";
+  DropFile,
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreatePartnerProps } from './types';
+import { CreatePartnerSchema, TCreatePartner } from './schema';
+import { useCreatePartner } from './services';
 
 export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   const form = useForm<TCreatePartner>({
@@ -31,15 +31,12 @@ export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   const handleClose = () => toggle(false);
 
   const onSubmit = (data: TCreatePartner) => {
-    console.log("Отправляемые данные:", data);
-
     createPartner.mutate(data, {
-      onError(error) {
-        console.error("Ошибка при создании партнера:", error);
+      onError() {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Партнёр успешно добавлен" });
+        toast({ title: 'Партнёр успешно добавлен' });
         handleClose();
       },
     });
@@ -48,25 +45,16 @@ export const CreatePartner: FC<TCreatePartnerProps> = ({ open, toggle }) => {
   return (
     <Modal setToggle={toggle} toggle={open}>
       <h1 className="text-4xl font-bold">Добавить партнёра</h1>
-      <main className="bg-white rounded flex flex-col gap-6">
+      <main className="flex flex-col gap-6 rounded bg-white">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="image"
-              render={({ field: { onChange }, ...field }) => (
+              render={({ field: { onChange } }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Изображение"
-                      type="file"
-                      {...field}
-                      onChange={(event) => {
-                        if (event.target.files) {
-                          onChange(event.target.files[0]);
-                        }
-                      }}
-                    />
+                    <DropFile onChange={onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

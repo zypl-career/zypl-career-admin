@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { CreateLessonIdSchema } from "./schema";
+import { z } from 'zod';
+import { CreateLessonIdSchema } from './schema';
 
 export type TCreateLessonId = z.infer<typeof CreateLessonIdSchema>;
 

@@ -1,11 +1,11 @@
-import { apiService } from "@api";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { TUpdateArticleIdResponse, TUpdateArticleId } from "./types";
+import { apiService } from '@api';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import type { TUpdateArticleIdResponse, TUpdateArticleId } from './types';
 
 export const useArticleUpdateById = (articleId: string) => {
   const queryClient = useQueryClient();
   return useMutation<TUpdateArticleIdResponse, Error, TUpdateArticleId>({
-    mutationKey: ["articles"],
+    mutationKey: ['articles'],
     mutationFn: (form: TUpdateArticleId) => {
       if (form.image instanceof FileList) {
         form.image = form.image[0];
@@ -17,7 +17,7 @@ export const useArticleUpdateById = (articleId: string) => {
       return apiService
         .patch(`/article/update/${articleId}`, fd, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         })
         .then((response) => {
@@ -27,7 +27,7 @@ export const useArticleUpdateById = (articleId: string) => {
         .then((response) => response.data);
     },
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["articles"] });
+      queryClient.invalidateQueries({ queryKey: ['articles'] });
     },
   });
 };

@@ -1,5 +1,5 @@
 export const UserUI = () => {
   return (
-    <section className="flex flex-col items-center justify-center my-24"></section>
+    <section className="my-24 flex flex-col items-center justify-center"></section>
   );
 };

@@ -1,4 +1,4 @@
-import { BlockNoteDOMAttributes } from "@blocknote/core";
+import { BlockNoteDOMAttributes } from '@blocknote/core';
 
 export type TBlockNoteProps = {
   domAttributes?: BlockNoteDOMAttributes;

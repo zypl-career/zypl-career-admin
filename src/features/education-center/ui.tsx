@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { EducationCenterList, TEducationCenter } from "@entities";
-import { Spinner } from "@ui";
-import { useGetEducationCenters } from "./services";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from 'react';
+import { EducationCenterList, TEducationCenter } from '@entities';
+import { Spinner } from '@ui';
+import { useGetEducationCenters } from './services';
 
 export const EducationCenters = () => {
-  const [filters, setFilters] = useState({
-    city: "",
-    title: "",
+  const [filters] = useState({
+    city: '',
+    title: '',
     limit: 10,
     page: 1,
   });
 
   const { data, isLoading } = useGetEducationCenters(filters);
 
-  const [editCenter, setEditCenter] = useState<Partial<TEducationCenter>>();
-  const [modals, setModals] = useState({
+  const [, setEditCenter] = useState<Partial<TEducationCenter>>();
+  const [, setModals] = useState({
     edit: false,
     delete: false,
   });

@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -15,34 +15,34 @@ import {
   BlockNote,
   DropFile,
   removeEditorContent,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TUpdateArticleId } from "./types";
-import { UpdateArticleSchema } from "./schema";
-import { useArticleUpdateById } from "./services";
-import { FC } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useArticleId } from "../../services";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TUpdateArticleId } from './types';
+import { UpdateArticleSchema } from './schema';
+import { useArticleUpdateById } from './services';
+import { FC } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useArticleId } from '../../services';
 
 export const UpdateArticle: FC = () => {
-  const { id = "" } = useParams();
+  const { id = '' } = useParams();
   const navigate = useNavigate();
   const { data: updateData } = useArticleId(id);
   const form = useForm<TUpdateArticleId>({
     resolver: zodResolver(UpdateArticleSchema),
     values: {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       hashtags: [],
       image: updateData?.image,
-      generalInfo: "", // Fix: Change the type to string
+      generalInfo: '', // Fix: Change the type to string
       ...updateData,
-      minutesRead: updateData?.minutesRead?.toString() || "",
+      minutesRead: updateData?.minutesRead?.toString() || '',
     },
-    mode: "all",
+    mode: 'all',
   });
 
-  const preview = form.watch("image");
+  const preview = form.watch('image');
 
   const updateArticle = useArticleUpdateById(id);
 
@@ -54,8 +54,8 @@ export const UpdateArticle: FC = () => {
       onSuccess() {
         form.reset();
         removeEditorContent();
-        navigate("/articles");
-        toast({ title: "Статья успешно обновлена" });
+        navigate('/articles');
+        toast({ title: 'Статья успешно обновлена' });
       },
     });
   };
@@ -65,10 +65,10 @@ export const UpdateArticle: FC = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="max-w-5xl container"
+          className="container max-w-5xl"
         >
-          <h1 className="text-4xl font-bold mb-6">Редактировать статью</h1>
-          <header className="py-24 px-20 bg-white flex items-center gap-32 mb-20 rounded-md">
+          <h1 className="mb-6 text-4xl font-bold">Редактировать статью</h1>
+          <header className="mb-20 flex items-center gap-32 rounded-md bg-white px-20 py-24">
             <div className="flex flex-1 flex-col gap-4">
               <FormField
                 control={form.control}

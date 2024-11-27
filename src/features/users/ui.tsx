@@ -1,9 +1,9 @@
-import { TUserData, UserTableUI } from "@entities";
-import { useUser } from "./services";
-import { Spinner } from "@ui";
-import { useState } from "react";
-import { EditUser } from "./components";
-import { DeleteUser } from "./components";
+import { TUserData, UserTableUI } from '@entities';
+import { useUser } from './services';
+import { Spinner } from '@ui';
+import { useState } from 'react';
+import { EditUser } from './components';
+import { DeleteUser } from './components';
 
 export const User = () => {
   const { data: users, isLoading } = useUser();
@@ -12,7 +12,7 @@ export const User = () => {
     delete: false,
   });
   const [editable, setEditable] = useState<Partial<TUserData>>({});
-  const [deleteId, setDeleteId] = useState<TUserData["id"]>(0);
+  const [deleteId, setDeleteId] = useState<TUserData['id']>(0);
 
   const handleEdit = (value: TUserData) => {
     setToggleModals((prev) => ({
@@ -22,7 +22,7 @@ export const User = () => {
     setEditable(value);
   };
 
-  const handleDelete = (value: TUserData["id"]) => {
+  const handleDelete = (value: TUserData['id']) => {
     setToggleModals((prev) => ({
       ...prev,
       delete: !prev.delete,

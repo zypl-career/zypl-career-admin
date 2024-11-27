@@ -1,9 +1,9 @@
-import { FC, useCallback, useState } from "react";
-import { cn } from "@libs";
-import { NavLink } from "react-router-dom";
-import { TSidebarItemMenuProps } from "../types";
-import { SidebarMenuUI } from "./sidebar-menu";
-import { ChevronRight } from "lucide-react";
+import { FC, useCallback, useState } from 'react';
+import { cn } from '@libs';
+import { NavLink } from 'react-router-dom';
+import { TSidebarItemMenuProps } from '../types';
+import { SidebarMenuUI } from './sidebar-menu';
+import { ChevronRight } from 'lucide-react';
 
 export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,15 +23,15 @@ export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
         onClick={item.children ? handleDropdown : undefined}
         className={({ isActive }) =>
           cn(
-            "mb-4 flex items-center gap-2 rounded-md p-2 text-sm hover:bg-secondary-active text-white ",
-            { "bg-secondary-active": isActive },
+            'mb-4 flex items-center gap-2 rounded-md p-2 text-sm hover:bg-secondary-active text-white ',
+            { 'bg-secondary-active': isActive },
           )
         }
       >
         {item.icon}
         <span>{item.title}</span>
         {item.children ? (
-          <ChevronRight className={cn({ "rotate-90": isOpen })} />
+          <ChevronRight className={cn({ 'rotate-90': isOpen })} />
         ) : null}
       </NavLink>
       {isOpen && item.children ? (

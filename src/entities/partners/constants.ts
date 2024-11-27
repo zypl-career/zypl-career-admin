@@ -1,4 +1,4 @@
 export enum Partners {
-  PartnersKey = "partners",
-  PartnersPath = "/partner/get",
+  PartnersKey = 'partners',
+  PartnersPath = '/partner/get',
 }

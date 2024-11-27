@@ -1,11 +1,11 @@
-import { apiService } from "@api";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { TCreateCourseResponse, TCreateCourse } from "./types";
+import { apiService } from '@api';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { TCreateCourseResponse, TCreateCourse } from './types';
 
 export const useCreateCourse = () => {
   const queryClient = useQueryClient();
   return useMutation<TCreateCourseResponse, Error, TCreateCourse>({
-    mutationKey: ["courses"],
+    mutationKey: ['courses'],
     mutationFn: (form: TCreateCourse) => {
       if (form.image instanceof FileList) {
         form.image = form.image[0];
@@ -15,9 +15,9 @@ export const useCreateCourse = () => {
         fd.append(key, value instanceof File ? value : String(value)),
       );
       return apiService
-        .post("/course/create", fd, {
+        .post('/course/create', fd, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         })
         .then((response) => {
@@ -27,7 +27,7 @@ export const useCreateCourse = () => {
         .then((response) => response.data);
     },
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["courses"] });
+      queryClient.invalidateQueries({ queryKey: ['courses'] });
     },
   });
 };

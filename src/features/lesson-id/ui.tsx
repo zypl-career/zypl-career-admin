@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { PlusIcon } from "lucide-react";
-import { LessonByIdTableUI, type TLessonIdData } from "@entities";
-import { useCourseById } from "@features";
-import { Button, LoadingTable, Skeleton } from "@ui";
-import { UpdateLesson, DeleteLessonId, CreateLesson } from "./components";
-import { useLessonId } from "./services";
-import { PreviewLesson } from "./components/preview-lesson-id";
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { PlusIcon } from 'lucide-react';
+import { LessonByIdTableUI, type TLessonIdData } from '@entities';
+import { useCourseById } from '@features';
+import { Button, LoadingTable, Skeleton } from '@ui';
+import { UpdateLesson, DeleteLessonId, CreateLesson } from './components';
+import { useLessonId } from './services';
+import { PreviewLesson } from './components/preview-lesson-id';
 
 export const LessonId = () => {
-  const { id = "0" } = useParams();
+  const { id = '0' } = useParams();
   const { data = [], isLoading } = useLessonId(id);
   const { data: courseData, isLoading: courseLoading } = useCourseById(id);
 
@@ -19,10 +19,10 @@ export const LessonId = () => {
     create: false,
     preview: false,
   });
-  const [deleteId, setDeleteId] = useState<TLessonIdData["id"]>("0");
+  const [deleteId, setDeleteId] = useState<TLessonIdData['id']>('0');
   const [editable, setEditable] = useState<Partial<TLessonIdData>>({});
   const [preview, setPreview] = useState<Partial<TLessonIdData>>({});
-  const handleDelete = (value: TLessonIdData["id"]) => {
+  const handleDelete = (value: TLessonIdData['id']) => {
     setToggleModals((prev) => ({
       ...prev,
       delete: !prev.delete,
@@ -48,12 +48,12 @@ export const LessonId = () => {
 
   return (
     <section>
-      <header className="flex justify-between items-center mb-6">
+      <header className="mb-6 flex items-center justify-between">
         {courseLoading ? (
-          <Skeleton className="w-48 h-5" />
+          <Skeleton className="h-5 w-48" />
         ) : (
           <div>
-            <h1 className="font-bold text-2xl">
+            <h1 className="text-2xl font-bold">
               Уроки курса {courseData?.title}
             </h1>
           </div>

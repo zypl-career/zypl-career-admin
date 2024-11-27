@@ -1,4 +1,4 @@
-import { Partners } from "@features";
+import { Partners } from '@features';
 
 export const PartnersPage = () => {
   return <Partners />;

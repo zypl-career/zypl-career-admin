@@ -12,8 +12,8 @@ export type AxiosErrorData = {
 };
 
 export type AxiosErrorHeaders = {
-  "cache-control": string;
-  "content-type": string;
+  'cache-control': string;
+  'content-type': string;
 };
 
 export type AxiosErrorConfig = {
@@ -42,6 +42,6 @@ export type Transitional = {
 
 export type AxiosErrorConfigHeaders = {
   Accept: string;
-  "Content-Type": string;
+  'Content-Type': string;
   Authorization: string;
 };

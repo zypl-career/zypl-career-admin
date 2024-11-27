@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -12,21 +12,21 @@ import {
   Button,
   Spinner,
   toast,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TCreateCourse } from "./types";
-import { CreateCourseSchema } from "./schema";
-import { useCreateCourse } from "./services";
-import { useNavigate } from "react-router-dom";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreateCourse } from './types';
+import { CreateCourseSchema } from './schema';
+import { useCreateCourse } from './services';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateCourse = () => {
   const navigate = useNavigate();
   const form = useForm<TCreateCourse>({
     resolver: zodResolver(CreateCourseSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      tags: "",
+      title: '',
+      description: '',
+      tags: '',
       image: undefined,
     },
   });
@@ -39,16 +39,16 @@ export const CreateCourse = () => {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Курс успешно создан" });
-        navigate("/courses");
+        toast({ title: 'Курс успешно создан' });
+        navigate('/courses');
       },
     });
   };
 
   return (
     <section>
-      <h1 className="text-4xl font-bold mb-6">Добавить Курс</h1>
-      <main className="bg-white rounded flex flex-col gap-6 p-4">
+      <h1 className="mb-6 text-4xl font-bold">Добавить Курс</h1>
+      <main className="flex flex-col gap-6 rounded bg-white p-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -139,7 +139,7 @@ export const CreateCourse = () => {
                 {createCourse.isPending && <Spinner />}
                 Сохранить
               </Button>
-              <Button onClick={() => navigate("/courses")} variant="secondary">
+              <Button onClick={() => navigate('/courses')} variant="secondary">
                 Отменить
               </Button>
             </div>

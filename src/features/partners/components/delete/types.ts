@@ -1,7 +1,7 @@
-import { TPartners } from "@entities";
+import { TPartners } from '@entities';
 
 export type TDeletePartnerProps = {
-  id: TPartners["id"];
+  id?: TPartners['id'];
   open: boolean;
   setOpen: (state: boolean) => void;
 };

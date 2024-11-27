@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const UserSchema = z.object({
   name: z.string(),
@@ -11,7 +11,7 @@ export const UserSchema = z.object({
   school: z.string(),
   email: z
     .string()
-    .min(2, { message: "Обязательное поле" })
-    .email({ message: "min" }),
-  password: z.string().min(2, { message: "Обязательное поле" }),
+    .min(2, { message: 'Обязательное поле' })
+    .email({ message: 'min' }),
+  password: z.string().min(2, { message: 'Обязательное поле' }),
 });

@@ -1,4 +1,4 @@
-import { Article } from "@features";
+import { Article } from '@features';
 
 const ArticlesPages = () => {
   return <Article />;

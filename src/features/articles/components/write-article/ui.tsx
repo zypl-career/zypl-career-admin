@@ -1,4 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   BlockNote,
   Button,
@@ -14,25 +14,25 @@ import {
   Spinner,
   Textarea,
   toast,
-} from "@ui";
-import { useForm } from "react-hook-form";
-import { TCreateArticle } from "./types";
-import { CreateArticleSchema } from "./schema";
-import { useCreateArticle } from "./services";
-import { setFieldError } from "@/shared/libs";
-import { useNavigate } from "react-router-dom";
+} from '@ui';
+import { useForm } from 'react-hook-form';
+import { TCreateArticle } from './types';
+import { CreateArticleSchema } from './schema';
+import { useCreateArticle } from './services';
+import { setFieldError } from '@/shared/libs';
+import { useNavigate } from 'react-router-dom';
 
 export const WriteArticle = () => {
   const navigate = useNavigate();
   const form = useForm<TCreateArticle>({
     resolver: zodResolver(CreateArticleSchema),
     defaultValues: {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       hashtags: [],
       image: undefined,
-      minutesRead: "", // Fix: Change the type to string
-      generalInfo: "", // Fix: Change the type to string
+      minutesRead: '', // Fix: Change the type to string
+      generalInfo: '', // Fix: Change the type to string
     },
   });
 
@@ -40,7 +40,7 @@ export const WriteArticle = () => {
 
   const onSubmit = (data: TCreateArticle) => {
     const hashtags = Array.isArray(data.hashtags)
-      ? data.hashtags.join(", ")
+      ? data.hashtags.join(', ')
       : data.hashtags;
     createArticle.mutate(
       { ...data, hashtags },
@@ -51,8 +51,8 @@ export const WriteArticle = () => {
         onSuccess() {
           form.reset();
           removeEditorContent();
-          navigate("/articles");
-          toast({ title: "Статья успешно создана" });
+          navigate('/articles');
+          toast({ title: 'Статья успешно создана' });
         },
       },
     );
@@ -63,10 +63,10 @@ export const WriteArticle = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="max-w-5xl container"
+          className="container max-w-5xl"
         >
-          <h1 className="text-4xl font-bold mb-6">Добавить статью</h1>
-          <header className="py-24 px-20 bg-white flex items-center gap-32 mb-20 rounded-md">
+          <h1 className="mb-6 text-4xl font-bold">Добавить статью</h1>
+          <header className="mb-20 flex items-center gap-32 rounded-md bg-white px-20 py-24">
             <div className="flex flex-1 flex-col gap-4">
               <FormField
                 control={form.control}

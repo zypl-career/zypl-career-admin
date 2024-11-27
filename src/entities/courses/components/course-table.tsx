@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { PencilIcon, Trash2Icon } from "lucide-react";
+import { FC } from 'react';
+import { PencilIcon, Trash2Icon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -7,11 +7,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@ui";
-import { TCourseTableProps } from "./types";
-import { useNavigate } from "react-router-dom";
-import { getDMY } from "@/shared/libs";
-import { TCourseData } from "@/entities";
+} from '@ui';
+import { TCourseTableProps } from './types';
+import { useNavigate } from 'react-router-dom';
+import { getDMY } from '@/shared/libs';
+import { TCourseData } from '@/entities';
 
 export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
 
   const handleEdit = (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    courseId: TCourseData["id"],
+    courseId: TCourseData['id'],
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -36,7 +36,7 @@ export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
 
   const handleDelete = (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    courseId: TCourseData["id"],
+    courseId: TCourseData['id'],
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -64,18 +64,18 @@ export const CourseTableUI: FC<TCourseTableProps> = ({ data, onDelete }) => {
           >
             <TableCell>{course.title}</TableCell>
             <TableCell>{course.finishedPercentage}</TableCell>
-            <TableCell>{course.tags.join(", ")}</TableCell>
+            <TableCell>{course.tags.join(', ')}</TableCell>
             <TableCell>{getDMY(course.updatedAt)}</TableCell>
             <TableCell>{getDMY(course.createdAt)}</TableCell>
             <TableCell>
               <div className="flex items-center justify-end gap-4">
                 <PencilIcon
                   onClick={(e) => handleEdit(e, course.id)}
-                  className="text-gray-500 hover:text-primary cursor-pointer"
+                  className="cursor-pointer text-gray-500 hover:text-primary"
                 />
                 <Trash2Icon
                   onClick={(e) => handleDelete(e, course.id)}
-                  className="text-gray-500 hover:text-red-500 cursor-pointer"
+                  className="cursor-pointer text-gray-500 hover:text-red-500"
                 />
               </div>
             </TableCell>

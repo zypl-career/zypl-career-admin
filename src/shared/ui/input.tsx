@@ -1,23 +1,23 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { cn } from "@libs";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from '@libs';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 const inputVariant = cva(
-  "flex w-full rounded-lg error:border-red-400 border border-input bg-background px-3 py-2.5 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  'flex w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 error:border-red-400',
   {
     variants: {
       variant: {
-        ghost: "hover:bg-accent hover:text-accent-foreground border-none",
+        ghost: 'border-none hover:bg-accent hover:text-accent-foreground',
       },
       size: {
-        lg: "text-lg",
-        default: "text-sm",
+        lg: 'text-lg',
+        default: 'text-sm',
       },
     },
     defaultVariants: {
       // variant: 'default',
-      size: "default",
+      size: 'default',
     },
   },
 );
@@ -38,7 +38,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         if (onKeyDown) {
           onKeyDown(event);
         }
-        if (event.key === "Enter" && onEnter && props.value) {
+        if (event.key === 'Enter' && onEnter && props.value) {
           event.preventDefault();
           onEnter(props.value.toString());
         }
@@ -61,6 +61,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };

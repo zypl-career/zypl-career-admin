@@ -1,7 +1,7 @@
-import { Pages } from "@constants";
-import { Sidebar, Header } from "@/widgets";
-import { getAccessToken } from "@libs";
-import { Link, Outlet } from "react-router-dom";
+import { Pages } from '@constants';
+import { Sidebar, Header } from '@/widgets';
+import { getAccessToken } from '@libs';
+import { Link, Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   const isAuth = !!getAccessToken();
@@ -19,7 +19,7 @@ const MainLayout = () => {
         </>
       ) : (
         <div>
-          Извините, кажется, Вы не авторизованы, пожалуйста,{" "}
+          Извините, кажется, Вы не авторизованы, пожалуйста,{' '}
           <Link to={Pages.SignIn} className="text-primary">
             авторизуйтесь
           </Link>

@@ -10,7 +10,7 @@ export type TUserData = {
   name: string;
   surname: string;
   patronymic: string;
-  gender: "male" | "female";
+  gender: 'male' | 'female';
   age: number;
   district: string;
   role: string;

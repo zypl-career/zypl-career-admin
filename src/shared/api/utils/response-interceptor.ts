@@ -1,6 +1,6 @@
-import type { AxiosResponse } from "axios";
-import { toast } from "@ui";
-import { snakeToCamel, convertNumbersToString } from "@libs";
+import type { AxiosResponse } from 'axios';
+import { toast } from '@ui';
+import { snakeToCamel, convertNumbersToString } from '@libs';
 
 export const responseInterceptor = (response: AxiosResponse) => {
   if (response.data && !(response.data instanceof Blob)) {
@@ -9,8 +9,8 @@ export const responseInterceptor = (response: AxiosResponse) => {
 
   if (response.data?.code > 300) {
     toast({
-      title: "Ошибка!",
-      variant: "warning",
+      title: 'Ошибка!',
+      variant: 'warning',
       ...(response.data?.message ? { detail: response.data?.message } : {}),
     });
   }

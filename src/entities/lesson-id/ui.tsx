@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { PencilIcon, Trash2Icon } from "lucide-react";
+import { FC } from 'react';
+import { PencilIcon, Trash2Icon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -7,9 +7,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@ui";
-import { getDMY } from "@libs";
-import { TLessonIdData, type TLessonIdTableProps } from "./types";
+} from '@ui';
+import { getDMY } from '@libs';
+import { TLessonIdData, type TLessonIdTableProps } from './types';
 
 export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
   data,
@@ -71,11 +71,11 @@ export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
               <div className="flex items-center justify-end gap-4">
                 <PencilIcon
                   onClick={(e) => handleUpdate(e, lesson)}
-                  className="text-gray-500 hover:text-primary cursor-pointer"
+                  className="cursor-pointer text-gray-500 hover:text-primary"
                 />
                 <Trash2Icon
                   onClick={(e) => handleDelete(e, lesson.id)}
-                  className="text-gray-500 hover:text-red-500 cursor-pointer"
+                  className="cursor-pointer text-gray-500 hover:text-red-500"
                 />
               </div>
             </TableCell>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Select,
@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@ui";
+} from '@ui';
 
 type ISelectFieldProps<T> = {
   value: string;
@@ -22,7 +22,7 @@ export const SelectField = <T,>({
   value,
   valueType,
   printType,
-  placeholder = "Выберите элемент",
+  placeholder = 'Выберите элемент',
   onChange,
 }: ISelectFieldProps<T>) => (
   <Select onValueChange={onChange} defaultValue={String(value)}>

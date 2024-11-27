@@ -8,11 +8,11 @@ import {
   AlertDialogCancel,
   AlertDialogDescription,
   AlertDialogTitle,
-} from "@ui";
+} from '@ui';
 
-import { FC } from "react";
-import { TDeleteProps } from "./types";
-import { useDeleteCourse } from "./services";
+import { FC } from 'react';
+import { TDeleteProps } from './types';
+import { useDeleteCourse } from './services';
 
 export const DeleteCourse: FC<TDeleteProps> = ({ setOpen, open, id }) => {
   const deleteCourse = useDeleteCourse(id);

@@ -1,86 +1,86 @@
 /* eslint-disable react-refresh/only-export-components */
-import { lazy } from "react";
-import { RouteObject } from "react-router-dom";
-import MainLayout from "@/app/layouts/main-layout";
-import NotFoundPage from "@/pages/not-found";
+import { lazy } from 'react';
+import { RouteObject } from 'react-router-dom';
+import MainLayout from '@/app/layouts/main-layout';
+import NotFoundPage from '@/pages/not-found';
 
-import PartnersPage from "@pages/partners";
+import PartnersPage from '@pages/partners';
 
-const HomePage = lazy(() => import("@pages/home"));
-const UsersPage = lazy(() => import("@pages/users"));
+const HomePage = lazy(() => import('@pages/home'));
+const UsersPage = lazy(() => import('@pages/users'));
 
-const CoursesPage = lazy(() => import("@pages/courses"));
-const CourseCreatePage = lazy(() => import("@pages/course-create"));
-const CourseUpdatePage = lazy(() => import("@pages/course-update"));
+const CoursesPage = lazy(() => import('@pages/courses'));
+const CourseCreatePage = lazy(() => import('@pages/course-create'));
+const CourseUpdatePage = lazy(() => import('@pages/course-update'));
 
-const LessonCreatePage = lazy(() => import("@pages/lessons-create"));
-const LessonsByIdPage = lazy(() => import("@pages/lessons-id"));
+const LessonCreatePage = lazy(() => import('@pages/lessons-create'));
+const LessonsByIdPage = lazy(() => import('@pages/lessons-id'));
 
-const ArticlesPage = lazy(() => import("@pages/articles"));
-const ArticlePageId = lazy(() => import("@pages/article-id"));
-const ArticleCreatePage = lazy(() => import("@/pages/article-create"));
-const ArticleEditPage = lazy(() => import("@/pages/article-edit"));
-const EducationCenterPage = lazy(() => import("@pages/education-center"));
+const ArticlesPage = lazy(() => import('@pages/articles'));
+const ArticlePageId = lazy(() => import('@pages/article-id'));
+const ArticleCreatePage = lazy(() => import('@/pages/article-create'));
+const ArticleEditPage = lazy(() => import('@/pages/article-edit'));
+const EducationCenterPage = lazy(() => import('@pages/education-center'));
 
 export const privateRoutes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <MainLayout />,
     children: [
       {
-        path: "",
+        path: '',
         element: <HomePage />,
       },
       {
-        path: "users",
+        path: 'users',
         element: <UsersPage />,
       },
       {
-        path: "courses",
+        path: 'courses',
         element: <CoursesPage />,
       },
       {
-        path: "education-center",
+        path: 'education-center',
         element: <EducationCenterPage />,
       },
       {
-        path: "course/create",
+        path: 'course/create',
         element: <CourseCreatePage />,
       },
       {
-        path: "course/update/:id",
+        path: 'course/update/:id',
         element: <CourseUpdatePage />,
       },
       {
-        path: "course/:id/lesson",
+        path: 'course/:id/lesson',
         element: <LessonsByIdPage />,
       },
       {
-        path: "course/:id/lesson-create",
+        path: 'course/:id/lesson-create',
         element: <LessonCreatePage />,
       },
       {
-        path: "articles",
+        path: 'articles',
         element: <ArticlesPage />,
       },
       {
-        path: "articles/create",
+        path: 'articles/create',
         element: <ArticleCreatePage />,
       },
       {
-        path: "articles/:id",
+        path: 'articles/:id',
         element: <ArticlePageId />,
       },
       {
-        path: "articles/:id/edit",
+        path: 'articles/:id/edit',
         element: <ArticleEditPage />,
       },
       {
-        path: "partners",
+        path: 'partners',
         element: <PartnersPage />,
       },
       {
-        path: "*",
+        path: '*',
         element: <NotFoundPage />,
       },
     ],

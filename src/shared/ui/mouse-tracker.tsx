@@ -1,5 +1,5 @@
-import { FC, ReactNode, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { FC, ReactNode, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type MousePositionProps = {
   x?: number;
@@ -19,16 +19,16 @@ const MouseTracker: FC<MousePositionProps> = ({ children, x, y, trigger }) => {
       });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
 
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [x, y]);
 
   return trigger
     ? createPortal(
-        <div className="pointer-events-none h-dvh relative">
+        <div className="pointer-events-none relative h-dvh">
           <div
-            className="pointer-events-none rounded fixed bg-[#F8FAFC] border border-[#E7E7E7] px-3 py-2 flex items-center justify-center"
+            className="pointer-events-none fixed flex items-center justify-center rounded border border-[#E7E7E7] bg-[#F8FAFC] px-3 py-2"
             style={{
               left: `${position.x}px`,
               top: `${position.y}px`,

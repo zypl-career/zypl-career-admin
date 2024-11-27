@@ -1,13 +1,13 @@
-import { PartnersList, TPartners } from "@entities";
-import { Button, Spinner } from "@ui";
-import { useGetPartners } from "./services";
-import { useState } from "react";
-import { CreatePartner } from "./components";
+import { PartnersList, TPartners } from '@entities';
+import { Button, Spinner } from '@ui';
+import { useGetPartners } from './services';
+import { useState } from 'react';
+import { CreatePartner, DeletePartner, UpdatePartner } from './components';
 
 export const Partners = () => {
   const { data, isLoading } = useGetPartners();
-  const [editPartner, setEditPartner] = useState<Partial<TPartners>>();
-  const [deletePartner, setDeletePartner] = useState<Partial<TPartners>>();
+  const [editPartner, setEditPartner] = useState<Partial<TPartners>>({});
+  const [deletePartner, setDeletePartner] = useState<Partial<TPartners>>({});
   const [modals, setModals] = useState({
     create: false,
     edit: false,
@@ -22,23 +22,20 @@ export const Partners = () => {
   };
 
   const handleDelete = (value: Partial<TPartners>) => {
-    handleToggleModals("delete");
+    handleToggleModals('delete');
     setDeletePartner(value);
   };
 
   const handleEdit = (value: Partial<TPartners>) => {
-    handleToggleModals("edit");
+    handleToggleModals('edit');
     setEditPartner(value);
   };
-
-  console.log(editPartner);
-  console.log(deletePartner);
-
+  
   return (
     <section>
-      <header>
-        <h2>Партнеры</h2>
-        <Button onClick={() => handleToggleModals("create")}>
+      <header className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Партнеры</h1>
+        <Button onClick={() => handleToggleModals('create')}>
           Добавить партнера
         </Button>
       </header>
@@ -55,7 +52,17 @@ export const Partners = () => {
       )}
       <CreatePartner
         open={modals.create}
-        toggle={() => handleToggleModals("create")}
+        toggle={() => handleToggleModals('create')}
+      />
+      <UpdatePartner
+        data={editPartner}
+        open={modals.edit}
+        toggle={() => handleToggleModals('edit')}
+      />
+      <DeletePartner
+        id={deletePartner.id}
+        open={modals.delete}
+        setOpen={() => handleToggleModals('delete')}
       />
     </section>
   );

@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { CreateArticleSchema } from "./schema";
+import { z } from 'zod';
+import { CreateArticleSchema } from './schema';
 
 export type TCreateArticle = z.infer<typeof CreateArticleSchema>;
 

@@ -1,10 +1,10 @@
-import { PlusIcon } from "lucide-react";
-import { useState } from "react";
-import { ArticleList, TArticleData } from "@entities";
-import { Button, Spinner } from "@ui";
-import { CreateArticle, DeleteArticle } from "./components";
-import { useArticles } from "./services";
-import { Link } from "react-router-dom";
+import { PlusIcon } from 'lucide-react';
+import { useState } from 'react';
+import { ArticleList, TArticleData } from '@entities';
+import { Button, Spinner } from '@ui';
+import { CreateArticle, DeleteArticle } from './components';
+import { useArticles } from './services';
+import { Link } from 'react-router-dom';
 
 export const Article = () => {
   const { data, isLoading } = useArticles();
@@ -24,13 +24,13 @@ export const Article = () => {
   };
 
   const handleDelete = (value: Partial<TArticleData>) => {
-    handleToggleModals("delete");
+    handleToggleModals('delete');
     setDeleteArticle(value);
   };
 
   return (
     <section>
-      <header className="flex justify-between items-center mb-6">
+      <header className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Статьи</h1>
         </div>
@@ -57,7 +57,7 @@ export const Article = () => {
         setOpen={(value) =>
           setToggleModals((prev) => ({ ...prev, delete: value }))
         }
-        id={deleteArticle?.id || ""}
+        id={deleteArticle?.id || ''}
       />
     </section>
   );

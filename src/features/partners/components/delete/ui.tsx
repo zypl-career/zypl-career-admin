@@ -8,16 +8,16 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
   Spinner,
-} from "@ui";
+} from '@ui';
 
-import { FC } from "react";
-import { TDeletePartnerProps } from "./types";
-import { useDeletePartner } from "./services";
+import { FC } from 'react';
+import { TDeletePartnerProps } from './types';
+import { useDeletePartner } from './services';
 
 export const DeletePartner: FC<TDeletePartnerProps> = ({
   setOpen,
   open,
-  id,
+  id = '',
 }) => {
   const deletePartner = useDeletePartner(id);
 

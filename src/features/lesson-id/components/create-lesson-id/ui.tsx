@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -13,21 +13,21 @@ import {
   Spinner,
   toast,
   Modal,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TCreateLessonId, TCreateLessonProps } from "./types";
-import { CreateLessonIdSchema } from "./schema";
-import { useLessonIdCourse } from "./services";
-import { useParams } from "react-router-dom";
-import { FC } from "react";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TCreateLessonId, TCreateLessonProps } from './types';
+import { CreateLessonIdSchema } from './schema';
+import { useLessonIdCourse } from './services';
+import { useParams } from 'react-router-dom';
+import { FC } from 'react';
 
 export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
-  const { id = "" } = useParams();
+  const { id = '' } = useParams();
   const form = useForm<TCreateLessonId>({
     resolver: zodResolver(CreateLessonIdSchema),
     defaultValues: {
-      name: "",
-      description: "",
+      name: '',
+      description: '',
       resource: undefined,
     },
   });
@@ -42,7 +42,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
         setFieldError(form);
       },
       onSuccess() {
-        toast({ title: "Урок успешно создан" });
+        toast({ title: 'Урок успешно создан' });
         handleClose();
       },
     });
@@ -51,7 +51,7 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
   return (
     <Modal setToggle={setOpen} toggle={open}>
       <h1 className="text-4xl font-bold">Добавить урок</h1>
-      <main className="bg-white rounded flex flex-col gap-6">
+      <main className="flex flex-col gap-6 rounded bg-white">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField

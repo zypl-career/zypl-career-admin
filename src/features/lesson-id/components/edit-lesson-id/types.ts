@@ -1,6 +1,6 @@
-import { z } from "zod";
-import { UpdateLessonIdSchema } from "./schema";
-import { TLessonIdData } from "@entities";
+import { z } from 'zod';
+import { UpdateLessonIdSchema } from './schema';
+import { TLessonIdData } from '@entities';
 
 export type TUpdateLessonId = z.infer<typeof UpdateLessonIdSchema>;
 

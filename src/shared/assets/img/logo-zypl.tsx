@@ -1,4 +1,4 @@
-import { FC, SVGProps } from "react";
+import { FC, SVGProps } from 'react';
 
 const LogoZypl: FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
   return (

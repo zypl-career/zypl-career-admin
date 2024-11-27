@@ -14,35 +14,35 @@ const returnDaysLeft = (inputDate: Date): number => {
   return 3;
 };
 const russianMonths = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
 ];
 const shortRussianMonths = [
-  "янв.",
-  "фев.",
-  "мар.",
-  "апр.",
-  "май",
-  "июн.",
-  "июл.",
-  "авг.",
-  "сен.",
-  "окт.",
-  "нояб.",
-  "дек.",
+  'янв.',
+  'фев.',
+  'мар.',
+  'апр.',
+  'май',
+  'июн.',
+  'июл.',
+  'авг.',
+  'сен.',
+  'окт.',
+  'нояб.',
+  'дек.',
 ];
 const extractDayFromDate = (date: Date): number => {
-  const dateArr = date.toDateString().split(" ");
+  const dateArr = date.toDateString().split(' ');
   return parseInt(dateArr[2]);
 };
 
@@ -52,8 +52,8 @@ export const formatDateDays = (date: string): string => {
     [key: number]: string;
   };
   const dateObj: TDateString = {
-    0: "Сегодня",
-    1: "Вчера",
+    0: 'Сегодня',
+    1: 'Вчера',
   };
   const daysLeft = returnDaysLeft(fDate);
   return [0, 1].includes(daysLeft)
@@ -72,14 +72,14 @@ export const titledDate = (date: string) => (
 );
 export const getHMS = (date: string) => {
   if (!date) {
-    return "сейчас";
+    return 'сейчас';
   }
 
-  const dArr = date.split(" ");
+  const dArr = date.split(' ');
   if (dArr.length < 4) {
     return dArr[1];
   }
-  const dHMS = dArr[4].split(":");
+  const dHMS = dArr[4].split(':');
   return <code className="text-gray-500">{`${dHMS[0]}:${dHMS[1]}`}</code>;
 };
 export const getDMY = (
@@ -87,7 +87,7 @@ export const getDMY = (
   short: boolean = true,
 ): string => {
   if (!date) {
-    return "сейчас";
+    return 'сейчас';
   }
   const d = new Date(date);
   const day = extractDayFromDate(d);

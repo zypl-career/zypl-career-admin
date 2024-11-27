@@ -1,4 +1,4 @@
-import { Courses } from "@features";
+import { Courses } from '@features';
 
 const CoursesPage = () => {
   return <Courses />;

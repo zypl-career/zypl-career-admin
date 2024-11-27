@@ -1,6 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -13,27 +13,27 @@ import {
   Button,
   Spinner,
   toast,
-} from "@ui";
-import { setFieldError } from "@libs";
-import { TUpdateCourse } from "./types";
-import { UpdateCourseSchema } from "./schema";
-import { useCourseById, useEditCourse } from "./services";
+} from '@ui';
+import { setFieldError } from '@libs';
+import { TUpdateCourse } from './types';
+import { UpdateCourseSchema } from './schema';
+import { useCourseById, useEditCourse } from './services';
 
 export const UpdateCourse = () => {
-  const { id = "0" } = useParams();
+  const { id = '0' } = useParams();
   const { data: course, isLoading } = useCourseById(id);
   const navigate = useNavigate();
 
   const form = useForm<TUpdateCourse>({
     resolver: zodResolver(UpdateCourseSchema),
     values: {
-      title: course?.title || "",
+      title: course?.title || '',
       image: null,
-      description: course?.description || "",
-      tags: "",
-      finishedPercentage: course?.finishedPercentage?.toLocaleString() || "0",
+      description: course?.description || '',
+      tags: '',
+      finishedPercentage: course?.finishedPercentage?.toLocaleString() || '0',
     },
-    mode: "all",
+    mode: 'all',
   });
 
   const updateCourse = useEditCourse(id);
@@ -45,11 +45,11 @@ export const UpdateCourse = () => {
       },
       onSuccess() {
         toast({
-          title: "Успешно",
-          description: "Курс успешно обнавлен",
-          variant: "success",
+          title: 'Успешно',
+          description: 'Курс успешно обнавлен',
+          variant: 'success',
         });
-        navigate("/courses");
+        navigate('/courses');
       },
     });
   };
@@ -60,8 +60,8 @@ export const UpdateCourse = () => {
 
   return (
     <section>
-      <h1 className="text-4xl font-bold mb-6">Изменить Курс {course?.title}</h1>
-      <main className="bg-white rounded flex flex-col gap-6 p-4">
+      <h1 className="mb-6 text-4xl font-bold">Изменить Курс {course?.title}</h1>
+      <main className="flex flex-col gap-6 rounded bg-white p-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -150,7 +150,7 @@ export const UpdateCourse = () => {
                 {updateCourse.isPending && <Spinner />}
                 Сохранить
               </Button>
-              <Button onClick={() => navigate("/courses")} variant="secondary">
+              <Button onClick={() => navigate('/courses')} variant="secondary">
                 Отменить
               </Button>
             </div>

@@ -1,9 +1,9 @@
-import { ChangeEvent, DragEvent, FC, useEffect, useRef, useState } from "react";
-import { BlurImage, Button } from "@ui";
-import { cn } from "@libs";
-import type { TDropFileProps, TPreview } from "./types";
+import { ChangeEvent, DragEvent, FC, useEffect, useRef, useState } from 'react';
+import { BlurImage, Button } from '@ui';
+import { cn } from '@libs';
+import type { TDropFileProps, TPreview } from './types';
 
-const whiteListTypeFile = ["image", "image/jpeg", "image/png", "gif"];
+const whiteListTypeFile = ['image', 'image/jpeg', 'image/png', 'gif'];
 
 export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -41,16 +41,18 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
   };
 
   useEffect(() => {
-    setPreviewFile((prev) => ({ ...prev, preview }));
-  }, [preview]);
+    if (preview && !previewFile.name) {
+      setPreviewFile((prev) => ({ ...prev, preview }));
+    }
+  }, [preview, previewFile.name]);
 
   return (
     <>
       <div
         className={cn(
-          "flex flex-col justify-center items-center relative rounded-lg py-6 px-1 cursor-pointer hover:opacity-50 transition",
+          'flex flex-col justify-center items-center relative rounded-lg py-6 px-1 cursor-pointer hover:opacity-50 transition',
           {
-            "border-dashed border-primary-100 border-2": !previewFile?.preview,
+            'border-dashed border-primary-100 border-2': !previewFile?.preview,
           },
         )}
         onClick={() => inputRef.current?.click()}
@@ -71,7 +73,7 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
             isSkeleton
             src={previewFile?.preview?.toString()}
             alt="preview"
-            className="object-contain rounded-md w-full"
+            className="w-full rounded-md object-contain"
           />
         ) : (
           <>

@@ -1,5 +1,5 @@
-import { FC, ReactNode, useState } from "react";
-import { cn } from "@libs";
+import { FC, ReactNode, useState } from 'react';
+import { cn } from '@libs';
 
 export type ImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   isSkeleton?: boolean;
@@ -19,9 +19,9 @@ export const BlurImage: FC<ImageProps> = ({
       <img
         className={cn(
           className,
-          "duration-500 ease-in-out",
+          'duration-500 ease-in-out',
           { hidden: isLoading && isSkeleton },
-          isLoading ? "scale-105 blur-sm" : "scale-100 blur-0",
+          isLoading ? 'scale-105 blur-sm' : 'scale-100 blur-0',
         )}
         onLoad={() => setLoading(false)}
         {...props}
@@ -32,13 +32,13 @@ export const BlurImage: FC<ImageProps> = ({
       {isSkeleton && isLoading ? (
         <div
           className={cn(
-            "flex items-center justify-center h-48 mb-4 bg-gray-300 rounded animate-pulse",
+            'flex items-center justify-center h-48 mb-4 bg-gray-300 rounded animate-pulse',
             className,
           )}
           style={{ width: props.width, height: props.height }}
         >
           <svg
-            className="w-10 h-10 text-gray-200 dark:text-gray-600"
+            className="size-10 text-gray-200 dark:text-gray-600"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"

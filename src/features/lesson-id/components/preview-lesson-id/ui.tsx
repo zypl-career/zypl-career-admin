@@ -1,8 +1,8 @@
-import { Modal, Spinner } from "@ui";
-import { FC, useEffect, useState } from "react";
-import { TPreviewLessonProps } from "./types";
-import { useLessonById } from "../../services";
-import { cn } from "@/shared/libs";
+import { Modal, Spinner } from '@ui';
+import { FC, useEffect, useState } from 'react';
+import { TPreviewLessonProps } from './types';
+import { useLessonById } from '../../services';
+import { cn } from '@/shared/libs';
 
 export const PreviewLesson: FC<TPreviewLessonProps> = ({
   data,
@@ -10,7 +10,7 @@ export const PreviewLesson: FC<TPreviewLessonProps> = ({
   setOpen,
 }) => {
   const [isResourceLoading, setIsResourceLoading] = useState(true);
-  const { data: lessonData } = useLessonById(data?.id || "");
+  const { data: lessonData } = useLessonById(data?.id || '');
 
   useEffect(() => {
     setIsResourceLoading(open);
@@ -28,7 +28,7 @@ export const PreviewLesson: FC<TPreviewLessonProps> = ({
         width="100%"
         height="100%"
         onLoad={() => setIsResourceLoading(false)}
-        className={cn("w-full h-full rounded-2xl", {
+        className={cn('w-full h-full rounded-2xl', {
           hidden: isResourceLoading,
         })}
       />

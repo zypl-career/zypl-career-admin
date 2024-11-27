@@ -1,4 +1,4 @@
-import { UpdateArticle } from "@/features/articles/components";
+import { UpdateArticle } from '@/features/articles/components';
 
 const ArticleEditPage = () => {
   return <UpdateArticle />;

@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { apiService } from "@api";
-import { TResponse } from "@types";
-import { TEducationCenter, EducationCenter } from "@entities";
+import { useQuery } from '@tanstack/react-query';
+import { apiService } from '@api';
+import { TResponse } from '@types';
+import { TEducationCenter, EducationCenter } from '@entities';
 
 export const useGetEducationCenters = (filters: {
   city?: string;

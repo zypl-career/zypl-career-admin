@@ -1,1 +1,29 @@
-{}
+{
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "all",
+  "tailwindFunctions": ["clsx"],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "importOrderBuiltinModulesToTop": true,
+  "importOrderMergeDuplicateImports": true,
+  "bracketSameLine": false,
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports"
+  ],
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "<THIRD_PARTY_MODULES>",
+    "^types$",
+    "^@app/(.*)$",
+    "^@widgets$",
+    "^@features$",
+    "^@entites$",
+    "^@ui$",
+    "^@hooks$",
+    "^@shared$",
+    "^@styles$",
+    "^[./]"
+  ]
+}

@@ -12,7 +12,7 @@ export type TLessonIdData = {
 
 export type TLessonIdTableProps = {
   data: TLessonIdData[];
-  onDelete: (id: TLessonIdData["id"]) => void;
+  onDelete: (id: TLessonIdData['id']) => void;
   onEdit: (item: TLessonIdData) => void;
   onPreview: (item: TLessonIdData) => void;
 };

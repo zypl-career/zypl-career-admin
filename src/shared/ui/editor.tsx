@@ -1,5 +1,5 @@
-import ReactQuill, { ReactQuillProps } from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import ReactQuill, { ReactQuillProps } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 type TextEditorProps = ReactQuillProps & {
   value: string;
@@ -10,16 +10,16 @@ type TextEditorProps = ReactQuillProps & {
 const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ align: ["right", "center", "justify"] }],
-    [{ list: "ordered" }, { list: "bullet" }],
-    ["link", "image", "video"],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ align: ['right', 'center', 'justify'] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image', 'video'],
   ],
 };
 
 const Editor: React.FC<TextEditorProps> = ({
   value,
-  theme = "snow",
+  theme = 'snow',
   onChange,
   ...props
 }) => (
@@ -32,6 +32,6 @@ const Editor: React.FC<TextEditorProps> = ({
   />
 );
 
-Editor.displayName = "Editor";
+Editor.displayName = 'Editor';
 
 export { Editor };

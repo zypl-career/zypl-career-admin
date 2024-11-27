@@ -1,5 +1,5 @@
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { ReactNode } from "react";
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { ReactNode } from 'react';
 
 export const VisuallyHiddenComponent = ({
   children,

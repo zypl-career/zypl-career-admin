@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { PencilIcon, Trash2Icon } from "lucide-react";
+import { FC } from 'react';
+import { PencilIcon, Trash2Icon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -7,9 +7,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@ui";
-import { getGender } from "@libs";
-import { TUserTableProps } from "./types";
+} from '@ui';
+import { getGender } from '@libs';
+import { TUserTableProps } from './types';
 
 export const UserTableUI: FC<TUserTableProps> = ({
   data,
@@ -40,11 +40,11 @@ export const UserTableUI: FC<TUserTableProps> = ({
               <div className="flex items-center gap-4">
                 <PencilIcon
                   onClick={() => onEdit(user)}
-                  className="text-gray-500 cursor-pointer"
+                  className="cursor-pointer text-gray-500"
                 />
                 <Trash2Icon
                   onClick={() => onDelete(user.id)}
-                  className="text-gray-500 cursor-pointer"
+                  className="cursor-pointer text-gray-500"
                 />
               </div>
             </TableCell>

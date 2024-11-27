@@ -7,13 +7,13 @@ import {
   FormItem,
   FormMessage,
   Input,
-} from "@ui";
-import { FC } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { UserSchema } from "./schema";
-import { TEditUserProps, TUserSchema } from "./types";
-import { useEditUser } from "./services";
+} from '@ui';
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { UserSchema } from './schema';
+import { TEditUserProps, TUserSchema } from './types';
+import { useEditUser } from './services';
 
 export const EditUser: FC<TEditUserProps> = ({
   editable,

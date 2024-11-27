@@ -1,7 +1,7 @@
-import { Dialog, DialogContent, DialogTitle } from "@ui";
-import { FC, ReactNode } from "react";
-import { VisuallyHiddenComponent } from "./utils.tsx";
-import { DialogProps } from "@radix-ui/react-dialog";
+import { Dialog, DialogContent, DialogTitle } from '@ui';
+import { FC, ReactNode } from 'react';
+import { VisuallyHiddenComponent } from './utils.tsx';
+import { DialogProps } from '@radix-ui/react-dialog';
 
 export type TModalProps = DialogProps & {
   toggle: boolean;
