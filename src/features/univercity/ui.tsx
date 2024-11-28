@@ -7,12 +7,8 @@ import { useGetUniversities } from './services';
 
 export const Universities = () => {
   const { data, isLoading } = useGetUniversities();
-  const [editUniversity, setEditUniversity] = useState<Partial<TUniversity>>(
-    {},
-  );
-  const [deleteUniversity, setDeleteUniversity] = useState<
-    Partial<TUniversity>
-  >({});
+  const [, setEditUniversity] = useState<Partial<TUniversity>>({});
+  const [, setDeleteUniversity] = useState<Partial<TUniversity>>({});
   const [modals, setModals] = useState({
     create: false,
     edit: false,
