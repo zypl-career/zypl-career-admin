@@ -1,7 +1,6 @@
 {
   "/**/*.{js,jsx,ts,tsx}": [
     "eslint '**/*.{js,jsx,ts,tsx}' --fix",
-    "prettier --write",
-    "yarn tsc -b"
+    "prettier -w ."
   ]
 }

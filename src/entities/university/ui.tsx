@@ -36,6 +36,7 @@ export const UniversityList: FC<TUniversityProps> = ({
                   <p className="text-sm text-gray-500">
     
     
+    
               {university.generalInfo}
     </p>
           </div>
