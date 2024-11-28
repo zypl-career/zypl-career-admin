@@ -7,3 +7,4 @@ export * from './nums';
 export * from './get-gender';
 export * from './set-field-error';
 export * from './blob';
+export * from './file';
