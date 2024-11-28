@@ -1,4 +1,5 @@
 import { PartnersList, TPartners } from '@entities';
+import { PlusIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button, Spinner } from '@ui';
 import { CreatePartner, DeletePartner, UpdatePartner } from './components';
@@ -36,6 +37,7 @@ export const Partners = () => {
       <header className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Партнеры</h1>
         <Button onClick={() => handleToggleModals('create')}>
+          <PlusIcon />
           Добавить партнера
         </Button>
       </header>

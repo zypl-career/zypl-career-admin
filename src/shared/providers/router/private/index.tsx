@@ -20,6 +20,7 @@ const ArticlePageId = lazy(() => import('@pages/article-id'));
 const ArticleCreatePage = lazy(() => import('@/pages/article-create'));
 const ArticleEditPage = lazy(() => import('@/pages/article-edit'));
 const EducationCenterPage = lazy(() => import('@pages/education-center'));
+const UniversityPage = lazy(() => import('@pages/university'));
 
 export const privateRoutes: RouteObject[] = [
   {
@@ -33,6 +34,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'users',
         element: <UsersPage />,
+      },
+      {
+        path: 'university',
+        element: <UniversityPage />,
       },
       {
         path: 'courses',
