@@ -1,3 +1,4 @@
+import { CreateUniversity } from '@/features';
 import { TUniversity, UniversityList } from '@entities';
 import { PlusIcon } from 'lucide-react';
 import { useState } from 'react';
@@ -55,6 +56,10 @@ export const Universities = () => {
           onEdit={handleEdit}
         />
       )}
+      <CreateUniversity
+        open={modals.create}
+        toggle={() => handleToggleModals('create')}
+      />
     </section>
   );
 };
