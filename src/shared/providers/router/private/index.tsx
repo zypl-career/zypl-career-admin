@@ -21,6 +21,7 @@ const ArticleCreatePage = lazy(() => import('@/pages/article-create'));
 const ArticleEditPage = lazy(() => import('@/pages/article-edit'));
 const EducationCenterPage = lazy(() => import('@pages/education-center'));
 const UniversityPage = lazy(() => import('@pages/university'));
+const UserStatisticsPage = lazy(() => import('@pages/user-statistics'));
 
 export const privateRoutes: RouteObject[] = [
   {
@@ -38,6 +39,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'university',
         element: <UniversityPage />,
+      },
+      {
+        path: '/user-statistics',
+        element: <UserStatisticsPage />,
       },
       {
         path: 'courses',

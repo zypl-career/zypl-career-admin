@@ -39,6 +39,10 @@ export const menu: TSidebarMenu[] = [
         link: '/partners',
       },
       {
+        title: 'Статистика',
+        link: '/user-statistics',
+      },
+      {
         title: 'Университеты',
         link: '/university',
       },

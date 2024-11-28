@@ -6,3 +6,4 @@ export * from './articles';
 export * from './partners';
 export * from './education-center';
 export * from './university';
+export * from './user-statistics';
