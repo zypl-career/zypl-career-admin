@@ -1,5 +1,6 @@
 import { Edit, Trash2 } from 'lucide-react';
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
+import { DeleteUniversity } from '@features';
 import { Button } from '@ui';
 import { TUniversity, TUniversityProps } from './types';
 
@@ -7,6 +8,10 @@ export const UniversityList: FC<TUniversityProps> = ({
   data = [],
   ...props
 }) => {
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [selectedUniversity, setSelectedUniversity] =
+    useState<TUniversity | null>(null);
+
   const handleAction = useCallback(
     (
       e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -22,6 +27,11 @@ export const UniversityList: FC<TUniversityProps> = ({
     },
     [props],
   );
+
+  const handleDelete = (university: TUniversity) => {
+    setSelectedUniversity(university);
+    setDeleteOpen(true);
+  };
 
   return (
     <section className="grid gap-5 sm:grid-cols-3">
@@ -43,7 +53,7 @@ export const UniversityList: FC<TUniversityProps> = ({
               <Edit />
             </Button>
             <Button
-              onClick={(e) => handleAction(e, university, 'onDelete')}
+              onClick={() => handleDelete(university)}
               variant="secondary"
             >
               <Trash2 />
@@ -51,6 +61,13 @@ export const UniversityList: FC<TUniversityProps> = ({
           </div>
         </div>
       ))}
+      {selectedUniversity && (
+        <DeleteUniversity
+          id={selectedUniversity.id}
+          open={deleteOpen}
+          setOpen={setDeleteOpen}
+        />
+      )}
     </section>
   );
 };
