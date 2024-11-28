@@ -1,4 +1,5 @@
 import { EducationCenterList, TEducationCenter } from '@entities';
+import { PlusIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button, Spinner } from '@ui';
 import { CreateEducationCenter, DeleteEducationCenter } from './components';
@@ -47,8 +48,9 @@ export const EducationCenters = () => {
   return (
     <section>
       <header className="mb-5 flex items-center justify-between">
-        <h1 className="text-4xl font-bold">Образовательные центры</h1>
+        <h1 className="text-2xl font-bold">Образовательные центры</h1>
         <Button onClick={() => handleToggleModals('create')}>
+          <PlusIcon />
           Добавить образовательный центр
         </Button>
       </header>
