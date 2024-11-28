@@ -33,12 +33,7 @@ export const UniversityList: FC<TUniversityProps> = ({
           <div className="p-4">
             <h2 className="text-lg font-bold">{university.name}</h2>
             <p className="text-sm text-gray-500">{university.city}</p>
-                  <p className="text-sm text-gray-500">
-    
-    
-    
-              {university.generalInfo}
-    </p>
+            <p className="text-sm text-gray-500">{university.generalInfo}</p>
           </div>
           <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
             <Button
