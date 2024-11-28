@@ -35,7 +35,7 @@ export const Combobox = <T,>({
   valueField = 'value' as keyof T,
   placeholder = 'Поиск',
 }: TSearchSelectProps<T>) => {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   const mappedData = useMemo(
     () =>
@@ -64,7 +64,7 @@ export const Combobox = <T,>({
   return (
     <div className="relative w-full">
       <Input
-        className={cn('rounded-xl p-4', className)}
+        className={cn(className)}
         value={value}
         onChange={(e) => handleChange(e.target.value)}
         onBlur={() => setOpen(false)}
@@ -84,7 +84,7 @@ export const Combobox = <T,>({
       >
         <CommandList
           className={cn(
-            'absolute top-16 z-30 max-h-60 w-full overflow-auto rounded-xl bg-white py-2.5',
+            'absolute top-12 border shadow z-30 max-h-60 w-full overflow-auto rounded-xl bg-white py-2.5',
           )}
         >
           {loading ? (

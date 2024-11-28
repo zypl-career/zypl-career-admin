@@ -1,9 +1,11 @@
+import { cities } from '@constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
 import { FC } from 'react';
 import {
   Button,
+  Combobox,
   Form,
   FormControl,
   FormField,
@@ -15,7 +17,7 @@ import {
   toast,
 } from '@ui';
 import { CreateUniversitySchema, TCreateUniversity } from './schema';
-import { useCreateUniversity } from './sevices.ts';
+import { useCreateUniversity } from './services.ts';
 import { TCreateUniversityProps } from './types';
 
 export const CreateUniversity: FC<TCreateUniversityProps> = ({
@@ -82,10 +84,13 @@ export const CreateUniversity: FC<TCreateUniversityProps> = ({
                     Город
                   </label>
                   <FormControl>
-                    <Input
-                      id="city"
-                      {...field}
-                      type="text"
+                    <Combobox
+                      value={field.value}
+                      onChange={field.onChange}
+                      onSelect={({ value }) => field.onChange(value)}
+                      filteredData={cities}
+                      labelField="label"
+                      valueField="value"
                       placeholder="Введите город"
                     />
                   </FormControl>
@@ -96,19 +101,15 @@ export const CreateUniversity: FC<TCreateUniversityProps> = ({
             <FormField
               control={form.control}
               name="generalInfo"
-              render={({ field: { onChange } }) => (
+              render={({ field }) => (
                 <FormItem>
-                  <label htmlFor="generalInfo" className="text-sm font-medium">
-                    Общая информация (PDF)
-                  </label>
                   <FormControl>
                     <Input
                       id="generalInfo"
-                      type="file"
-                      accept=".pdf"
-                      onChange={(e) =>
-                        onChange(e.target.files?.[0] || undefined)
-                      }
+                      label="Общая информация"
+                      {...field}
+                      type="text"
+                      placeholder="Введите название"
                     />
                   </FormControl>
                   <FormMessage />
