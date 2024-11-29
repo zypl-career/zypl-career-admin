@@ -1,5 +1,6 @@
+import { useExport } from '@/shared/hooks';
 import { Label, Pie, PieChart } from 'recharts';
-import { PieLabel } from '@ui';
+import { Button, PieLabel } from '@ui';
 
 const data = [
   { name: 'Мобильный телефон', value: 45, fill: '#80CAEE' },
@@ -9,10 +10,20 @@ const data = [
 ];
 
 export const DevicesUI = () => {
+  const { isExportLoading, downloadHandler } = useExport({
+    url: '/statistics/users/export',
+  });
   return (
     <div className="rounded-md bg-white shadow">
       <header className="flex items-center justify-between p-4">
         <h1 className="text-2xl font-bold">Устройства</h1>
+        <Button
+          variant="outline"
+          disabled={isExportLoading}
+          onClick={downloadHandler}
+        >
+          Экспортировать
+        </Button>
       </header>
       <div className="flex flex-col items-center justify-center">
         <PieChart width={436} height={436}>
