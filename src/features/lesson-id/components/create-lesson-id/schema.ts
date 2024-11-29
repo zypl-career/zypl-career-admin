@@ -8,7 +8,7 @@ export const CreateLessonIdSchema = z.object({
     .any()
     .refine(
       (file: File) => toMb(file?.size) <= MAX_FILE_SIZE_MB,
-      'Max image size is 5MB.',
+      'Max image size is 50MB.',
     ),
   description: z.string(),
 });
