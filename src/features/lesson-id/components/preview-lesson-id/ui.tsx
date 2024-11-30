@@ -7,18 +7,19 @@ import { TPreviewLessonProps } from './types';
 export const PreviewLesson: FC<TPreviewLessonProps> = ({ data, open, setOpen }) => {
   const [isResourceLoading, setIsResourceLoading] = useState(true);
   const { data: lessonData } = useLessonById(data?.id || '');
+  const isYoutube = lessonData?.description?.includes('youtube');
+  const isPdf = lessonData?.type === 'pdf';
 
   useEffect(() => {
     setIsResourceLoading(open);
   }, [open]);
 
   return (
-    <Modal setToggle={setOpen} toggle={open} className="min-h-[90%]">
-      {isResourceLoading && (
-        <div className="flex items-center justify-center">
-          <Spinner className="size-6" />
-        </div>
-      )}
+    <Modal
+      setToggle={setOpen}
+      toggle={open}
+      className={cn('min-h-[90%]', { 'flex items-center justify-center': !isYoutube && !isPdf })}
+    >
       <iframe
         src={
           lessonData?.description === 'empty'
@@ -30,8 +31,19 @@ export const PreviewLesson: FC<TPreviewLessonProps> = ({ data, open, setOpen }) 
         height="100%"
         onLoad={() => setIsResourceLoading(false)}
         className={cn('w-full h-full rounded-2xl', {
-          hidden: isResourceLoading,
+          hidden: isResourceLoading || (!isYoutube && !isPdf),
         })}
+      />
+      {isResourceLoading && (isPdf || isYoutube) ? (
+        <div className="flex items-center justify-center">
+          <Spinner className="size-6" />
+        </div>
+      ) : null}
+
+      <video
+        controls
+        src={lessonData?.description}
+        className={cn({ hidden: isYoutube || isPdf || isResourceLoading })}
       />
     </Modal>
   );
