@@ -39,9 +39,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
   const createArticle = useCreateArticle();
 
   const onSubmit = (data: TCreateArticle) => {
-    const hashtags = Array.isArray(data.hashtags)
-      ? data.hashtags.join(', ')
-      : data.hashtags;
+    const hashtags = Array.isArray(data.hashtags) ? data.hashtags.join(', ') : data.hashtags;
     createArticle.mutate(
       { ...data, hashtags },
       {
@@ -68,11 +66,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Заголовок"
-                      placeholder="Введите заголовок"
-                      {...field}
-                    />
+                    <Input label="Заголовок" placeholder="Введите заголовок" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -84,11 +78,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Общая информация"
-                      placeholder="Что-то общее"
-                      {...field}
-                    />
+                    <Input label="Общая информация" placeholder="Что-то общее" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -100,12 +90,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      label="готовый процент"
-                      placeholder="38%"
-                      {...field}
-                    />
+                    <Input type="number" label="готовый процент" placeholder="38%" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,11 +123,7 @@ export const CreateArticle: FC<TCreateArticleProps> = ({ open, setOpen }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <InputTags
-                      label="Теги"
-                      placeholder="Выберите теги"
-                      {...field}
-                    />
+                    <InputTags label="Теги" placeholder="Выберите теги" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

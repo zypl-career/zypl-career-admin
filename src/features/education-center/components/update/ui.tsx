@@ -21,11 +21,7 @@ import { TUpdateEducationCenter, UpdateEducationCenterSchema } from './schema';
 import { useUpdateEducationCenter } from './services';
 import { TUpdateEducationCenterProps } from './types';
 
-export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
-  data,
-  open,
-  toggle,
-}) => {
+export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({ data, open, toggle }) => {
   const form = useForm<TUpdateEducationCenter>({
     resolver: zodResolver(UpdateEducationCenterSchema),
     values: {
@@ -65,11 +61,7 @@ export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Название"
-                      placeholder="Введите название"
-                      {...field}
-                    />
+                    <Input label="Название" placeholder="Введите название" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -101,11 +93,7 @@ export const UpdateEducationCenter: FC<TUpdateEducationCenterProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Общая информация"
-                      placeholder="Введите описание"
-                      {...field}
-                    />
+                    <Input label="Общая информация" placeholder="Введите описание" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

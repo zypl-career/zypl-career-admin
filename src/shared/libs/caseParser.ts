@@ -10,10 +10,7 @@ export const camelToSnake = (obj: any): any => {
   const snakeObj: any = {};
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      const snakeKey = key.replace(
-        /[A-Z]/g,
-        (letter) => `_${letter.toLowerCase()}`,
-      );
+      const snakeKey = key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
       snakeObj[snakeKey] = camelToSnake(obj[key]);
     }
   }
@@ -27,9 +24,7 @@ export const snakeToCamel = (data: any): any => {
     } else if (typeof input === 'object' && input !== null) {
       const converted: any = {};
       Object.keys(input).forEach((key) => {
-        const camelKey = key.replace(/([-_][a-z])/g, (group) =>
-          group.toUpperCase().replace('-', '').replace('_', ''),
-        );
+        const camelKey = key.replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('-', '').replace('_', ''));
         converted[camelKey] = convertToCamelCase(input[key]);
       });
       return converted;

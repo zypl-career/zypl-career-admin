@@ -11,10 +11,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', '@tanstack/query'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-explicit-any': ['off'],
     quotes: ['error', 'single'],
     semi: ['warn', 'always'],
@@ -27,11 +24,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
-    'max-len': [
-      'error',
-      120,
-      { ignoreTemplateLiterals: true, ignoreStrings: true },
-    ],
+    'max-len': ['error', 120, { ignoreTemplateLiterals: true, ignoreStrings: true }],
     'eol-last': ['warn', 'always'],
     'sort-imports': [
       'warn',

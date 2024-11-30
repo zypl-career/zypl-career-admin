@@ -13,11 +13,7 @@ import {
 import { useDeleteUniversity } from './services';
 import { TDeleteUniversityProps } from './types';
 
-export const DeleteUniversity: FC<TDeleteUniversityProps> = ({
-  setOpen,
-  open,
-  id = '',
-}) => {
+export const DeleteUniversity: FC<TDeleteUniversityProps> = ({ setOpen, open, id = '' }) => {
   const deleteUniversity = useDeleteUniversity(id);
 
   return (
@@ -25,9 +21,7 @@ export const DeleteUniversity: FC<TDeleteUniversityProps> = ({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы уверены, что хотите удалить этот университет?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы уверены, что хотите удалить этот университет?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

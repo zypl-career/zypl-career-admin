@@ -21,10 +21,7 @@ import { CreateEducationCenterSchema, TCreateEducationCenter } from './schema';
 import { useCreateEducationCenter } from './services';
 import { TCreateEducationCenterProps } from './types';
 
-export const CreateEducationCenter: FC<TCreateEducationCenterProps> = ({
-  open,
-  toggle,
-}) => {
+export const CreateEducationCenter: FC<TCreateEducationCenterProps> = ({ open, toggle }) => {
   const form = useForm<TCreateEducationCenter>({
     resolver: zodResolver(CreateEducationCenterSchema),
     defaultValues: {
@@ -63,11 +60,7 @@ export const CreateEducationCenter: FC<TCreateEducationCenterProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Название"
-                      placeholder="Введите название"
-                      {...field}
-                    />
+                    <Input label="Название" placeholder="Введите название" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -99,11 +92,7 @@ export const CreateEducationCenter: FC<TCreateEducationCenterProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Общая информация"
-                      placeholder="Введите описание"
-                      {...field}
-                    />
+                    <Input label="Общая информация" placeholder="Введите описание" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

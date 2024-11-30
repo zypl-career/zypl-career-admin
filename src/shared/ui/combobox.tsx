@@ -1,14 +1,7 @@
 import { cn } from '@libs';
 import { Search } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
-import {
-  Command,
-  CommandEmpty,
-  CommandItem,
-  CommandList,
-  Input,
-  Spinner,
-} from '@ui';
+import { Command, CommandEmpty, CommandItem, CommandList, Input, Spinner } from '@ui';
 
 type TSearchSelectProps<T> = {
   onChange: (value: string) => void;
@@ -40,11 +33,7 @@ export const Combobox = <T,>({
   const mappedData = useMemo(
     () =>
       filteredData?.length > 0
-        ? filteredData?.filter((f) =>
-            String(f[valueField])
-              ?.toLocaleLowerCase()
-              ?.includes(value?.toLocaleLowerCase()),
-          )
+        ? filteredData?.filter((f) => String(f[valueField])?.toLocaleLowerCase()?.includes(value?.toLocaleLowerCase()))
         : data,
     [filteredData, data, valueField, value],
   );
@@ -77,15 +66,10 @@ export const Combobox = <T,>({
       </div>
       <Command
         shouldFilter={false}
-        className={cn(
-          'transition-all duration-300',
-          open ? 'opacity-100 visible' : 'opacity-0 invisible',
-        )}
+        className={cn('transition-all duration-300', open ? 'opacity-100 visible' : 'opacity-0 invisible')}
       >
         <CommandList
-          className={cn(
-            'absolute top-12 border shadow z-30 max-h-60 w-full overflow-auto rounded-xl bg-white py-2.5',
-          )}
+          className={cn('absolute top-12 border shadow z-30 max-h-60 w-full overflow-auto rounded-xl bg-white py-2.5')}
         >
           {loading ? (
             <Spinner />
@@ -99,9 +83,7 @@ export const Combobox = <T,>({
                 onSelect={() => onSelect(item)}
                 value={item[valueField] as string}
               >
-                <span>
-                  {labelField ? (item[labelField] as React.ReactNode) : null}
-                </span>
+                <span>{labelField ? (item[labelField] as React.ReactNode) : null}</span>
               </CommandItem>
             ))
           )}

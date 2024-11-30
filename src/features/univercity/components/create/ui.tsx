@@ -20,10 +20,7 @@ import { CreateUniversitySchema, TCreateUniversity } from './schema';
 import { useCreateUniversity } from './services.ts';
 import { TCreateUniversityProps } from './types';
 
-export const CreateUniversity: FC<TCreateUniversityProps> = ({
-  open,
-  toggle,
-}) => {
+export const CreateUniversity: FC<TCreateUniversityProps> = ({ open, toggle }) => {
   const form = useForm<TCreateUniversity>({
     resolver: zodResolver(CreateUniversitySchema),
     defaultValues: {
@@ -64,12 +61,7 @@ export const CreateUniversity: FC<TCreateUniversityProps> = ({
                     Название университета
                   </label>
                   <FormControl>
-                    <Input
-                      id="name"
-                      {...field}
-                      type="text"
-                      placeholder="Введите название"
-                    />
+                    <Input id="name" {...field} type="text" placeholder="Введите название" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

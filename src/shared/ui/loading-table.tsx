@@ -2,10 +2,7 @@ import { Fragment } from 'react';
 
 export const LoadingTable = ({ row = 10 }: { row?: number }) => {
   return (
-    <div
-      role="status"
-      className="animate-pulse space-y-4 dark:divide-gray-700 dark:border-gray-700"
-    >
+    <div role="status" className="animate-pulse space-y-4 dark:divide-gray-700 dark:border-gray-700">
       {Array(row)
         .fill(null)
         .map((_, i) => (

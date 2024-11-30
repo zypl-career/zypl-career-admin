@@ -2,18 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
 import { FC } from 'react';
-import {
-  Button,
-  DropFile,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Modal,
-  Spinner,
-  toast,
-} from '@ui';
+import { Button, DropFile, Form, FormControl, FormField, FormItem, FormMessage, Modal, Spinner, toast } from '@ui';
 import { CreatePartnerSchema, TCreatePartner } from './schema';
 import { useCreatePartner } from './services';
 import { TCreatePartnerProps } from './types';

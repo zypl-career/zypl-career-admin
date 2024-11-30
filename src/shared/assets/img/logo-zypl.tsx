@@ -2,26 +2,13 @@ import { FC, SVGProps } from 'react';
 
 const LogoZypl: FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
   return (
-    <svg
-      width="154"
-      height="48"
-      viewBox="0 0 154 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="154" height="48" viewBox="0 0 154 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M14.031 0L14.9444 2.81118H17.9003L15.509 4.54859L16.4224 7.35978L14.031 5.62237L11.6397 7.35978L12.5531 4.54859L10.1618 2.81118H13.1176L14.031 0Z"
         fill="#FF8A00"
         className={className}
       />
-      <circle
-        cx="3.8915"
-        cy="16.3368"
-        r="3.8915"
-        fill="#F7F7F7"
-        className={className}
-      />
+      <circle cx="3.8915" cy="16.3368" r="3.8915" fill="#F7F7F7" className={className} />
       <path
         d="M13.9742 7.49219C15.5657 25.5346 -5.83746 24.6502 4.06859 40.7468C1.59175 29.0723 21.9336 24.1195 13.9742 7.49219Z"
         fill="#FF0000"

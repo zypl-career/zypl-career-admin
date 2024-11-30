@@ -1,10 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  createReactBlockSpec,
-  FileBlockWrapper,
-  ResizeHandlesWrapper,
-} from '@blocknote/react';
+import { createReactBlockSpec, FileBlockWrapper, ResizeHandlesWrapper } from '@blocknote/react';
 import { cn } from '@libs';
 import { FaYoutube } from 'react-icons/fa';
 import { ChangeEvent, useCallback, useState } from 'react';
@@ -38,22 +34,16 @@ export const Youtube = createReactBlockSpec(
   {
     render: (props) => {
       const [width, setWidth] = useState<number>(
-        Math.min(
-          props.block.props.previewWidth!,
-          props.editor.domElement.firstElementChild!.clientWidth,
-        ),
+        Math.min(props.block.props.previewWidth!, props.editor.domElement.firstElementChild!.clientWidth),
       );
 
       const [isOpen, setIsOpen] = useState<boolean>(true);
       const [currentURL, setCurrentURL] = useState<string>('');
 
-      const handleURLChange = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-          event.currentTarget.focus();
-          setCurrentURL(event.currentTarget.value);
-        },
-        [],
-      );
+      const handleURLChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        event.currentTarget.focus();
+        setCurrentURL(event.currentTarget.value);
+      }, []);
 
       const handleURL = useCallback(() => {
         setIsOpen(true);
@@ -73,19 +63,13 @@ export const Youtube = createReactBlockSpec(
         <div
           className={cn(
             'bn-file-block-content-wrapper',
-            props.block.props.url
-              ? 'flex w-full justify-center'
-              : 'w-full rounded-md bg-zinc-100 px-4 py-3',
+            props.block.props.url ? 'flex w-full justify-center' : 'w-full rounded-md bg-zinc-100 px-4 py-3',
           )}
           data-file-block
         >
           {props.block.props.url ? (
             <FileBlockWrapper {...(props as any)}>
-              <ResizeHandlesWrapper
-                {...(props as any)}
-                width={width}
-                setWidth={setWidth}
-              >
+              <ResizeHandlesWrapper {...(props as any)} width={width} setWidth={setWidth}>
                 <iframe
                   width={width}
                   height="315"
@@ -99,34 +83,21 @@ export const Youtube = createReactBlockSpec(
           ) : (
             <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
               <AlertDialogTrigger className="w-full">
-                <Button
-                  variant={'ghost'}
-                  size={'lg'}
-                  className="w-full justify-start gap-x-2"
-                >
+                <Button variant={'ghost'} size={'lg'} className="w-full justify-start gap-x-2">
                   <FaYoutube />
                   Add Video
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>
-                    Добавить ссылку на видео с YouTube
-                  </AlertDialogTitle>
+                  <AlertDialogTitle>Добавить ссылку на видео с YouTube</AlertDialogTitle>
                   <AlertDialogDescription>
-                    <Input
-                      type="text"
-                      placeholder="youtube.com/watch"
-                      onChange={handleURLChange}
-                      onEnter={handleURL}
-                    />
+                    <Input type="text" placeholder="youtube.com/watch" onChange={handleURLChange} onEnter={handleURL} />
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Отмена</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleURL}>
-                    Добавить
-                  </AlertDialogAction>
+                  <AlertDialogAction onClick={handleURL}>Добавить</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>

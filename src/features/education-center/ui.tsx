@@ -16,12 +16,8 @@ export const EducationCenters = () => {
 
   const { data, isLoading } = useGetEducationCenters(filters);
 
-  const [editEducationCenter, setEditEducationCenter] = useState<
-    Partial<TEducationCenter>
-  >({});
-  const [deleteEducationCenter, setDeleteEducationCenter] = useState<
-    Partial<TEducationCenter>
-  >({});
+  const [editEducationCenter, setEditEducationCenter] = useState<Partial<TEducationCenter>>({});
+  const [deleteEducationCenter, setDeleteEducationCenter] = useState<Partial<TEducationCenter>>({});
   const [modals, setModals] = useState({
     create: false,
     edit: false,
@@ -59,26 +55,15 @@ export const EducationCenters = () => {
       ) : data?.data?.length === 0 ? (
         <p>Нет образовательных центров для отображения</p>
       ) : (
-        <EducationCenterList
-          data={data?.data ?? []}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
+        <EducationCenterList data={data?.data ?? []} onDelete={handleDelete} onEdit={handleEdit} />
       )}
-      <CreateEducationCenter
-        open={modals.create}
-        toggle={() => handleToggleModals('create')}
-      />
+      <CreateEducationCenter open={modals.create} toggle={() => handleToggleModals('create')} />
       <DeleteEducationCenter
         id={deleteEducationCenter.id}
         open={modals.delete}
         setOpen={() => handleToggleModals('delete')}
       />
-      <UpdateEducationCenter
-        data={editEducationCenter}
-        open={modals.edit}
-        toggle={() => handleToggleModals('edit')}
-      />
+      <UpdateEducationCenter data={editEducationCenter} open={modals.edit} toggle={() => handleToggleModals('edit')} />
     </section>
   );
 };

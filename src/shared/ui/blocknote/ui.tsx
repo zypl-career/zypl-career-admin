@@ -1,9 +1,5 @@
 import { filterSuggestionItems, PartialBlock } from '@blocknote/core';
-import {
-  getDefaultReactSlashMenuItems,
-  SuggestionMenuController,
-  useCreateBlockNote,
-} from '@blocknote/react';
+import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from '@blocknote/react';
 import { BlockNoteView } from '@blocknote/shadcn';
 import { urlToBase64 } from '@libs';
 import { FC, useCallback, useState } from 'react';
@@ -12,11 +8,7 @@ import { insertYoutube, schema } from './utils';
 import '@blocknote/core/fonts/inter.css';
 import '@blocknote/shadcn/style.css';
 
-export const BlockNote: FC<TBlockNoteProps> = ({
-  editable = true,
-  value,
-  onChange,
-}) => {
+export const BlockNote: FC<TBlockNoteProps> = ({ editable = true, value, onChange }) => {
   const initialBlocks = value ? JSON.parse(value) : undefined;
   const [blocks, setBlocks] = useState<PartialBlock[]>(initialBlocks);
   const editor = useCreateBlockNote({
@@ -56,19 +48,11 @@ export const BlockNote: FC<TBlockNoteProps> = ({
   }
 
   return (
-    <BlockNoteView
-      theme="light"
-      editable={editable}
-      editor={editor}
-      onChange={handleChange}
-    >
+    <BlockNoteView theme="light" editable={editable} editor={editor} onChange={handleChange}>
       <SuggestionMenuController
         triggerCharacter="/"
         getItems={async (query) =>
-          filterSuggestionItems(
-            [...getDefaultReactSlashMenuItems(editor), insertYoutube(editor)],
-            query,
-          )
+          filterSuggestionItems([...getDefaultReactSlashMenuItems(editor), insertYoutube(editor)], query)
         }
       />
     </BlockNoteView>

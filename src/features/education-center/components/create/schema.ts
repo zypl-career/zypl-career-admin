@@ -7,6 +7,4 @@ export const CreateEducationCenterSchema = z.object({
   image: z.instanceof(File).optional(),
 });
 
-export type TCreateEducationCenter = z.infer<
-  typeof CreateEducationCenterSchema
->;
+export type TCreateEducationCenter = z.infer<typeof CreateEducationCenterSchema>;

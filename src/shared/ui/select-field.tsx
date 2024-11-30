@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui';
 
 type ISelectFieldProps<T> = {
   value: string;

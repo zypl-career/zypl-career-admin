@@ -70,11 +70,7 @@ export const UpdateCourse = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Заголовок"
-                      placeholder="Введите заголовок"
-                      {...field}
-                    />
+                    <Input label="Заголовок" placeholder="Введите заголовок" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -86,12 +82,7 @@ export const UpdateCourse = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      label="готовый процент"
-                      placeholder="38%"
-                      {...field}
-                    />
+                    <Input type="number" label="готовый процент" placeholder="38%" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -124,11 +115,7 @@ export const UpdateCourse = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Теги"
-                      placeholder="Выберите теги"
-                      {...field}
-                    />
+                    <Input label="Теги" placeholder="Выберите теги" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

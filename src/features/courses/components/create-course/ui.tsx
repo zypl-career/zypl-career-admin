@@ -57,11 +57,7 @@ export const CreateCourse = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Заголовок"
-                      placeholder="Введите заголовок"
-                      {...field}
-                    />
+                    <Input label="Заголовок" placeholder="Введите заголовок" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -113,11 +109,7 @@ export const CreateCourse = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Теги"
-                      placeholder="Выберите теги"
-                      {...field}
-                    />
+                    <Input label="Теги" placeholder="Выберите теги" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

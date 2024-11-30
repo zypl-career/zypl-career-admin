@@ -31,28 +31,16 @@ export const User = () => {
 
   return (
     <section>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <UserTableUI
-          data={users?.data || []}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
-      )}
+      {isLoading ? <Spinner /> : <UserTableUI data={users?.data || []} onDelete={handleDelete} onEdit={handleEdit} />}
       <EditUser
         editable={editable}
         toggle={toggleModals.edit}
-        setToggle={(value) =>
-          setToggleModals((prev) => ({ ...prev, edit: value }))
-        }
+        setToggle={(value) => setToggleModals((prev) => ({ ...prev, edit: value }))}
       />
       <DeleteUser
         id={deleteId}
         open={toggleModals.delete}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, delete: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
       />
     </section>
   );

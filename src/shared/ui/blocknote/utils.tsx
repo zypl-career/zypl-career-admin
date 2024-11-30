@@ -1,10 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  BlockNoteEditor,
-  BlockNoteSchema,
-  defaultBlockSpecs,
-  insertOrUpdateBlock,
-} from '@blocknote/core';
+import { BlockNoteEditor, BlockNoteSchema, defaultBlockSpecs, insertOrUpdateBlock } from '@blocknote/core';
 import { FaYoutube } from 'react-icons/fa';
 import { Youtube } from './youtube';
 

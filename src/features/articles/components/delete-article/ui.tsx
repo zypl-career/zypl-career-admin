@@ -20,9 +20,7 @@ export const DeleteArticle: FC<TDeleteProps> = ({ setOpen, open, id }) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы точно хотите удалить эту статью?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы точно хотите удалить эту статью?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

@@ -20,9 +20,7 @@ export const DeleteUser: FC<TDeleteProps> = ({ setOpen, open, id }) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы точно хотите удалить пользователя?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы точно хотите удалить пользователя?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

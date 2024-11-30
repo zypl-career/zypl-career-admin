@@ -8,8 +8,7 @@ export const useDeletePartner = (id: TPartners['id']) => {
 
   return useMutation({
     mutationKey: [Partners.Key],
-    mutationFn: () =>
-      apiService.delete(`/partner/delete/${id}`).then((res) => res.data),
+    mutationFn: () => apiService.delete(`/partner/delete/${id}`).then((res) => res.data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: [Partners.Key] });
       toast({

@@ -41,22 +41,14 @@ export const Article = () => {
           </Link>
         </Button>
       </header>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <ArticleList data={data?.data || []} onDelete={handleDelete} />
-      )}
+      {isLoading ? <Spinner /> : <ArticleList data={data?.data || []} onDelete={handleDelete} />}
       <CreateArticle
         open={toggleModals.create}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, create: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, create: value }))}
       />
       <DeleteArticle
         open={toggleModals.delete}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, delete: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
         id={deleteArticle?.id || ''}
       />
     </section>

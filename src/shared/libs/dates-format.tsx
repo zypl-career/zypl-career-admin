@@ -5,9 +5,7 @@ const returnDaysLeft = (inputDate: Date): number => {
   const inputDateTime: Date = new Date(inputDate);
   inputDateTime.setHours(0, 0, 0, 0);
 
-  const differenceInDays: number = Math.floor(
-    (inputDateTime.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
-  );
+  const differenceInDays: number = Math.floor((inputDateTime.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
   if ([0, 1, 2].includes(differenceInDays)) {
     return differenceInDays;
   }
@@ -82,30 +80,19 @@ export const getHMS = (date: string) => {
   const dHMS = dArr[4].split(':');
   return <code className="text-gray-500">{`${dHMS[0]}:${dHMS[1]}`}</code>;
 };
-export const getDMY = (
-  date: string | Date | number,
-  short: boolean = true,
-): string => {
+export const getDMY = (date: string | Date | number, short: boolean = true): string => {
   if (!date) {
     return 'сейчас';
   }
   const d = new Date(date);
   const day = extractDayFromDate(d);
-  return `${day} ${
-    short ? shortRussianMonths[d.getMonth()] : russianMonths[d.getMonth()]
-  } ${d.getFullYear()} `;
+  return `${day} ${short ? shortRussianMonths[d.getMonth()] : russianMonths[d.getMonth()]} ${d.getFullYear()} `;
 };
 export const getMY = (date: string, short: boolean = true): string => {
   const d = new Date(date);
-  return `${
-    short ? shortRussianMonths[d.getMonth()] : russianMonths[d.getMonth()]
-  } ${d.getFullYear()} `;
+  return `${short ? shortRussianMonths[d.getMonth()] : russianMonths[d.getMonth()]} ${d.getFullYear()} `;
 };
-export const maxDate = (params?: {
-  day: number | null;
-  month: number | null;
-  year: number | null;
-}) => {
+export const maxDate = (params?: { day: number | null; month: number | null; year: number | null }) => {
   if (!params) {
     return;
   }
@@ -120,18 +107,12 @@ export const maxDate = (params?: {
   }
 };
 
-export const fillDate = (params?: {
-  day: number | null;
-  month: number | null;
-  year: number | null;
-}) => {
+export const fillDate = (params?: { day: number | null; month: number | null; year: number | null }) => {
   const now = new Date(Date.now());
   const cyear = now.getFullYear();
   const cmonth = now.getMonth();
   const cday = now.getDay();
-  return `${params?.day ?? cday} ${
-    shortRussianMonths[params?.month ?? cmonth]
-  } ${params?.year ?? cyear}`;
+  return `${params?.day ?? cday} ${shortRussianMonths[params?.month ?? cmonth]} ${params?.year ?? cyear}`;
 };
 
 export const formatDate = (date: string) => {

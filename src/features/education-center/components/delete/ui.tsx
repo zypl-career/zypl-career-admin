@@ -13,11 +13,7 @@ import {
 import { useDeleteEducationCenter } from './services';
 import { TDeleteEducationCenterProps } from './types';
 
-export const DeleteEducationCenter: FC<TDeleteEducationCenterProps> = ({
-  setOpen,
-  open,
-  id = '',
-}) => {
+export const DeleteEducationCenter: FC<TDeleteEducationCenterProps> = ({ setOpen, open, id = '' }) => {
   const deleteEducationCenter = useDeleteEducationCenter(id);
 
   return (
@@ -25,9 +21,7 @@ export const DeleteEducationCenter: FC<TDeleteEducationCenterProps> = ({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы уверены, что хотите удалить этот образовательный центр?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы уверены, что хотите удалить этот образовательный центр?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

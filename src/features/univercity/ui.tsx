@@ -46,16 +46,9 @@ export const Universities = () => {
       ) : data?.data?.length === 0 ? (
         <p>Нет университетов для отображения</p>
       ) : (
-        <UniversityList
-          data={data?.data ?? []}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
+        <UniversityList data={data?.data ?? []} onDelete={handleDelete} onEdit={handleEdit} />
       )}
-      <CreateUniversity
-        open={modals.create}
-        toggle={() => handleToggleModals('create')}
-      />
+      <CreateUniversity open={modals.create} toggle={() => handleToggleModals('create')} />
     </section>
   );
 };

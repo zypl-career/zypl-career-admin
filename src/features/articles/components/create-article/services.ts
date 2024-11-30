@@ -11,9 +11,7 @@ export const useCreateArticle = () => {
         form.image = form.image[0];
       }
       const fd = new FormData();
-      Object.entries(form).forEach(([key, value]) =>
-        fd.append(key, Array.isArray(value) ? value.join(',') : value),
-      );
+      Object.entries(form).forEach(([key, value]) => fd.append(key, Array.isArray(value) ? value.join(',') : value));
       return apiService
         .post('/article/create', fd, {
           headers: {

@@ -46,26 +46,11 @@ export const Partners = () => {
       ) : data?.data?.length === 0 ? (
         <p>Нет партнеров для отображения</p>
       ) : (
-        <PartnersList
-          data={data?.data ?? []}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
+        <PartnersList data={data?.data ?? []} onDelete={handleDelete} onEdit={handleEdit} />
       )}
-      <CreatePartner
-        open={modals.create}
-        toggle={() => handleToggleModals('create')}
-      />
-      <UpdatePartner
-        data={editPartner}
-        open={modals.edit}
-        toggle={() => handleToggleModals('edit')}
-      />
-      <DeletePartner
-        id={deletePartner.id}
-        open={modals.delete}
-        setOpen={() => handleToggleModals('delete')}
-      />
+      <CreatePartner open={modals.create} toggle={() => handleToggleModals('create')} />
+      <UpdatePartner data={editPartner} open={modals.edit} toggle={() => handleToggleModals('edit')} />
+      <DeletePartner id={deletePartner.id} open={modals.delete} setOpen={() => handleToggleModals('delete')} />
     </section>
   );
 };

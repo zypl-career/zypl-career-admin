@@ -1,11 +1,4 @@
-import {
-  CategoriesIcon,
-  HashtagIcon,
-  HomeIcon,
-  MediaFilesIcon,
-  UserGroupIcon,
-  UsersIcon,
-} from '@icons';
+import { CategoriesIcon, HashtagIcon, HomeIcon, MediaFilesIcon, UserGroupIcon, UsersIcon } from '@icons';
 import { TSidebarMenu } from './types';
 
 export const menu: TSidebarMenu[] = [

@@ -9,9 +9,7 @@ export const useEditUser = (id: TUserData['id']) => {
   const queryClient = useQueryClient();
   return useMutation<unknown, unknown, Partial<TUserSchema>>({
     mutationFn: (form: Partial<TUserSchema>) =>
-      apiService
-        .patch(`${UserEndpoints.UserEdit}/${id}`, form)
-        .then(({ data }) => data),
+      apiService.patch(`${UserEndpoints.UserEdit}/${id}`, form).then(({ data }) => data),
     onSuccess() {
       toast({
         title: 'Успешно',

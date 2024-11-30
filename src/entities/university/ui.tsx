@@ -4,13 +4,9 @@ import { DeleteUniversity } from '@features';
 import { Button } from '@ui';
 import { TUniversity, TUniversityProps } from './types';
 
-export const UniversityList: FC<TUniversityProps> = ({
-  data = [],
-  ...props
-}) => {
+export const UniversityList: FC<TUniversityProps> = ({ data = [], ...props }) => {
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const [selectedUniversity, setSelectedUniversity] =
-    useState<TUniversity | null>(null);
+  const [selectedUniversity, setSelectedUniversity] = useState<TUniversity | null>(null);
 
   const handleAction = useCallback(
     (
@@ -46,28 +42,16 @@ export const UniversityList: FC<TUniversityProps> = ({
             <p className="text-sm text-gray-500">{university.generalInfo}</p>
           </div>
           <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
-            <Button
-              onClick={(e) => handleAction(e, university, 'onEdit')}
-              variant="secondary"
-            >
+            <Button onClick={(e) => handleAction(e, university, 'onEdit')} variant="secondary">
               <Edit />
             </Button>
-            <Button
-              onClick={() => handleDelete(university)}
-              variant="secondary"
-            >
+            <Button onClick={() => handleDelete(university)} variant="secondary">
               <Trash2 />
             </Button>
           </div>
         </div>
       ))}
-      {selectedUniversity && (
-        <DeleteUniversity
-          id={selectedUniversity.id}
-          open={deleteOpen}
-          setOpen={setDeleteOpen}
-        />
-      )}
+      {selectedUniversity && <DeleteUniversity id={selectedUniversity.id} open={deleteOpen} setOpen={setDeleteOpen} />}
     </section>
   );
 };

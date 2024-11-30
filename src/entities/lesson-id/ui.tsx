@@ -1,43 +1,22 @@
 import { getDMY } from '@libs';
 import { PencilIcon, Trash2Icon } from 'lucide-react';
 import { FC } from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@ui';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@ui';
 import { TLessonIdData, type TLessonIdTableProps } from './types';
 
-export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
-  data,
-  onEdit,
-  onDelete,
-  onPreview,
-}) => {
-  const handleDelete = (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    id: string,
-  ) => {
+export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({ data, onEdit, onDelete, onPreview }) => {
+  const handleDelete = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, id: string) => {
     e.preventDefault();
     e.stopPropagation();
     onDelete(id);
   };
-  const handleUpdate = (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    lesson: TLessonIdData,
-  ) => {
+  const handleUpdate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>, lesson: TLessonIdData) => {
     e.preventDefault();
     e.stopPropagation();
     onEdit(lesson);
   };
 
-  const handleOpenPreview = (
-    e: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
-    lesson: TLessonIdData,
-  ) => {
+  const handleOpenPreview = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, lesson: TLessonIdData) => {
     e.preventDefault();
     e.stopPropagation();
     onPreview(lesson);
@@ -57,11 +36,7 @@ export const LessonByIdTableUI: FC<TLessonIdTableProps> = ({
       </TableHeader>
       <TableBody>
         {data.map((lesson) => (
-          <TableRow
-            key={lesson.id}
-            className="cursor-pointer"
-            onClick={(e) => handleOpenPreview(e, lesson)}
-          >
+          <TableRow key={lesson.id} className="cursor-pointer" onClick={(e) => handleOpenPreview(e, lesson)}>
             <TableCell>{lesson.name}</TableCell>
             <TableCell>{lesson.type}</TableCell>
             <TableCell>{lesson.status}</TableCell>

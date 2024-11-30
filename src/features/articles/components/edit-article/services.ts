@@ -11,9 +11,7 @@ export const useArticleUpdateById = (articleId: string) => {
         form.image = form.image[0];
       }
       const fd = new FormData();
-      Object.entries(form).forEach(([key, value]) =>
-        fd.append(key, String(value)),
-      );
+      Object.entries(form).forEach(([key, value]) => fd.append(key, String(value)));
       return apiService
         .patch(`/article/update/${articleId}`, fd, {
           headers: {

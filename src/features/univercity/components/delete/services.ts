@@ -8,8 +8,7 @@ export const useDeleteUniversity = (id: TUniversity['id']) => {
 
   return useMutation({
     mutationKey: [Universities.Key],
-    mutationFn: () =>
-      apiService.delete(`/university/delete/${id}`).then((res) => res.data),
+    mutationFn: () => apiService.delete(`/university/delete/${id}`).then((res) => res.data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: [Universities.Key] });
       toast({

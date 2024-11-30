@@ -4,7 +4,5 @@ import { FC, PropsWithChildren } from 'react';
 const queryClient = new QueryClient();
 
 export const ReactQueryProvider: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };

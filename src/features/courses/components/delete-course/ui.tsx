@@ -20,9 +20,7 @@ export const DeleteCourse: FC<TDeleteProps> = ({ setOpen, open, id }) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы точно хотите удалить этот курс?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы точно хотите удалить этот курс?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

@@ -7,8 +7,7 @@ export const useEditCourse = (id: TCourseData['id']) => {
   const queryClient = useQueryClient();
   return useMutation<unknown, unknown, TUpdateCourse>({
     mutationKey: ['courses'],
-    mutationFn: (form: TUpdateCourse) =>
-      apiService.patch(`/course/update/${id}`, form).then(({ data }) => data),
+    mutationFn: (form: TUpdateCourse) => apiService.patch(`/course/update/${id}`, form).then(({ data }) => data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['courses'] });
     },

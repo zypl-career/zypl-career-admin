@@ -28,10 +28,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    { className, type, label, variant, size, onEnter, onKeyDown, ...props },
-    ref,
-  ) => {
+  ({ className, type, label, variant, size, onEnter, onKeyDown, ...props }, ref) => {
     const handlePressEnter = React.useCallback(
       (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (onKeyDown) {

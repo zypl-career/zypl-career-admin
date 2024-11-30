@@ -1,21 +1,10 @@
 import { getGender } from '@libs';
 import { PencilIcon, Trash2Icon } from 'lucide-react';
 import { FC } from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@ui';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@ui';
 import { TUserTableProps } from './types';
 
-export const UserTableUI: FC<TUserTableProps> = ({
-  data,
-  onDelete,
-  onEdit,
-}) => {
+export const UserTableUI: FC<TUserTableProps> = ({ data, onDelete, onEdit }) => {
   return (
     <Table>
       <TableHeader>
@@ -38,14 +27,8 @@ export const UserTableUI: FC<TUserTableProps> = ({
             <TableCell>{user.school}</TableCell>
             <TableCell>
               <div className="flex items-center gap-4">
-                <PencilIcon
-                  onClick={() => onEdit(user)}
-                  className="cursor-pointer text-gray-500"
-                />
-                <Trash2Icon
-                  onClick={() => onDelete(user.id)}
-                  className="cursor-pointer text-gray-500"
-                />
+                <PencilIcon onClick={() => onEdit(user)} className="cursor-pointer text-gray-500" />
+                <Trash2Icon onClick={() => onDelete(user.id)} className="cursor-pointer text-gray-500" />
               </div>
             </TableCell>
           </TableRow>

@@ -11,9 +11,7 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
     preview,
   });
 
-  const handleDrop = (
-    e: DragEvent<HTMLDivElement> & ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleDrop = (e: DragEvent<HTMLDivElement> & ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { files } = e?.dataTransfer || e.target;
     const [file] = files;
@@ -61,13 +59,7 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
       >
-        <input
-          type="file"
-          ref={inputRef}
-          onChange={handleDrop}
-          accept="image/png, image/gif, image/jpeg"
-          hidden
-        />
+        <input type="file" ref={inputRef} onChange={handleDrop} accept="image/png, image/gif, image/jpeg" hidden />
         {previewFile?.preview ? (
           <BlurImage
             isSkeleton
@@ -77,9 +69,7 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
           />
         ) : (
           <>
-            <h4 className="mb-1 text-center">
-              Перетащите файл сюда или выберите его
-            </h4>
+            <h4 className="mb-1 text-center">Перетащите файл сюда или выберите его</h4>
             <Button variant="ghost">Выбрать файл</Button>
           </>
         )}

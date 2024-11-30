@@ -35,21 +35,13 @@ export const PartnersList: FC<TPartnersProps> = ({ data = [], ...props }) => {
             isSkeleton
           />
           <div className="absolute bottom-2 right-5 z-10 rounded-full bg-white p-2">
-            <h2 className="text-right text-xs text-gray-600">
-              {getDMY(partner.createdAt)}
-            </h2>
+            <h2 className="text-right text-xs text-gray-600">{getDMY(partner.createdAt)}</h2>
           </div>
           <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
-            <Button
-              onClick={(e) => handleAction(e, partner, 'onEdit')}
-              variant="secondary"
-            >
+            <Button onClick={(e) => handleAction(e, partner, 'onEdit')} variant="secondary">
               <Edit />
             </Button>
-            <Button
-              onClick={(e) => handleAction(e, partner, 'onDelete')}
-              variant="secondary"
-            >
+            <Button onClick={(e) => handleAction(e, partner, 'onDelete')} variant="secondary">
               <Trash2 />
             </Button>
           </div>

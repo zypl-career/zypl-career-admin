@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 export const useLessonId = (courseId: string) => {
   return useQuery<TLessonIdData[]>({
     queryKey: ['lessonId', courseId],
-    queryFn: () =>
-      apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
+    queryFn: () => apiService.get(`lesson/by-course/${courseId}`).then(({ data }) => data),
   });
 };
 

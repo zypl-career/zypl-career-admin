@@ -7,8 +7,7 @@ export const useDeleteLesson = (id: TLessonIdData['id']) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ['lessonId'],
-    mutationFn: () =>
-      apiService.delete(`/lesson/delete/${id}`).then((res) => res.data),
+    mutationFn: () => apiService.delete(`/lesson/delete/${id}`).then((res) => res.data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['lessonId'] });
       toast({

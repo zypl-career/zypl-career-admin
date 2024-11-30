@@ -31,10 +31,7 @@ export const BlurImage: FC<ImageProps> = ({
 
       {isSkeleton && isLoading ? (
         <div
-          className={cn(
-            'flex items-center justify-center h-48 mb-4 bg-gray-300 rounded animate-pulse',
-            className,
-          )}
+          className={cn('flex items-center justify-center h-48 mb-4 bg-gray-300 rounded animate-pulse', className)}
           style={{ width: props.width, height: props.height }}
         >
           <svg

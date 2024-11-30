@@ -7,8 +7,7 @@ export const useCreateUniversity = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: [Universities.Key],
-    mutationFn: (form: TCreateUniversity) =>
-      apiService.post('/university/create', form),
+    mutationFn: (form: TCreateUniversity) => apiService.post('/university/create', form),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: [Universities.Key] });
     },

@@ -13,11 +13,7 @@ import {
 import { useDeletePartner } from './services';
 import { TDeletePartnerProps } from './types';
 
-export const DeletePartner: FC<TDeletePartnerProps> = ({
-  setOpen,
-  open,
-  id = '',
-}) => {
+export const DeletePartner: FC<TDeletePartnerProps> = ({ setOpen, open, id = '' }) => {
   const deletePartner = useDeletePartner(id);
 
   return (
@@ -25,9 +21,7 @@ export const DeletePartner: FC<TDeletePartnerProps> = ({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>
-            Вы уверены, что хотите удалить этого партнера?
-          </AlertDialogDescription>
+          <AlertDialogDescription>Вы уверены, что хотите удалить этого партнера?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

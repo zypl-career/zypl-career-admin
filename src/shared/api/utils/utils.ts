@@ -11,5 +11,4 @@ export const unauthenticate = (message?: string) => {
   router.navigate(Pages.SignIn);
 };
 
-export const removeHeaders = () =>
-  delete axios.defaults.headers.common['Authorization'];
+export const removeHeaders = () => delete axios.defaults.headers.common['Authorization'];

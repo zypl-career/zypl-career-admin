@@ -36,17 +36,11 @@ export const Courses = () => {
           </Link>
         </Button>
       </header>
-      {isLoading ? (
-        <LoadingTable />
-      ) : (
-        <CourseTableUI data={data?.data || []} onDelete={handleDelete} />
-      )}
+      {isLoading ? <LoadingTable /> : <CourseTableUI data={data?.data || []} onDelete={handleDelete} />}
       <DeleteCourse
         id={deleteId}
         open={toggleModals.delete}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, delete: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
       />
     </section>
   );

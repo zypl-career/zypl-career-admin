@@ -12,17 +12,11 @@ type InputTagsProps = Omit<InputProps, 'value' | 'onChange'> & {
 const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
   ({ className, value, onChange, ...props }, ref) => {
     const [pendingDataPoint, setPendingDataPoint] = React.useState('');
-    const arrayValue = React.useMemo(
-      () => (Array.isArray(value) ? value : [value]),
-      [value],
-    );
+    const arrayValue = React.useMemo(() => (Array.isArray(value) ? value : [value]), [value]);
 
     React.useEffect(() => {
       if (pendingDataPoint.includes(',')) {
-        const newDataPoints = new Set([
-          ...arrayValue,
-          ...pendingDataPoint.split(',').map((chunk) => chunk.trim()),
-        ]);
+        const newDataPoints = new Set([...arrayValue, ...pendingDataPoint.split(',').map((chunk) => chunk.trim())]);
         onChange(Array.from(newDataPoints));
         setPendingDataPoint('');
       }
@@ -41,22 +35,12 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
         if (e.key === 'Enter' || e.key === ',') {
           e.preventDefault();
           addPendingDataPoint();
-        } else if (
-          e.key === 'Backspace' &&
-          pendingDataPoint.length === 0 &&
-          value.length > 0
-        ) {
+        } else if (e.key === 'Backspace' && pendingDataPoint.length === 0 && value.length > 0) {
           e.preventDefault();
           onChange(arrayValue.slice(0, -1));
         }
       },
-      [
-        pendingDataPoint.length,
-        value.length,
-        addPendingDataPoint,
-        onChange,
-        arrayValue,
-      ],
+      [pendingDataPoint.length, value.length, addPendingDataPoint, onChange, arrayValue],
     );
 
     return (

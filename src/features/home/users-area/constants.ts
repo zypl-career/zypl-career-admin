@@ -1,14 +1,11 @@
 import { TBarData } from '@/entities/home/users-area/bar/types';
 import { TCounterBranches } from '@/entities/home/users-area/map/types';
 
-export const mapArea: Array<TCounterBranches> = Array.from(
-  { length: 61 },
-  (_, i) => ({
-    id: i,
-    name: `Branch${i}`,
-    count: Math.floor(Math.random() * 100).toString(),
-  }),
-);
+export const mapArea: Array<TCounterBranches> = Array.from({ length: 61 }, (_, i) => ({
+  id: i,
+  name: `Branch${i}`,
+  count: Math.floor(Math.random() * 100).toString(),
+}));
 
 export const regions = [
   {

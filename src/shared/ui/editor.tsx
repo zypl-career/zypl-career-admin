@@ -17,19 +17,8 @@ const modules = {
   ],
 };
 
-const Editor: React.FC<TextEditorProps> = ({
-  value,
-  theme = 'snow',
-  onChange,
-  ...props
-}) => (
-  <ReactQuill
-    theme={theme}
-    value={value}
-    onChange={onChange}
-    {...props}
-    modules={modules}
-  />
+const Editor: React.FC<TextEditorProps> = ({ value, theme = 'snow', onChange, ...props }) => (
+  <ReactQuill theme={theme} value={value} onChange={onChange} {...props} modules={modules} />
 );
 
 Editor.displayName = 'Editor';

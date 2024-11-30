@@ -9,9 +9,6 @@ export const UserSchema = z.object({
   district: z.string(),
   role: z.string(),
   school: z.string(),
-  email: z
-    .string()
-    .min(2, { message: 'Обязательное поле' })
-    .email({ message: 'min' }),
+  email: z.string().min(2, { message: 'Обязательное поле' }).email({ message: 'min' }),
   password: z.string().min(2, { message: 'Обязательное поле' }),
 });

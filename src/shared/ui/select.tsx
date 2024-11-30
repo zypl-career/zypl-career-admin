@@ -2,11 +2,7 @@
 
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-} from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type ElementRef } from 'react';
 import { cn } from '../libs';
 
 const Select = SelectPrimitive.Root;
@@ -41,10 +37,7 @@ const SelectScrollUpButton = forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.ScrollUpButton
     ref={ref}
-    className={cn(
-      'flex cursor-default items-center justify-center py-1',
-      className,
-    )}
+    className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
     <ChevronUp className="size-4" />
@@ -58,17 +51,13 @@ const SelectScrollDownButton = forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.ScrollDownButton
     ref={ref}
-    className={cn(
-      'flex cursor-default items-center justify-center py-1',
-      className,
-    )}
+    className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
     <ChevronDown className="size-4" />
   </SelectPrimitive.ScrollDownButton>
 ));
-SelectScrollDownButton.displayName =
-  SelectPrimitive.ScrollDownButton.displayName;
+SelectScrollDownButton.displayName = SelectPrimitive.ScrollDownButton.displayName;
 
 const SelectContent = forwardRef<
   ElementRef<typeof SelectPrimitive.Content>,
@@ -106,11 +95,7 @@ const SelectLabel = forwardRef<
   ElementRef<typeof SelectPrimitive.Label>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
-  <SelectPrimitive.Label
-    ref={ref}
-    className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
-    {...props}
-  />
+  <SelectPrimitive.Label ref={ref} className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)} {...props} />
 ));
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
@@ -141,11 +126,7 @@ const SelectSeparator = forwardRef<
   ElementRef<typeof SelectPrimitive.Separator>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-  <SelectPrimitive.Separator
-    ref={ref}
-    className={cn('bg-muted -mx-1 my-1 h-px', className)}
-    {...props}
-  />
+  <SelectPrimitive.Separator ref={ref} className={cn('bg-muted -mx-1 my-1 h-px', className)} {...props} />
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 

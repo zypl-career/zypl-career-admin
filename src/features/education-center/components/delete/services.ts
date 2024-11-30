@@ -9,10 +9,7 @@ export const useDeleteEducationCenter = (id: TEducationCenterData['id']) => {
 
   return useMutation({
     mutationKey: [EducationCenter.Key, id],
-    mutationFn: () =>
-      apiService
-        .delete(`/education-center/delete/${id}`)
-        .then((res) => res.data),
+    mutationFn: () => apiService.delete(`/education-center/delete/${id}`).then((res) => res.data),
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: [EducationCenter.Key, id] });
       toast({

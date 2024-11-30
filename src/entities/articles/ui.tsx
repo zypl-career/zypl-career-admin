@@ -34,19 +34,14 @@ export const ArticleList: FC<TArticleListProps> = ({ data, ...props }) => {
           />
           <div className="p-4">
             <h2 className="pt-5 font-bold md:text-xl">{article.title}</h2>
-            <h2 className="text-right text-xs text-gray-500">
-              {getDMY(article.createdAt)}
-            </h2>
+            <h2 className="text-right text-xs text-gray-500">{getDMY(article.createdAt)}</h2>
             <div className="absolute right-5 top-5 flex items-center gap-3 opacity-0 transition group-hover:opacity-100">
               <Button variant="secondary" asChild>
                 <Link to={`/articles/${article.id}/edit`}>
                   <Edit />
                 </Link>
               </Button>
-              <Button
-                onClick={(e) => handleAction(e, article, 'onDelete')}
-                variant="secondary"
-              >
+              <Button onClick={(e) => handleAction(e, article, 'onDelete')} variant="secondary">
                 <Trash2 />
               </Button>
             </div>

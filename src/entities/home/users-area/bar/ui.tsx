@@ -8,11 +8,7 @@ export const BarUI: FC<BarUIProps> = ({ data }) => {
       {data.map((item) => (
         <div className="flex justify-between" key={item.id}>
           <h1 className="flex-1">{item.name}</h1>
-          <ProgressBar
-            className="flex-[3]"
-            percent={item.percent}
-            showPercent
-          />
+          <ProgressBar className="flex-[3]" percent={item.percent} showPercent />
         </div>
       ))}
     </div>

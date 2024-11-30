@@ -39,9 +39,7 @@ export const WriteArticle = () => {
   const createArticle = useCreateArticle();
 
   const onSubmit = (data: TCreateArticle) => {
-    const hashtags = Array.isArray(data.hashtags)
-      ? data.hashtags.join(', ')
-      : data.hashtags;
+    const hashtags = Array.isArray(data.hashtags) ? data.hashtags.join(', ') : data.hashtags;
     createArticle.mutate(
       { ...data, hashtags },
       {
@@ -61,10 +59,7 @@ export const WriteArticle = () => {
   return (
     <section>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="container max-w-5xl"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="container max-w-5xl">
           <h1 className="mb-6 text-4xl font-bold">Добавить статью</h1>
           <header className="mb-20 flex items-center gap-32 rounded-md bg-white px-20 py-24">
             <div className="flex flex-1 flex-col gap-4">
@@ -74,13 +69,7 @@ export const WriteArticle = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
-                        className="w-40"
-                        variant="ghost"
-                        type="number"
-                        placeholder="12 минут чтения"
-                        {...field}
-                      />
+                      <Input className="w-40" variant="ghost" type="number" placeholder="12 минут чтения" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -92,12 +81,7 @@ export const WriteArticle = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
-                        variant="ghost"
-                        className="text-2xl"
-                        placeholder="Введите заголовок"
-                        {...field}
-                      />
+                      <Input variant="ghost" className="text-2xl" placeholder="Введите заголовок" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -121,11 +105,7 @@ export const WriteArticle = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <InputTags
-                        label="Теги"
-                        placeholder="Выберите теги"
-                        {...field}
-                      />
+                      <InputTags label="Теги" placeholder="Выберите теги" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -157,11 +137,7 @@ export const WriteArticle = () => {
               </FormItem>
             )}
           />
-          <Button
-            type="submit"
-            className="fixed right-5 top-40"
-            disabled={createArticle.isPending}
-          >
+          <Button type="submit" className="fixed right-5 top-40" disabled={createArticle.isPending}>
             {createArticle.isPending && <Spinner />}
             Опубликовать статью
           </Button>
