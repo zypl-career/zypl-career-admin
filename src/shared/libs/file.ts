@@ -3,7 +3,6 @@ export const toMb = (size: number): number => {
 };
 
 export const blobToFile = (blob: Blob) => {
-  console.log(blob);
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
