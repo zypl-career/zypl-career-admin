@@ -52,15 +52,9 @@ export const LessonId = () => {
         {courseLoading ? (
           <Skeleton className="h-5 w-48" />
         ) : (
-          <div>
-            <h1 className="text-2xl font-bold">
-              Уроки курса {courseData?.title}
-            </h1>
-          </div>
+          <h1 className="text-2xl font-bold">Уроки курса {courseData?.title}</h1>
         )}
-        <Button
-          onClick={() => setToggleModals((prev) => ({ ...prev, create: true }))}
-        >
+        <Button onClick={() => setToggleModals((prev) => ({ ...prev, create: true }))}>
           <PlusIcon />
           Добавить урок
         </Button>
@@ -68,41 +62,28 @@ export const LessonId = () => {
       {isLoading ? (
         <LoadingTable />
       ) : (
-        <LessonByIdTableUI
-          data={data}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-          onPreview={handlePreview}
-        />
+        <LessonByIdTableUI data={data} onDelete={handleDelete} onEdit={handleEdit} onPreview={handlePreview} />
       )}
       <CreateLesson
         open={toggleModals.create}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, create: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, create: value }))}
       />
       {toggleModals.edit ? (
         <UpdateLesson
           open={toggleModals.edit}
-          setOpen={(value) =>
-            setToggleModals((prev) => ({ ...prev, edit: value }))
-          }
+          setOpen={(value) => setToggleModals((prev) => ({ ...prev, edit: value }))}
           data={editable}
         />
       ) : null}
       <DeleteLessonId
         id={deleteId}
         open={toggleModals.delete}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, delete: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
       />
       <PreviewLesson
         data={preview}
         open={toggleModals.preview}
-        setOpen={(value) =>
-          setToggleModals((prev) => ({ ...prev, preview: value }))
-        }
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, preview: value }))}
       />
     </section>
   );

@@ -10,6 +10,15 @@ export const useLessonIdCourse = (courseId: string) => {
       if (form.resource instanceof FileList) {
         form.resource = form.resource[0];
       }
+      if (!form.resource) {
+        const isPdf = form.description === 'empty';
+        form.resource = new File([new Blob([''])], `file.${isPdf ? 'pdf' : 'mp4'}`, {
+          type: isPdf ? 'application/pdf' : 'video/mp4',
+        });
+      }
+      if (!form.description) {
+        form.description = 'empty';
+      }
       const fd = new FormData();
       Object.entries(form).forEach(([key, value]) => fd.append(key, value));
       fd.append('courseId', courseId);

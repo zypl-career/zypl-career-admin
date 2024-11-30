@@ -2,6 +2,8 @@ export type TLessonIdData = {
   id: string;
   item: number;
   resource?: string;
+  description: string;
+  courseId: string;
   name: string;
   status: string;
   type: string;

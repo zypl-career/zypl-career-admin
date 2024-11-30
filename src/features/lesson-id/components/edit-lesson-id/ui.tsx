@@ -6,31 +6,27 @@ import { useParams } from 'react-router-dom';
 import { FC, useMemo } from 'react';
 import {
   Button,
-  Editor,
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
   Input,
   Modal,
   Spinner,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   toast,
 } from '@ui';
 import { UpdateLessonIdSchema } from './schema';
 import { useLessonUpdateById } from './services';
 import { TUpdateLessonId, TUpdateLessonProps } from './types';
 
-export const UpdateLesson: FC<TUpdateLessonProps> = ({
-  data,
-  open,
-  setOpen,
-}) => {
+export const UpdateLesson: FC<TUpdateLessonProps> = ({ data, open, setOpen }) => {
   const { id = '' } = useParams();
-  const { data: lessonData, isLoading: lessonLoading } = useLessonById(
-    data?.id || '',
-  );
+  const { data: lessonData, isLoading: lessonLoading } = useLessonById(data?.id || '');
   const form = useForm<TUpdateLessonId>({
     resolver: zodResolver(UpdateLessonIdSchema),
     values: {
@@ -44,12 +40,15 @@ export const UpdateLesson: FC<TUpdateLessonProps> = ({
   });
 
   const placeholderLoading = useMemo(
-    () => (lessonLoading ? 'Подгружаем данные ...' : ''),
+    () => (lessonLoading ? 'Подгружаем данные ...' : 'https://example.com'),
     [lessonLoading],
   );
 
   const updateLesson = useLessonUpdateById(id, data?.id || '');
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    form.reset();
+  };
 
   const onSubmit = (data: TUpdateLessonId) => {
     updateLesson.mutate(data, {
@@ -75,48 +74,55 @@ export const UpdateLesson: FC<TUpdateLessonProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Заголовок"
-                      placeholder="Введите заголовок"
-                      {...field}
-                    />
+                    <Input label="Заголовок" placeholder="Введите заголовок" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="resource"
-              render={({ field: { onChange }, ...field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      label="Файл"
-                      type="file"
-                      {...field}
-                      onChange={(event) => {
-                        if (event.target.files) {
-                          onChange(event.target.files[0]);
-                        }
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Описание</FormLabel>
-                  <Editor {...field} placeholder={placeholderLoading} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <Tabs defaultValue="link">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="link">Ссылка</TabsTrigger>
+                <TabsTrigger value="file">Файл</TabsTrigger>
+              </TabsList>
+              <TabsContent value="link">
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input label="Ссылка" placeholder={placeholderLoading} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+              <TabsContent value="file">
+                <FormField
+                  control={form.control}
+                  name="resource"
+                  render={({ field: { onChange }, ...field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          label="Файл"
+                          type="file"
+                          {...field}
+                          onChange={(event) => {
+                            if (event.target.files) {
+                              onChange(event.target.files[0]);
+                            }
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+            </Tabs>
             <div className="col-span-2 mt-4 flex items-center justify-start gap-2">
               <Button type="submit" disabled={updateLesson.isPending}>
                 {updateLesson.isPending && <Spinner />}

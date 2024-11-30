@@ -5,16 +5,18 @@ import { useParams } from 'react-router-dom';
 import { FC } from 'react';
 import {
   Button,
-  Editor,
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
   Input,
   Modal,
   Spinner,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   toast,
 } from '@ui';
 import { CreateLessonIdSchema } from './schema';
@@ -28,13 +30,16 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
     defaultValues: {
       name: '',
       description: '',
-      resource: undefined,
+      resource: '',
     },
   });
 
   const createLesson = useLessonIdCourse(id);
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    form.reset();
+  };
 
   const onSubmit = (data: TCreateLessonId) => {
     createLesson.mutate(data, {
@@ -60,48 +65,55 @@ export const CreateLesson: FC<TCreateLessonProps> = ({ open, setOpen }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      label="Заголовок"
-                      placeholder="Введите заголовок"
-                      {...field}
-                    />
+                    <Input label="Заголовок" placeholder="Введите заголовок" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="resource"
-              render={({ field: { onChange }, ...field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      label="Файл"
-                      type="file"
-                      {...field}
-                      onChange={(event) => {
-                        if (event.target.files) {
-                          onChange(event.target.files[0]);
-                        }
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Описание</FormLabel>
-                  <Editor {...field} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <Tabs defaultValue="link">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="link">Ссылка</TabsTrigger>
+                <TabsTrigger value="file">Файл</TabsTrigger>
+              </TabsList>
+              <TabsContent value="link">
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input label="Ссылка" placeholder="https://example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+              <TabsContent value="file">
+                <FormField
+                  control={form.control}
+                  name="resource"
+                  render={({ field: { onChange }, ...field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          label="Файл"
+                          type="file"
+                          {...field}
+                          onChange={(event) => {
+                            if (event.target.files) {
+                              onChange(event.target.files[0]);
+                            }
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+            </Tabs>
             <div className="col-span-2 mt-4 flex items-center justify-start gap-2">
               <Button type="submit" disabled={createLesson.isPending}>
                 {createLesson.isPending && <Spinner />}

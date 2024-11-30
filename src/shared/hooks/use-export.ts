@@ -3,11 +3,7 @@ import { apiService } from '../api';
 import { blobToFile } from '../libs';
 import { toast } from '../ui';
 
-type TExportParams = {
-  url: string;
-};
-
-export const useExport = ({ url }: TExportParams) => {
+export const useExport = (url: string) => {
   const [isExportLoading, setIsExportLoading] = useState(false);
 
   const downloadHandler = useCallback(async () => {

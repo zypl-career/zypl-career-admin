@@ -24,3 +24,4 @@ export * from './input-tags';
 export * from './popover';
 export * from './command';
 export * from './combobox';
+export * from './tabs';
