@@ -1,7 +1,7 @@
 import { Label, Legend, Pie, PieChart } from 'recharts';
 import { Button, PieLabel, Spinner } from '@ui';
 import { useExport } from '@hooks';
-import { useExportReportData } from '../services';
+import { useExportReportData } from '../../services';
 import { colors } from './constants';
 import { getPercent } from './utils';
 

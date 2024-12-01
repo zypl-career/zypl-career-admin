@@ -25,3 +25,4 @@ export * from './popover';
 export * from './command';
 export * from './combobox';
 export * from './tabs';
+export * from './mouse-tracker';

@@ -8,7 +8,7 @@ type MousePositionProps = {
   children: ReactNode;
 };
 
-const MouseTracker: FC<MousePositionProps> = ({ children, x, y, trigger }) => {
+export const MouseTracker: FC<MousePositionProps> = ({ children, x, y, trigger }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -41,5 +41,3 @@ const MouseTracker: FC<MousePositionProps> = ({ children, x, y, trigger }) => {
       )
     : null;
 };
-
-export default MouseTracker;

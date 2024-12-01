@@ -1,5 +1,6 @@
 export const mapArea = [
   {
+    name: 'Sangvor',
     path: (
       <path
         fillRule="evenodd"
@@ -14,6 +15,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Rasht',
     path: (
       <path
         fillRule="evenodd"
@@ -28,6 +30,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Rushon',
     path: (
       <path
         fillRule="evenodd"
@@ -42,6 +45,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Vanj',
     path: (
       <path
         fillRule="evenodd"
@@ -56,6 +60,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Panjakent',
     path: (
       <path
         fillRule="evenodd"
@@ -70,6 +75,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Kuhistoni Mastchoh',
     path: (
       <path
         fillRule="evenodd"
@@ -84,6 +90,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Ishkoshim',
     path: (
       <path
         fillRule="evenodd"
@@ -98,6 +105,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Qubodiyon',
     path: (
       <path
         fillRule="evenodd"
@@ -112,6 +120,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Qubodiyon',
     path: (
       <path
         fillRule="evenodd"
@@ -126,6 +135,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Rudaki',
     path: (
       <path
         fillRule="evenodd"
@@ -140,6 +150,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Darvoz',
     path: (
       <path
         fillRule="evenodd"
@@ -154,6 +165,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Danghara',
     path: (
       <path
         fillRule="evenodd"
@@ -168,6 +180,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'A.Dzhami',
     path: (
       <path
         fillRule="evenodd"
@@ -182,6 +195,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Sh.Shohin',
     path: (
       <path
         fillRule="evenodd"
@@ -196,6 +210,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Baljuvon',
     path: (
       <path
         fillRule="evenodd"
@@ -210,6 +225,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Shakhrituz',
     path: (
       <path
         fillRule="evenodd"
@@ -224,6 +240,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Mastchoh',
     path: (
       <path
         fillRule="evenodd"
@@ -238,6 +255,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Nurobod',
     path: (
       <path
         fillRule="evenodd"
@@ -252,6 +270,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Isfara',
     path: (
       <path
         fillRule="evenodd"
@@ -266,6 +285,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Temurmalik',
     path: (
       <path
         fillRule="evenodd"
@@ -280,6 +300,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Muminobod',
     path: (
       <path
         fillRule="evenodd"
@@ -294,6 +315,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Vakhsh',
     path: (
       <path
         fillRule="evenodd"
@@ -308,6 +330,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Jaihun',
     path: (
       <path
         fillRule="evenodd"
@@ -322,6 +345,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Pyandzh',
     path: (
       <path
         fillRule="evenodd"
@@ -336,6 +360,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Nosiri Khusrav',
     path: (
       <path
         fillRule="evenodd"
@@ -350,6 +375,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Vose',
     path: (
       <path
         fillRule="evenodd"
@@ -364,6 +390,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Konibodom',
     path: (
       <path
         fillRule="evenodd"
@@ -378,6 +405,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Sarband',
     path: (
       <path
         fillRule="evenodd"
@@ -392,6 +420,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Kulyab',
     path: (
       <path
         fillRule="evenodd"
@@ -406,6 +435,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Tashkurgan',
     path: (
       <path
         fillRule="evenodd"
@@ -420,6 +450,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Murghab',
     path: (
       <path
         fillRule="evenodd"
@@ -434,6 +465,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Lakhsh',
     path: (
       <path
         fillRule="evenodd"
@@ -448,6 +480,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Shughnon',
     path: (
       <path
         fillRule="evenodd"
@@ -462,6 +495,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Roshtqala',
     path: (
       <path
         fillRule="evenodd"
@@ -476,6 +510,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Tojikobod',
     path: (
       <path
         fillRule="evenodd"
@@ -490,6 +525,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Farkhor',
     path: (
       <path
         fillRule="evenodd"
@@ -504,6 +540,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Hamadoni',
     path: (
       <path
         fillRule="evenodd"
@@ -518,6 +555,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Balkhi',
     path: (
       <path
         fillRule="evenodd"
@@ -532,6 +570,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Dusti',
     path: (
       <path
         fillRule="evenodd"
@@ -546,6 +585,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Khuroson',
     path: (
       <path
         fillRule="evenodd"
@@ -560,6 +600,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Yavan',
     path: (
       <path
         fillRule="evenodd"
@@ -574,6 +615,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Roghun',
     path: (
       <path
         fillRule="evenodd"
@@ -588,6 +630,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Nurek',
     path: (
       <path
         fillRule="evenodd"
@@ -598,6 +641,7 @@ export const mapArea = [
     ),
   },
   {
+    name: '',
     path: (
       <path
         d="M172.983 251.535C172.962 251.545 172.963 251.543 172.983 251.535ZM172.983 251.535C173.021 251.522 173.124 251.491 173.277 251.486C173.295 251.426 173.311 251.371 173.325 251.324C173.13 251.461 173.021 251.518 172.983 251.535ZM145.313 253.939C145.174 254.172 143.602 256.523 143.897 258.111C144.193 259.699 144.488 261.102 144.303 261.988C144.119 262.874 142.937 264.203 143.27 264.905C143.602 265.606 144.005 266.209 144.005 266.209C146.186 265.108 151.61 259.261 157.482 261.917C159.659 262.901 160.068 262.279 162.41 262.659C163.754 260.306 162.77 261.884 164.596 260.864C165.773 260.206 165.919 259.656 166.382 258.644L167.675 258.739L170.049 256.443C170.271 256.146 170.636 255.665 170.721 255.592C171.624 254.81 171.764 255.386 172.481 253.976C172.655 253.633 173.077 252.166 173.277 251.486C173.393 251.483 173.539 251.495 173.706 251.542L174.876 250.417C174.876 250.417 174.939 250.257 175.073 249.889C175.207 249.521 175.402 246.541 175.378 246.032C175.354 245.522 174.844 245.741 174.213 245.716C173.583 245.692 170.793 247.73 169.92 247.803C169.046 247.876 167.202 247.002 167.202 247.002C167.202 247.002 167.202 246.978 166.742 246.978C166.281 246.978 165.286 248.603 164.485 249.016C163.685 249.428 161.201 249.783 160.431 249.847C159.661 249.911 157.736 247.986 156.485 247.312C155.234 246.639 152.539 247.729 151.673 247.89C150.807 248.05 149.523 247.152 149.17 246.959C148.817 246.767 146.764 246.895 146.283 247.216C145.802 247.537 145.16 248.531 145.353 249.43C145.545 250.328 145.224 250.328 145.032 250.905C144.839 251.483 145.16 251.996 145.481 252.638C145.802 253.28 145.174 253.429 145.174 253.429C145.174 253.429 145.453 253.707 145.313 253.939Z"
@@ -609,6 +653,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Fayzobod',
     path: (
       <path
         fillRule="evenodd"
@@ -623,6 +668,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Vahdat',
     path: (
       <path
         fillRule="evenodd"
@@ -637,6 +683,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Varzob',
     path: (
       <path
         fillRule="evenodd"
@@ -651,6 +698,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Tursunzoda',
     path: (
       <path
         fillRule="evenodd"
@@ -665,6 +713,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Shahrinav',
     path: (
       <path
         fillRule="evenodd"
@@ -679,6 +728,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Hissor',
     path: (
       <path
         fillRule="evenodd"
@@ -693,6 +743,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Ayni',
     path: (
       <path
         fillRule="evenodd"
@@ -707,6 +758,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Devashtich',
     path: (
       <path
         fillRule="evenodd"
@@ -721,6 +773,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Gafurov',
     path: (
       <path
         fillRule="evenodd"
@@ -735,6 +788,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Asht',
     path: (
       <path
         fillRule="evenodd"
@@ -749,6 +803,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Jabbor Rasulov',
     path: (
       <path
         fillRule="evenodd"
@@ -763,6 +818,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Spitamen',
     path: (
       <path
         fillRule="evenodd"
@@ -777,6 +833,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Zafarobod',
     path: (
       <path
         fillRule="evenodd"
@@ -791,6 +848,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Istaravshan',
     path: (
       <path
         fillRule="evenodd"
@@ -805,6 +863,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Shakhriston',
     path: (
       <path
         fillRule="evenodd"
@@ -819,6 +878,7 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Khovaling',
     path: (
       <path
         fillRule="evenodd"
@@ -829,8 +889,10 @@ export const mapArea = [
     ),
   },
   {
+    name: 'Khovaling',
     path: (
       <path
+        fill="#A9BDFF"
         d="M223.232 238.727C223.242 238.734 223.246 238.745 223.242 238.765L223.232 238.727ZM223.232 238.727L223.094 238.175C222.858 238.821 223.167 238.682 223.232 238.727ZM225.037 235.801C223.543 237.058 224.422 235.57 223.485 237.339C223.289 237.709 223.166 237.978 223.094 238.175L222.766 236.863C223.066 235.857 223.258 233.404 223.234 232.148C223.198 233.632 223.092 233.309 222.536 233.591C218.975 234.322 217.822 238.485 214.88 240.359C208.499 244.424 201.713 245.875 198.34 253.028C196.878 256.127 193.822 260.034 194.183 264.094C195.644 264.804 196.144 265.253 197.33 266.37C197.565 268.382 195.951 271.812 194.931 273.249C194.024 274.527 193.093 274.242 191.282 274.462C189.583 274.668 188.304 275.152 186.832 275.563C186.621 275.674 186.391 275.822 186.062 275.98L186.262 278.362L188.876 279.488L191.178 279.297L204.298 278.569C205.02 278.325 204.448 278.941 205.002 277.879C207.451 273.194 206.341 275.52 206.925 274.21C207.87 272.257 207.357 272.322 207.627 270.213C208.129 266.282 211.901 264.953 214.179 262.385C215.148 261.293 215.326 260.752 216.365 259.73C219.362 256.781 221.603 260.824 224.138 261.38C225.081 261.587 226.106 261.488 227.069 261.488C227.773 260.34 228.686 259.924 229.509 258.529C229.497 259.023 229.37 259.397 229.511 259.83L230.32 258.59C230.735 257.781 231.931 253.452 234.088 252.34C234.129 252.319 234.237 252.268 234.277 252.255C234.315 252.243 234.433 252.226 234.47 252.221L235.078 252.358C236.807 252.226 236.038 251.392 239.088 248.291L244.994 241.972L244.675 239.558C244.215 238.098 244.834 239.325 243.972 238.416C243.177 237.578 244.209 238.595 243.011 237.731C239.92 235.503 242.434 233.248 238.17 234.706C237.101 233.363 237.729 232.475 236.017 230.731C233.638 231.1 234.676 231.462 231.538 231.561C226.976 231.704 226.917 234.221 225.037 235.801L225.037 235.801Z"
         stroke="white"
         stroke-width="1.36006"
