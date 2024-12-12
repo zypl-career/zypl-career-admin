@@ -3,7 +3,6 @@ export type TMapUIProps = {
 };
 
 export type TCounterBranches = {
-  id: number;
-  name: string;
+  district: string;
   count: string;
 };

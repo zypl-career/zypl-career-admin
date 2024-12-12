@@ -1,5 +1,6 @@
 export * from './home';
 export * from './users';
+export * from './users-fast';
 export * from './courses';
 export * from './lesson-id';
 export * from './articles';

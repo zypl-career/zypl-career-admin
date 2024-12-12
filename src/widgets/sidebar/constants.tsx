@@ -13,6 +13,11 @@ export const menu: TSidebarMenu[] = [
     icon: <UsersIcon />,
   },
   {
+    title: 'не регистрированные пользователи',
+    link: '/users-fast',
+    icon: <UsersIcon />,
+  },
+  {
     title: 'Роли',
     link: '/rules',
     icon: <UserGroupIcon />,
