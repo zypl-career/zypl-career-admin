@@ -11,14 +11,16 @@ export const UserFastTable: FC<TUserTableProps> = ({ data }) => {
           <TableHead>Пол</TableHead>
           <TableHead>Регион</TableHead>
           <TableHead>Возраст</TableHead>
+          <TableHead>Дата</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((user) => (
-          <TableRow key={user.createdAt}>
+        {data.reverse().map((user, idx) => (
+          <TableRow key={idx}>
             <TableCell>{getGender(user.gender)}</TableCell>
             <TableCell>{user.district}</TableCell>
             <TableCell>{user.age}</TableCell>
+            <TableCell>{new Date(user.createdAt).toLocaleString()}</TableCell>
           </TableRow>
         ))}
       </TableBody>
