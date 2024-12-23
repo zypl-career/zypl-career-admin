@@ -14,10 +14,12 @@ import {
   Input,
   InputTags,
   removeEditorContent,
+  SelectField,
   Spinner,
   Textarea,
   toast,
 } from '@ui';
+import { typesArticle } from './constants';
 import { CreateArticleSchema } from './schema';
 import { useCreateArticle } from './services';
 import { TCreateArticle } from './types';
@@ -28,6 +30,7 @@ export const WriteArticle = () => {
     resolver: zodResolver(CreateArticleSchema),
     defaultValues: {
       title: '',
+      type: '',
       description: '',
       hashtags: [],
       image: undefined,
@@ -94,6 +97,25 @@ export const WriteArticle = () => {
                   <FormItem>
                     <FormControl>
                       <Textarea placeholder="Что-то общее" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <SelectField
+                        options={typesArticle}
+                        value={field.value}
+                        valueType="value"
+                        printType="label"
+                        placeholder="Выберите тип"
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
