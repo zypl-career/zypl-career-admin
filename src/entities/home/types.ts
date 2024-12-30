@@ -6,8 +6,10 @@ export type TUserStatistic = {
   ageRangeStats: AgeRangeStat[];
 };
 
+export type TGenders = 'male' | 'female';
+
 export type UsersByGender = {
-  gender: string;
+  gender: TGenders;
   count: string;
 };
 

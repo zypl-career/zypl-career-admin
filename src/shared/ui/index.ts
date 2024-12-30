@@ -1,6 +1,7 @@
 export * from './toast';
 export * from './mouse-tracker';
 export * from './progress-bar';
+export * from './progress-range-bar';
 export * from './pie-label';
 export * from './table';
 export * from './spinner';

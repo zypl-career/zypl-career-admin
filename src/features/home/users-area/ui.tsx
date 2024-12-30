@@ -1,5 +1,5 @@
-import { BarUI, MapUI, useExportReportData } from '@entities';
-import { barData } from './constants';
+import { MapUI, useExportReportData } from '@entities';
+import { GenderReport } from './components';
 
 export const UsersArea = () => {
   const { data } = useExportReportData();
@@ -9,7 +9,7 @@ export const UsersArea = () => {
         <h1 className="text-2xl font-bold">Пользователи по районам</h1>
       </header>
       <MapUI data={data?.usersByDistrict ?? []} />
-      <BarUI data={barData} />
+      <GenderReport data={data?.usersByGender ?? []} />
     </div>
   );
 };
