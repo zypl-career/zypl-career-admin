@@ -13,13 +13,14 @@ import {
   FormMessage,
   Input,
   InputTags,
+  MultiSelect,
   removeEditorContent,
   SelectField,
   Spinner,
   Textarea,
   toast,
 } from '@ui';
-import { typesArticle } from './constants';
+import { typesArticle, variantSection } from './constants';
 import { CreateArticleSchema } from './schema';
 import { useCreateArticle } from './services';
 import { TCreateArticle } from './types';
@@ -32,6 +33,7 @@ export const WriteArticle = () => {
       title: '',
       type: '',
       description: '',
+      sections: [],
       hashtags: [],
       image: undefined,
       minutesRead: '', // Fix: Change the type to string
@@ -115,6 +117,26 @@ export const WriteArticle = () => {
                         printType="label"
                         placeholder="Выберите тип"
                         onChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="sections"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <MultiSelect
+                        options={variantSection}
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        placeholder="Выберите раздел"
+                        variant="inverted"
+                        animation={2}
+                        maxCount={3}
                       />
                     </FormControl>
                     <FormMessage />

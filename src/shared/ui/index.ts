@@ -27,3 +27,5 @@ export * from './command';
 export * from './combobox';
 export * from './tabs';
 export * from './mouse-tracker';
+export * from './multi-select';
+export * from './separator';

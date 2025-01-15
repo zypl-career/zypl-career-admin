@@ -25,8 +25,6 @@ const ArticlePageId = () => {
       {data?.description && !isLoading ? (
         <BlockNote domAttributes={{ editor: { class: 'bg-transparent' } }} editable={false} value={data?.description} />
       ) : null}
-
-      {/* <div dangerouslySetInnerHTML={{ __html: data?.description || '' }} /> */}
     </main>
   );
 };

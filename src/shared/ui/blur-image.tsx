@@ -8,7 +8,7 @@ export type ImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 
 export const BlurImage: FC<ImageProps> = ({
   className,
-  isSkeleton, // don't use loading="lazy" with this prop
+  isSkeleton = true, // don't use loading="lazy" with this prop
   placeholderImg,
   ...props
 }) => {
