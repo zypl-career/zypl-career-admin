@@ -15,26 +15,31 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
       <TableRow key={idx}>
         <TableCell>{row.title}</TableCell>
         <TableCell>
-          {row?.description?.[0].props?.url ? (
-            <Badge variant="outline">
-              <a href={row?.description?.[0].props?.url} target="_blank" rel="noopener">
-                {row?.description?.[0]?.props?.name}
-              </a>
-            </Badge>
-          ) : (
-            '–'
-          )}
+          {row?.description
+            ?.filter(
+              (item) =>
+                item.props.name.includes('.doc') ||
+                item.props.name.includes('.docx') ||
+                item.props.name.includes('.pages'),
+            )
+            .map((item) => (
+              <Badge variant="outline">
+                <a href={item.props?.url} target="_blank" rel="noopener">
+                  {item?.props?.name}
+                </a>
+              </Badge>
+            ))}
         </TableCell>
         <TableCell>
-          {row?.description?.[1].props?.url ? (
-            <Badge variant="outline">
-              <a href={row?.description?.[1].props?.url} target="_blank" rel="noopener">
-                {row?.description?.[1]?.props?.name}
-              </a>
-            </Badge>
-          ) : (
-            '–'
-          )}
+          {row?.description
+            ?.filter((item) => item.props.name.includes('.pdf'))
+            .map((item) => (
+              <Badge variant="outline">
+                <a href={item.props?.url} target="_blank" rel="noopener">
+                  {item?.props?.name}
+                </a>
+              </Badge>
+            ))}
         </TableCell>
         <TableCell>
           <Button variant="ghost" type="button" className="hover:text-red-500" onClick={() => onDelete(row?.id ?? '')}>

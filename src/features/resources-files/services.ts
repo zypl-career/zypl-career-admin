@@ -10,15 +10,17 @@ export const useResourcesSeekerFiles = () => {
     queryKey: ['resources-seeker-files'],
     queryFn: () => apiService.get('article/get').then(({ data }) => data),
     select: (articles) => {
-      const description = articles.data.map((item) =>
-        (JSON.parse(item.description) as Description[]).filter((item) => item.type === 'file'),
+      const description: ResourcesSeekerFiles[] = articles.data.map((item) => {
+        const parsedDescription = JSON.parse(item.description) as Description[];
+        const descriptionItem = parsedDescription.find((desc) => desc.type === 'file');
+        return descriptionItem ? { ...item, description: parsedDescription } : {};
+      }) as ResourcesSeekerFiles[];
+
+      return (
+        removeEmpty(
+          description.sort((a, b) => new Date(String(b.createdAt)).getTime() - new Date(String(a.createdAt)).getTime()),
+        ) ?? []
       );
-      const files = articles.data
-        .map((item, i) => ({
-          ...(description[i]?.length ? { ...item, description: description.flat() ?? [] } : {}),
-        }))
-        .sort((a, b) => new Date(String(b.createdAt)).getTime() - new Date(String(a.createdAt)).getTime());
-      return removeEmpty(files) ?? [];
     },
   });
 };

@@ -8,28 +8,36 @@ export const useAddResourcesFile = () => {
     mutationKey: ['resources-seeker-files'],
     mutationFn: (form: TAddResourcesFile) => {
       const description = [
-        {
-          children: [],
-          type: 'file',
-          id: crypto.randomUUID(),
-          props: {
-            backgroundColor: 'default',
-            caption: '',
-            name: form.word?.[0].name,
-            url: form.word?.[0] ? URL.createObjectURL(form.word[0]) : '',
-          },
-        },
-        {
-          children: [],
-          type: 'file',
-          id: crypto.randomUUID(),
-          props: {
-            backgroundColor: 'default',
-            caption: '',
-            name: form.pdf?.[0].name,
-            url: form.pdf?.[0] ? URL.createObjectURL(form.pdf[0]) : '',
-          },
-        },
+        ...(form.word?.[0].name
+          ? [
+              {
+                children: [],
+                type: 'file',
+                id: crypto.randomUUID(),
+                props: {
+                  backgroundColor: 'default',
+                  caption: '',
+                  name: form.word?.[0].name,
+                  url: form.word?.[0] ? URL.createObjectURL(form.word[0]) : '',
+                },
+              },
+            ]
+          : []),
+        ...(form.pdf?.[0]?.name
+          ? [
+              {
+                children: [],
+                type: 'file',
+                id: crypto.randomUUID(),
+                props: {
+                  backgroundColor: 'default',
+                  caption: '',
+                  name: form.pdf?.[0].name,
+                  url: form.pdf?.[0] ? URL.createObjectURL(form.pdf[0]) : '',
+                },
+              },
+            ]
+          : []),
       ];
 
       const fd = new FormData();
