@@ -1,5 +1,5 @@
-import { setFieldError } from '@/shared/libs';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -39,6 +39,7 @@ export const WriteArticle = () => {
       minutesRead: '', // Fix: Change the type to string
       generalInfo: '', // Fix: Change the type to string
     },
+    mode: 'onSubmit',
   });
 
   const createArticle = useCreateArticle();

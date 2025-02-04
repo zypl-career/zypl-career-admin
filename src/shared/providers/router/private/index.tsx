@@ -19,6 +19,7 @@ const LessonsByIdPage = lazy(() => import('@pages/lessons-id'));
 const ArticlesPage = lazy(() => import('@pages/articles'));
 const ArticlePageId = lazy(() => import('@pages/article-id'));
 const ArticleCreatePage = lazy(() => import('@/pages/article-create'));
+const ResourcesSeekerFilesPage = lazy(() => import('@/pages/resources-files'));
 const ArticleEditPage = lazy(() => import('@/pages/article-edit'));
 const EducationCenterPage = lazy(() => import('@pages/education-center'));
 const UniversityPage = lazy(() => import('@pages/university'));
@@ -75,6 +76,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'articles/create',
         element: <ArticleCreatePage />,
+      },
+      {
+        path: '/resources-seeker/files',
+        element: <ResourcesSeekerFilesPage />,
       },
       {
         path: 'articles/:id',

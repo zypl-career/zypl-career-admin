@@ -9,8 +9,10 @@ export type TSidebarMenu = {
 
 export type TSidebarItemMenuProps = {
   item: TSidebarMenu;
+  isChild?: boolean;
 };
 
 export type TSidebarMenuProps = {
   data: TSidebarMenu[];
+  isChild?: boolean;
 };

@@ -5,8 +5,8 @@ import { FC, useCallback, useState } from 'react';
 import { TSidebarItemMenuProps } from '../types';
 import { SidebarMenuUI } from './sidebar-menu';
 
-export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item, isChild }) => {
+  const [isOpen, setIsOpen] = useState(isChild);
 
   const handleDropdown = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item }) => {
       </NavLink>
       {isOpen && item.children ? (
         <div className="ml-2">
-          <SidebarMenuUI data={item.children} />
+          <SidebarMenuUI data={item.children} isChild={isOpen} />
         </div>
       ) : null}
     </li>

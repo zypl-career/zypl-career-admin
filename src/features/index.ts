@@ -6,4 +6,5 @@ export * from './lesson-id';
 export * from './articles';
 export * from './partners';
 export * from './education-center';
+export * from './resources-files';
 export * from './univercity';

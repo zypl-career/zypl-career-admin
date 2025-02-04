@@ -67,6 +67,10 @@ export const menu: TSidebarMenu[] = [
       {
         title: 'Ресурсы для соискателей',
         link: '/resources',
+        children: [
+          { title: 'Файлы', link: '/resources-seeker/files' },
+          { title: 'Статьи', link: '/resources/articles' },
+        ],
       },
       {
         title: 'Учебные центры',
