@@ -19,7 +19,7 @@ export const ProgressRangeBar: FC<TProgressRangeBar> = ({ data }) => {
         const percentage = (Number(item.value) / total) * 100;
         return {
           ...item,
-          percentage: percentage,
+          percentage: percentage.toFixed(2),
         };
       }),
     [data, total],
