@@ -49,10 +49,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <Slottable>
-          {children}
-          {isLoading ? <Spinner className="ml-2" /> : null}
-        </Slottable>
+        <Slottable>{children}</Slottable>
+        {isLoading ? <Spinner className="ml-2" /> : null}
       </Comp>
     );
   },

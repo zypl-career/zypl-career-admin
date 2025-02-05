@@ -1,6 +1,7 @@
 import { Trash2Icon } from 'lucide-react';
 import { FC } from 'react';
 import { Badge, Button, TableCell, TableRow } from '@ui';
+import { wordWhiteListFormat } from './constants';
 import type { TableResourcesFileProps } from './types';
 
 export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete }) => {
@@ -16,14 +17,9 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
         <TableCell>{row.title}</TableCell>
         <TableCell>
           {row?.description
-            ?.filter(
-              (item) =>
-                item.props.name.includes('.doc') ||
-                item.props.name.includes('.docx') ||
-                item.props.name.includes('.pages'),
-            )
+            ?.filter((item) => wordWhiteListFormat.some((format) => item.props.name.includes(format)))
             .map((item) => (
-              <Badge variant="outline">
+              <Badge variant="outline" key={item.props?.url}>
                 <a href={item.props?.url} target="_blank" rel="noopener">
                   {item?.props?.name}
                 </a>

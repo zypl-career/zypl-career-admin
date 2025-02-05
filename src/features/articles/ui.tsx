@@ -29,7 +29,7 @@ export const Article = () => {
   };
 
   return (
-    <section>
+    <>
       <header className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Статьи</h1>
@@ -51,6 +51,6 @@ export const Article = () => {
         setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
         id={deleteArticle?.id || ''}
       />
-    </section>
+    </>
   );
 };
