@@ -1,3 +1,4 @@
+import { downloadFile } from '@libs';
 import { Trash2Icon } from 'lucide-react';
 import { FC } from 'react';
 import { Badge, Button, TableCell, TableRow } from '@ui';
@@ -20,9 +21,12 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
             ?.filter((item) => wordWhiteListFormat.some((format) => item.props.name.includes(format)))
             .map((item) => (
               <Badge variant="outline" key={item.props?.url}>
-                <a href={item.props?.url} target="_blank" rel="noopener">
+                <span
+                  className="cursor-pointer"
+                  onClick={async () => await downloadFile(item.props?.url, item.props.name)}
+                >
                   {item?.props?.name}
-                </a>
+                </span>
               </Badge>
             ))}
         </TableCell>
@@ -31,9 +35,9 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
             ?.filter((item) => item.props.name.includes('.pdf'))
             .map((item) => (
               <Badge variant="outline">
-                <a href={item.props?.url} target="_blank" rel="noopener">
+                <span onClick={async () => await downloadFile(item.props?.url, item.props.name)}>
                   {item?.props?.name}
-                </a>
+                </span>
               </Badge>
             ))}
         </TableCell>

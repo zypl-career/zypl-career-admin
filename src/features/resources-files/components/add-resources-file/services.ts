@@ -1,3 +1,4 @@
+import { fileToBase64 } from '@/shared/libs';
 import { apiService } from '@api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TAddResourcesFile } from './types';
@@ -6,7 +7,7 @@ export const useAddResourcesFile = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ['resources-seeker-files'],
-    mutationFn: (form: TAddResourcesFile) => {
+    mutationFn: async (form: TAddResourcesFile) => {
       const description = [
         ...(form.word?.[0].name
           ? [
@@ -18,7 +19,7 @@ export const useAddResourcesFile = () => {
                   backgroundColor: 'default',
                   caption: '',
                   name: form.word?.[0].name,
-                  url: form.word?.[0] ? URL.createObjectURL(form.word[0]) : '',
+                  url: form.word?.[0] ? await fileToBase64(form.word[0]) : '',
                 },
               },
             ]
@@ -33,7 +34,7 @@ export const useAddResourcesFile = () => {
                   backgroundColor: 'default',
                   caption: '',
                   name: form.pdf?.[0].name,
-                  url: form.pdf?.[0] ? URL.createObjectURL(form.pdf[0]) : '',
+                  url: form.pdf?.[0] ? await fileToBase64(form.pdf[0]) : '',
                 },
               },
             ]
