@@ -18,7 +18,7 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
         <TableCell>{row.title}</TableCell>
         <TableCell>
           {row?.description
-            ?.filter((item) => wordWhiteListFormat.some((format) => item.props.name.includes(format)))
+            ?.filter((item) => wordWhiteListFormat.some((format) => item.props?.name?.includes(format)))
             .map((item) => (
               <Badge variant="outline" key={item.props?.url}>
                 <span
@@ -32,7 +32,7 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
         </TableCell>
         <TableCell>
           {row?.description
-            ?.filter((item) => item.props.name.includes('.pdf'))
+            ?.filter((item) => item?.props?.name?.includes('.pdf'))
             .map((item) => (
               <Badge variant="outline">
                 <span onClick={async () => await downloadFile(item.props?.url, item.props.name)}>
