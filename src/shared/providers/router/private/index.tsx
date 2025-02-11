@@ -5,6 +5,8 @@ import PartnersPage from '@pages/partners';
 import { RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
 
+const ViDeoGuidePage = lazy(() => import('@/pages/video-guide'));
+
 const HomePage = lazy(() => import('@pages/home'));
 const UsersPage = lazy(() => import('@pages/users'));
 const UsersFastPage = lazy(() => import('@pages/users-fast'));
@@ -88,6 +90,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'articles/:id/edit',
         element: <ArticleEditPage />,
+      },
+      {
+        path: '/video-guide',
+        element: <ViDeoGuidePage />,
       },
       {
         path: 'partners',

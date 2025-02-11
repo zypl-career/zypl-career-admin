@@ -29,3 +29,4 @@ export * from './tabs';
 export * from './mouse-tracker';
 export * from './multi-select';
 export * from './separator';
+export * from './async-text';

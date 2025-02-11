@@ -29,7 +29,7 @@ export const SidebarMenuItemUI: FC<TSidebarItemMenuProps> = ({ item, isChild }) 
         {item.children ? <ChevronRight className={cn({ 'rotate-90': isOpen })} /> : null}
       </NavLink>
       {isOpen && item.children ? (
-        <div className="ml-2">
+        <div className="ml-4 border-l border-white/80 pl-2">
           <SidebarMenuUI data={item.children} isChild={isOpen} />
         </div>
       ) : null}

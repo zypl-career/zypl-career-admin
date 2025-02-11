@@ -3,9 +3,11 @@ import { ChangeEvent, DragEvent, FC, useCallback, useEffect, useRef, useState } 
 import { BlurImage, Button, toast } from '@ui';
 import type { TDropFileProps, TPreview } from './types';
 
-const whiteListTypeFile = ['image', 'image/jpeg', 'image/png', 'gif', 'video/mp4'];
-
-export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
+export const DropFile: FC<TDropFileProps> = ({
+  preview,
+  whiteListTypeFile = ['image', 'image/jpeg', 'image/png', 'gif', 'video/mp4'],
+  onChange,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [previewFile, setPreviewFile] = useState<Partial<TPreview>>({
     preview,
@@ -43,7 +45,7 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
         }));
       };
     },
-    [onChange],
+    [onChange, whiteListTypeFile],
   );
 
   useEffect(() => {
@@ -67,17 +69,13 @@ export const DropFile: FC<TDropFileProps> = ({ preview, onChange }) => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
       >
-        <input
-          type="file"
-          ref={inputRef}
-          onChange={handleDrop}
-          accept="image/png, image/gif, image/jpeg, video/*"
-          hidden
-        />
+        <input type="file" ref={inputRef} onChange={handleDrop} accept={whiteListTypeFile.join(', ')} hidden />
         {!previewFile.size ? (
           <>
             <h4 className="mb-1 text-center">Перетащите файл сюда или выберите его</h4>
-            <Button variant="ghost">Выбрать файл</Button>
+            <Button variant="ghost" type="button">
+              Выбрать файл
+            </Button>
           </>
         ) : (
           <>

@@ -1,4 +1,4 @@
-import { TArticleData } from '@/entities';
+import { TArticleData } from '@entities';
 
 export type Description = {
   id: string;

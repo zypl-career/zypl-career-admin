@@ -7,5 +7,6 @@ export type TPreview = {
 
 export type TDropFileProps = {
   preview?: string | ArrayBuffer | File | null | undefined;
+  whiteListTypeFile?: string[];
   onChange: (file: File) => void;
 };

@@ -1,4 +1,4 @@
-import { CategoriesIcon, HashtagIcon, HomeIcon, MediaFilesIcon, UserGroupIcon, UsersIcon } from '@icons';
+import { CategoriesIcon, HomeIcon, UsersIcon } from '@icons';
 import { TSidebarMenu } from './types';
 
 export const menu: TSidebarMenu[] = [
@@ -18,16 +18,6 @@ export const menu: TSidebarMenu[] = [
     icon: <UsersIcon />,
   },
   {
-    title: 'Роли',
-    link: '/rules',
-    icon: <UserGroupIcon />,
-  },
-  {
-    title: 'Тесты',
-    link: '/tests',
-    icon: <HashtagIcon />,
-  },
-  {
     title: 'Инструменты для вдохновения',
     link: '/accepted',
     icon: <CategoriesIcon />,
@@ -39,10 +29,6 @@ export const menu: TSidebarMenu[] = [
       {
         title: 'Университеты',
         link: '/university',
-      },
-      {
-        title: 'Профессии',
-        link: '/professions',
       },
       {
         title: 'Отрасли',
@@ -81,33 +67,5 @@ export const menu: TSidebarMenu[] = [
         link: '/video-guide',
       },
     ],
-  },
-  {
-    title: 'Медиафайли',
-    link: '/beginners',
-    icon: <MediaFilesIcon />,
-    children: [
-      {
-        title: 'Все',
-        link: 'all',
-      },
-      {
-        title: 'Видео',
-        link: 'videos',
-      },
-      {
-        title: 'Фото',
-        link: 'photos',
-      },
-      {
-        title: 'Файли',
-        link: 'files',
-      },
-    ],
-  },
-  {
-    title: 'Теги',
-    link: '/polls',
-    icon: <HashtagIcon />,
   },
 ];

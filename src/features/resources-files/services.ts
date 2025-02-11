@@ -8,7 +8,14 @@ import { Description, ResourcesSeekerFiles } from './types';
 export const useResourcesSeekerFiles = () => {
   return useQuery<TResponse<TArticleData[]>, Error, ResourcesSeekerFiles[]>({
     queryKey: ['resources-seeker-files'],
-    queryFn: () => apiService.get('article/get').then(({ data }) => data),
+    queryFn: () =>
+      apiService
+        .get('article/get', {
+          params: {
+            sections: ['Resources for Job Seekers'],
+          },
+        })
+        .then(({ data }) => data),
     select: (articles) => {
       const description: ResourcesSeekerFiles[] = articles.data.map((item) => {
         const parsedDescription = JSON.parse(item.description) as Description[];
