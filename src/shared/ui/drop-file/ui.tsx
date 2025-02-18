@@ -1,12 +1,14 @@
 import { cn } from '@libs';
 import { ChangeEvent, DragEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
-import { BlurImage, Button, toast } from '@ui';
+import { BlurImage, Input, toast } from '@ui';
 import type { TDropFileProps, TPreview } from './types';
 
 export const DropFile: FC<TDropFileProps> = ({
   preview,
+  link = '',
   whiteListTypeFile = ['image', 'image/jpeg', 'image/png', 'gif', 'video/mp4'],
   onChange,
+  onChangeLink,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [previewFile, setPreviewFile] = useState<Partial<TPreview>>({
@@ -48,6 +50,15 @@ export const DropFile: FC<TDropFileProps> = ({
     [onChange, whiteListTypeFile],
   );
 
+  const handleChangeLink = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (onChangeLink) {
+        onChangeLink(e.target.value);
+      }
+    },
+    [onChangeLink],
+  );
+
   useEffect(() => {
     if (preview && !previewFile.name) {
       setPreviewFile((prev) => ({ ...prev, preview }));
@@ -73,9 +84,9 @@ export const DropFile: FC<TDropFileProps> = ({
         {!previewFile.size ? (
           <>
             <h4 className="mb-1 text-center">Перетащите файл сюда или выберите его</h4>
-            <Button variant="ghost" type="button">
-              Выбрать файл
-            </Button>
+            {link ? (
+              <Input type="text" placeholder="youtube.com/watch" onChange={handleChangeLink} value={link} />
+            ) : null}
           </>
         ) : (
           <>

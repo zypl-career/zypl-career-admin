@@ -10,13 +10,17 @@ export const useCreateVideoGuide = () => {
     mutationFn: async (form: TVideoGuideSchema) => {
       const fd = new FormData();
 
-      if (form.image && form.image instanceof File) {
-        fd.append('image', form.image);
-      }
+      const description = form.description
+        ? form.description.includes('youtube')
+          ? form.description.replace('/watch?v=', '/embed/')
+          : form.description
+        : 'empty';
+
+      fd.append('image', form.image || new File([], 'empty.jpg'));
 
       fd.append('title', form.title);
       fd.append('generalInfo', form.generalInfo);
-      fd.append('description', 'empty');
+      fd.append('description', description);
       fd.append('type', 'student');
       fd.append('minutesRead', '0');
       fd.append('hashtags', '0');

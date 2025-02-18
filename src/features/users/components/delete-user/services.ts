@@ -7,7 +7,7 @@ import { User } from '../../constants';
 export default function useDeleteUser(id: TUserData['id']) {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => apiService.delete(`/users/${id}`).then((res) => res.data),
+    mutationFn: () => apiService.delete(`/user/delete/${id}`).then((res) => res.data),
     onSuccess() {
       toast({
         description: 'Пользователь успешно удален',

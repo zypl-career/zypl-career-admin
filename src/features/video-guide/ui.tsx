@@ -2,7 +2,7 @@ import { TArticleData } from '@entities';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trash2Icon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import { Fragment, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { AsyncText, Button, Form, Spinner, toast } from '@ui';
 import { AddVideoGuide, TVideoGuideSchema, useCreateVideoGuide, VideoGuideSchema } from './components';
 import { useDeleteVideoGuide, useGetVideoGuide } from './services';
@@ -13,6 +13,7 @@ export const VideoGuide = () => {
     defaultValues: {
       generalInfo: '',
       title: '',
+      description: '',
     },
     resolver: zodResolver(VideoGuideSchema),
     mode: 'onSubmit',
@@ -34,10 +35,12 @@ export const VideoGuide = () => {
       createVideoGuide.mutate(data, {
         onSuccess() {
           toast({ title: 'Видео успешно добавлено' });
+          setIsShowAdd(false);
+          form.reset();
         },
       });
     },
-    [createVideoGuide],
+    [createVideoGuide, form],
   );
 
   return (
@@ -67,31 +70,44 @@ export const VideoGuide = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        data?.map((item) => (
-          <Fragment key={item.id}>
-            <header className="mb-2">
-              <h1 className="text-2xl font-bold">{item.title}</h1>
-            </header>
-            <main className="flex w-full items-center justify-between rounded-lg bg-white p-5 shadow-md">
-              <div className="flex-1">
-                <AsyncText file={item.generalInfoFile} />
-              </div>
-              <aside className="flex items-center gap-5">
-                <video controls>
-                  <source src={item.image} type="video/mp4" />
-                </video>
-                <Button
-                  variant="ghost"
-                  className="hover:text-red-500"
-                  isLoading={deleteVideoGuide.isPending}
-                  onClick={() => deleteHandler(item.id)}
-                >
-                  <Trash2Icon />
-                </Button>
-              </aside>
-            </main>
-          </Fragment>
-        ))
+        <main className="flex flex-col gap-5">
+          {data?.map((item) => (
+            <div key={item.id}>
+              <header className="mb-2">
+                <h1 className="text-2xl font-bold">{item.title}</h1>
+              </header>
+              <main className="flex w-full items-center justify-between rounded-lg bg-white p-5 shadow-md">
+                <div className="flex-1">
+                  <AsyncText file={item.generalInfoFile} />
+                </div>
+                <aside className="flex items-center gap-5">
+                  {item.image.endsWith('.mp4') ? (
+                    <video controls>
+                      <source src={item.image} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <iframe
+                      width={620}
+                      height="315"
+                      src={item.description}
+                      title="YouTube video player"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
+                      allowFullScreen
+                    />
+                  )}
+                  <Button
+                    variant="ghost"
+                    className="hover:text-red-500"
+                    disabled={deleteVideoGuide.isPending}
+                    onClick={() => deleteHandler(item.id)}
+                  >
+                    {deleteVideoGuide.isPending ? <Spinner /> : <Trash2Icon />}
+                  </Button>
+                </aside>
+              </main>
+            </div>
+          ))}
+        </main>
       )}
     </Form>
   );

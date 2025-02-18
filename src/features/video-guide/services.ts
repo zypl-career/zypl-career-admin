@@ -15,7 +15,9 @@ export const useGetVideoGuide = () => {
         })
         .then(({ data }) => data),
     select: (articles) => {
-      const videos = articles.data.filter((item) => item.image.endsWith('.mp4'));
+      const videos = articles.data.filter(
+        (item) => item.image.endsWith('.mp4') || item.description.startsWith('https:'),
+      );
       return videos.sort((a, b) => new Date(String(b.createdAt)).getTime() - new Date(String(a.createdAt)).getTime());
     },
   });
