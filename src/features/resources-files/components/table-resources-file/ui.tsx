@@ -13,8 +13,8 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
       </TableCell>
     </TableRow>
   ) : (
-    data?.map((row, idx) => (
-      <TableRow key={idx}>
+    data?.map((row) => (
+      <TableRow key={row.id}>
         <TableCell>{row.title}</TableCell>
         <TableCell>
           {row?.description
@@ -34,7 +34,7 @@ export const TableResourcesFile: FC<TableResourcesFileProps> = ({ data, onDelete
           {row?.description
             ?.filter((item) => item?.props?.name?.includes('.pdf'))
             .map((item) => (
-              <Badge variant="outline">
+              <Badge variant="outline" key={item.props?.url}>
                 <span onClick={async () => await downloadFile(item.props?.url, item.props.name)}>
                   {item?.props?.name}
                 </span>
