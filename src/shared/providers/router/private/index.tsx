@@ -8,7 +8,7 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('@pages/home'));
 const UsersPage = lazy(() => import('@pages/users'));
 const UsersFastPage = lazy(() => import('@pages/users-fast'));
-
+const SpecialtyPage = lazy(() => import('@pages/specialty'));
 const CoursesPage = lazy(() => import('@pages/courses'));
 const CourseCreatePage = lazy(() => import('@pages/course-create'));
 const CourseUpdatePage = lazy(() => import('@pages/course-update'));
@@ -35,6 +35,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: 'users',
         element: <UsersPage />,
+      },
+      {
+        path: 'specialty',
+        element: <SpecialtyPage />,
       },
       {
         path: 'users-fast',
