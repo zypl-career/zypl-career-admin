@@ -8,6 +8,11 @@ export const menu: TSidebarMenu[] = [
     icon: <HomeIcon />,
   },
   {
+    title: 'Специальность',
+    link: '/specialty',
+    icon: <UserGroupIcon />,
+  },
+  {
     title: 'Пользователи',
     link: '/users',
     icon: <UsersIcon />,
