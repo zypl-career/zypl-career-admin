@@ -1,3 +1,4 @@
-export * from './table';
+export * from './card';
 export * from './create';
+export * from './edit';
 export * from './delete';

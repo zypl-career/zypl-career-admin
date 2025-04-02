@@ -22,9 +22,3 @@ export type TSpecialty = {
   updatedAt: string;
   deletedAt: string | null;
 };
-
-export type TSpecialtyTableProps = {
-  data: TSpecialty[];
-  onDelete: (id: string) => void;
-  onEdit: (specialty: TSpecialty) => void;
-};

@@ -30,12 +30,12 @@ export const DeleteSpecialty: FC<TDeleteSpecialtyProps> = ({ setOpen, open, id =
         if (error.response && error.response.status === 404) {
           toast({
             description: 'Специальность не найдена',
-            variant: 'destructive',
+            variant: 'warning',
           });
         } else {
           toast({
             description: 'Произошла ошибка при удалении специальности',
-            variant: 'destructive',
+            variant: 'error',
           });
         }
       },
@@ -47,7 +47,9 @@ export const DeleteSpecialty: FC<TDeleteSpecialtyProps> = ({ setOpen, open, id =
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Действие безвозвратно</AlertDialogTitle>
-          <AlertDialogDescription>Вы уверены, что хотите удалить эту специальность?</AlertDialogDescription>
+          <AlertDialogDescription>
+            Вы уверены, что хотите удалить эту специальность?
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Отменить</AlertDialogCancel>

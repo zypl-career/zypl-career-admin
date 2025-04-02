@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { setFieldError } from '@libs';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import { FC } from 'react';
 import {
   Button,
@@ -18,30 +19,36 @@ import {
   toast,
 } from '@ui';
 import { CreateSpecialtySchema, TCreateSpecialty } from './schema';
-import { useCreateSpecialty } from './services';
-import { TCreateSpecialtyProps } from './types';
+import { useUpdateSpecialty } from './services';
+import { TUpdateSpecialtyProps } from './types';
 
-export const CreateSpecialty: FC<TCreateSpecialtyProps> = ({ open, toggle }) => {
+export const UpdateSpecialty: FC<TUpdateSpecialtyProps> = ({ data, open, toggle }) => {
+  const id = useParams<{ id: string }>().id;
   const form = useForm<TCreateSpecialty>({
     resolver: zodResolver(CreateSpecialtySchema),
-    defaultValues: {
-      name: '',
-      EIOHPE: '',
-      clusterName: '',
-      clusterTag: '',
-      specialtyDescription: '',
-      specialtyName: '',
-      formOfEducation: '',
-      typeOfStudy: '',
-      languageOfStudy: '',
-      universityName: '',
-      futureGrowth: '',
-      overview: '',
-      careerOpportunities: [],
+    values: {
+      name: data?.name || '',
+      EIOHPE: data?.EIOHPE || '',
+      class: data?.class || 0,
+      specializationGroup: data?.specializationGroup || 0,
+      clusterName: data?.clusterName || '',
+      clusterTag: data?.clusterTag || '',
+      specialtyDescription: data?.specialtyDescription || '',
+      specialtyCode: data?.specialtyCode || 0,
+      specialtyName: data?.specialtyName || '',
+      formOfEducation: data?.formOfEducation || '',
+      typeOfStudy: data?.typeOfStudy || '',
+      languageOfStudy: data?.languageOfStudy || '',
+      universityName: data?.universityName || '',
+      monthlyIncome: data?.monthlyIncome || 0,
+      skillsLevel: data?.skillsLevel || 0,
+      futureGrowth: data?.futureGrowth || '',
+      overview: data?.overview || '',
+      careerOpportunities: data?.careerOpportunities || [],
     },
   });
 
-  const createSpecialty = useCreateSpecialty();
+  const createSpecialty = useUpdateSpecialty(String(id));
 
   const handleClose = () => toggle(false);
 

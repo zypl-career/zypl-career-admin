@@ -1,25 +1,33 @@
-import { CreateSpecialty, DeleteSpecialty, SpecialtyTableUI, TSpecialty, useGetSpecialty } from '@entities';
 import { PlusIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button, Spinner } from '@ui';
+import { useToggleModals } from '@hooks';
+import { CreateSpecialty, DeleteSpecialty, SpecialtyCardList, UpdateSpecialty } from './components';
+import { useGetSpecialty } from './services';
+import { TSpecialty } from './types';
 
 export const SpecialtyUI = () => {
-  const { data: specialties, isLoading } = useGetSpecialty();
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const { toggleModals, setToggleModals, handleToggleModals } = useToggleModals();
+  const specialtiesApi = useGetSpecialty();
   const [specialtyToDelete, setSpecialtyToDelete] = useState<Partial<TSpecialty>>({});
+  const [specialtyToEdit, setSpecialtyToEdit] = useState<Partial<TSpecialty>>({});
 
   const handleToggleCreateModal = () => {
-    setIsCreateModalOpen(!isCreateModalOpen);
+    handleToggleModals('create');
   };
 
-  const handleDelete = (specialty: Partial<TSpecialty>) => {
+  const handleDelete = (specialty: TSpecialty) => {
+    handleToggleModals('delete');
     setSpecialtyToDelete(specialty);
-    setIsDeleteModalOpen(true);
+  };
+
+  const handleEdit = (specialty: TSpecialty) => {
+    handleToggleModals('edit');
+    setSpecialtyToEdit(specialty);
   };
 
   return (
-    <section>
+    <>
       <header className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Специальности</h1>
         <Button onClick={handleToggleCreateModal}>
@@ -27,13 +35,28 @@ export const SpecialtyUI = () => {
           Добавить специальность
         </Button>
       </header>
-      {isLoading ? (
+      {specialtiesApi.isLoading ? (
         <Spinner />
       ) : (
-        <SpecialtyTableUI data={specialties?.data || []} onDelete={handleDelete} onEdit={() => {}} />
+        <section className="grid gap-5 md:grid-cols-3">
+          <SpecialtyCardList
+            data={specialtiesApi?.data || []}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+          />
+        </section>
       )}
-      <CreateSpecialty open={isCreateModalOpen} toggle={handleToggleCreateModal} />
-      <DeleteSpecialty open={isDeleteModalOpen} setOpen={setIsDeleteModalOpen} id={specialtyToDelete?.id?.toString()} />
-    </section>
+      <CreateSpecialty open={toggleModals.create} toggle={handleToggleCreateModal} />
+      <UpdateSpecialty
+        data={specialtyToEdit}
+        open={toggleModals.edit}
+        toggle={(value) => setToggleModals((prev) => ({ ...prev, edit: value }))}
+      />
+      <DeleteSpecialty
+        open={toggleModals.delete}
+        setOpen={(value) => setToggleModals((prev) => ({ ...prev, delete: value }))}
+        id={specialtyToDelete?.id?.toString()}
+      />
+    </>
   );
 };

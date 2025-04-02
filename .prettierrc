@@ -1,5 +1,5 @@
 {
-  "printWidth": 120,
+  "printWidth": 100,
   "singleQuote": true,
   "semi": true,
   "trailingComma": "all",
@@ -9,7 +9,10 @@
   "importOrderBuiltinModulesToTop": true,
   "importOrderMergeDuplicateImports": true,
   "bracketSameLine": false,
-  "plugins": ["prettier-plugin-tailwindcss", "@ianvs/prettier-plugin-sort-imports"],
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports"
+  ],
   "importOrder": [
     "^(react/(.*)$)|^(react$)",
     "^@types$",

@@ -1,4 +1,4 @@
 export enum Specialty {
-  SpecialtyKey = 'specialty',
+  SpecialtyKey = 'specialties',
   SpecialtyPath = '/specialty/get',
 }
